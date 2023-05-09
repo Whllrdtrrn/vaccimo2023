@@ -1,0 +1,339 @@
+{% extends "layouts/LayoutDashboard.html" %}
+
+
+{% load widget_tweaks %}
+{% block title %} <title> Side Effect - Reports</title> {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+
+{% block content %}
+{% include 'includes/modal.html' %} 
+
+<style>
+    .dataTables_filter{
+        display: none;
+    }
+    .dataTables_length{
+        display: none;
+    }
+    #id_vaccine_brand{
+        width: 100%;
+        height: 25px;
+    }
+</style>
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+	<div class="pcoded-content">
+		<!-- [ breadcrumb ] start -->
+		<div class="page-header">
+			<div class="page-block">
+				<div class="row align-items-center">
+					<div class="col-md-12">
+						<div class="page-header-title">
+							<h5 class="m-b-10">:: Side Effect</h5>
+						</div>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item"><a href="{% url 'dashboard'%}">Home</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'userAccount'%}">User Account</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'informationCollection'%}">Information
+									Collection</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'survey'%}">Survey</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'sideEffect'%}">Side Effect Reports</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- [ breadcrumb ] end -->
+		<!-- [ Main Content ] start -->
+		<div class="row mb-3">
+			<div class="col-md-8">
+			</div>
+		</div>
+		<div class="row">
+			<!-- [ Hover-table ] start -->
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+							<h3 style="font-weight: bold;text-align-last: center;">All Reports</h3>
+						<!--<a type="button" class="btn btn-outline-danger " data-bs-toggle="modal" data-bs-target="#exampleModal">View Details</a>-->
+					</div>
+				
+					<div class="card-body table-border-style">
+						<div class="table-responsive">
+							<table id="example1" class="table table-hover">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>User Id</th>
+										<th>First Name</th>
+										<th>Middle Initial</th>
+										<th>Last Name</th>
+										<th>Age</th>
+										<th>Gender</th>
+										<th>Contact Number</th>
+										<th>Address</th>
+										<th>First Dose</th>
+										<th>Date Vaccinated</th>
+										<th>Second Dose</th>
+										<th>Date Vaccinated</th>
+										<th>First Booster</th>
+										<th>Date Vaccinated</th>
+										<th>Second Booster</th>
+										<th>Date Vaccinated</th>
+										<th>Date Created</th>
+										<th>Action</th>
+										<!--<th>Download</th>-->
+									</tr>
+								</thead>
+								<tbody>
+									{% for y in haveSideeffect %}
+									<tr style="text-transform: capitalize;">
+										<td class="cell-detail"> <span>{{ forloop.counter }}</span> </td>
+										<td class="cell-detail"> {{y.author_id}}</td>
+										<td class="cell-detail"> {{y.nameFirst}}</td>
+										<td class="cell-detail"> {{y.name}}</td>
+										<td class="cell-detail"> {{y.nameLast}}</td>
+										<td class="cell-detail"> {{y.age}}</td>
+										<td class="cell-detail"> {{y.gender}}</td>
+										<td class="cell-detail"> {{y.contact_number}}</td>
+										<td class="cell-detail"> {{y.address}}</td>
+										<td class="cell-detail"> {{y.vaccination_brand}}</td>
+										<td class="cell-detail"> {{y.dateVaccinated}}</td>
+										<td class="cell-detail"> {{y.vaccination_brand1}}</td>
+										<td class="cell-detail"> {{y.dateVaccinated1}}</td>
+										<td class="cell-detail"> {{y.vaccination_brand2}}</td>
+										<td class="cell-detail"> {{y.dateVaccinated2}}</td>
+										<td class="cell-detail"> {{y.vaccination_brand3}}</td>
+										<td class="cell-detail"> {{y.dateVaccinated3}}</td>
+										<td class="cell-detail"> {{y.date_created}}</td>
+										<td><a type="button" class="btn btn-outline-danger " data-bs-toggle="modal" data-bs-target="#exampleModal{{y.id}}">View Details</a></td>
+
+										<!--<td class="cell-detail"> <span>{% if y.muscle_ache == '1'%}Yes{% elif y.muscle_ache == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.headache == '1'%}Yes{% elif y.headache == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.fever == '1'%}Yes{% elif y.fever == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.redness == '1'%}Yes{% elif y.redness == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.swelling == '1'%}Yes{% elif y.swelling == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.tenderness == '1'%}Yes{% elif y.tenderness == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.itch == '1'%}Yes{% elif y.itch == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.induration == '1'%}Yes{% elif y.induration == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.chills == '1'%}Yes{% elif y.chills == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.join_pain == '1'%}Yes{% elif y.join_pain == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.fatigue == '1'%}Yes{% elif y.fatigue == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.nausea == '1'%}Yes{% elif y.nausea == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.vomiting == '1'%}Yes{% elif y.vomiting == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>-->
+										<!--{% if y.feverish == '0'%}
+										<td><a class="btn btn-success w-50 text-white">Mild</a></td>
+										{% elif y.feverish == '1'%}
+										<td><a class="btn btn-success w-50 text-white">Mild</a></td>
+										{% elif y.feverish == '2'%}
+										<td><a class="btn btn-success w-50 text-white">Mild</a></td>
+										{% elif y.feverish == '3' %}
+										<td><a class="btn btn-warning w-50 text-white">Moderate</a></td>
+										{% elif y.feverish == '4' %}
+										<td><a class="btn btn-warning w-50 text-white">Moderate</a></td>
+										{% elif y.feverish == '5' %}
+										<td><a class="btn btn-warning w-50 text-white">Moderate</a></td>
+										{% elif y.feverish == '6' %}
+										<td><a class="btn btn-warning w-50 text-white">Moderate</a></td>
+										{% else %}
+										<td><a class="btn btn-danger w-50 text-white">Severe</a></td>
+										{% endif %}-->
+										<!--<td><button type="button" class="btn btn-danger"><a href="{% url 'generate_pdf' pk=y.id %}" class="text-white">Download PDF</a></button></td>-->
+									</tr>
+									{% empty %}
+									<tr>
+										No data available
+									</tr>
+									{% endfor %}
+								</tbody>
+								<tfoot>
+									<tr>
+										<th>#</th>
+										<th>User Id</th>
+										<th>First Name</th>
+										<th>Middle Initial</th>
+										<th>Last Name</th>
+										<th>Age</th>
+										<th>Gender</th>
+										<th>Contact Number</th>
+										<th>Address</th>
+										<th>First Dose</th>
+										<th>Date Vaccinated</th>
+										<th>Second Dose</th>
+										<th>Date Vaccinated</th>
+										<th>First Booster</th>
+										<th>Date Vaccinated</th>
+										<th>Second Booster</th>
+										<th>Date Vaccinated</th>
+										<th>Date Created</th>
+										<th>Action</th>
+									</tr>
+								</tfoot>
+							</table>
+							
+						</div>
+					</div>
+				</div>
+                
+			</div>
+			<!-- [ Hover-table ] end -->
+		</div>
+		<!-- [ Main Content ] end -->
+
+	</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="https://cdn.datatables.net/searchpanes/2.1.2/js/dataTables.searchPanes.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script>
+    $('#myTable67').DataTable({
+		pageLength: 5,
+        orderCellsTop: true,
+        fixedHeader: false,
+		sorting: false,
+		bSort: false,
+		dom: 'Bfrtip',
+		buttons: [
+			{
+				extend: 'pdfHtml5',
+				messageTop: 'PDF Created by Vaccimo.',
+				download: 'open',
+				orientation: 'landscape',
+                pageSize: 'LEGAL'
+			},
+			{
+				extend: 'csv',
+				messageTop: 'PDF Created by Vaccimo.'
+			},
+			{
+				extend: 'copy',
+				messageTop: 'PDF Created by Vaccimo.'
+			}
+			
+		],});
+ </script>
+<script>
+	$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+        // Setup - add a text input to each footer cell
+		$('#example1 tfoot th').each(function () {
+        var title = $(this).text();
+        $(this).html('<input type="text" placeholder=" ' + title + '" />');
+    });
+    var table = $('#example1').DataTable( {
+		pageLength: 5,
+        orderCellsTop: true,
+        fixedHeader: false,
+		sorting: false,
+		bSort: false,
+		dom: 'Bfrtip',
+		buttons: [
+			{
+				extend: 'pdfHtml5',
+				messageTop: 'PDF Created by Vaccimo.',
+				download: 'open',
+				orientation: 'landscape',
+                pageSize: 'LEGAL'
+			},
+			{
+				extend: 'csv',
+				messageTop: 'PDF Created by Vaccimo.'
+			},
+			{
+				extend: 'copy',
+				messageTop: 'PDF Created by Vaccimo.'
+			}
+			
+		],
+        initComplete: function() {
+            var api = this.api();
+            // For each column
+			this.api()
+                .columns()
+                .every(function () {
+                    var that = this;
+                    $('input', this.footer()).on('keyup change clear', function () {
+                        if (that.search() !== this.value) {
+                            that.search(this.value).draw();
+                        }
+					});
+				});
+				}
+			} );
+		} );
+
+</script>
+<script>
+	$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+        // Setup - add a text input to each footer cell
+		$('#example tfoot th').each(function () {
+        var title = $(this).text();
+        $(this).html('<input type="text" placeholder=" ' + title + '" />');
+    });
+    var table = $('#example').DataTable( {
+		pageLength: 5,
+        orderCellsTop: true,
+        fixedHeader: false,
+		sorting: false,
+		bSort: false,
+		dom: 'Bfrtip',
+		buttons: [
+			{
+				extend: 'pdfHtml5',
+				messageTop: 'PDF Created by Vaccimo.',
+				download: 'open',
+
+			},
+			{
+				extend: 'csv',
+				messageTop: 'PDF Created by Vaccimo.'
+			},
+			{
+				extend: 'copy',
+				messageTop: 'PDF Created by Vaccimo.'
+			}
+			
+		],
+        initComplete: function() {
+            var api = this.api();
+            // For each column
+			this.api()
+                .columns()
+                .every(function () {
+                    var that = this;
+                    $('input', this.footer()).on('keyup change clear', function () {
+                        if (that.search() !== this.value) {
+                            that.search(this.value).draw();
+                        }
+					});
+				});
+				}
+			} );
+		} );
+
+</script>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<!-- [ Main Content ] end -->
+
+
+{% endblock javascripts %}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="sweetalert2.all.min.js"></script>
+	<script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/h.css' %}">
+
+</head>
+<body>
+    <section>
+
+        {% include "header.html" %}
+        <!-- <img id="bg-main" src="{% static 'images/vaccine.jpg' %}" alt="Cover Image"
+            style=" width: 100%;    height: 100%;" /> -->
+            <div class=" login" style="top: 15% !important;">
+            <div class="be-wrapper be-login" style="border-radius: 20px !important;">
+                <div class="be-content">
+                    <div class="main-content container">
+                        <div class="splash-container">
+                            <div class="panel">
+                                <h6 style="font-size: 32px; color: black;">Signup </h6>
+                                <p style="font-size: 15px;color: black;">It’s free and only takes a minute</p>
+                                <form action="{%url 'register'%}" method="POST">
+                                    {% csrf_token %}
+                                    <!--{% include "components/alert.html" %}-->
+                                    {% for message in messages %}
+                                    <div class="alert alert-danger" style="
+                                    padding: 5px;
+                                    margin: 0;">
+                                        {{ message }}
+                                    </div>
+                                    {% endfor %}
+                                    <!--<div class="flex" style="    display: flex;gap: 30px;">
+                                        <div class="form-group" style="display:flex ;"> <span class="input-group-text"
+                                                style="border-radius: 0px;" id="basic-addon1"><i
+                                                    class="fa fa-fw fa-user"></i></span>
+                                            <input style="font-size: 16px; border-radius: 0px;width: 100%!important;"
+                                                id="first_name" name="first_name" type="name" placeholder="First Name"
+                                                autocomplete="off" class="form-control" required /> <span
+                                                class="help-block"></span>
+                                        </div>
+                                        <div class="form-group" style="display:flex ;"> <span class="input-group-text"
+                                                style="border-radius: 0px;" id="basic-addon1"><i
+                                                    class="fa fa-fw fa-user"></i></span>
+                                            <input style="font-size: 16px; border-radius: 0px;width: 100%!important;"
+                                                id="last_name" name="last_name" type="name" placeholder="Last Name"
+                                                autocomplete="off" class="form-control" required /> <span
+                                                class="help-block"></span>
+                                        </div>
+                                    </div>-->
+                                    <div class="form-group" style="display:flex ;"> <span class="input-group-text"
+                                        style="border-radius: 0px;" id="basic-addon1"><i
+                                        class="fa fa-fw fa-user "><b></b></i></span>
+                                        <input style="font-size: 16px; border-radius: 0px;width: 100%!important;" id="username"
+                                        name="username" type="text" placeholder="Username" autocomplete="off"
+                                        class="form-control" minlength="8" required /> <span class="help-block"></span>
+                                    </div>
+                                    <div class="form-group" style="display:flex ;"> <span class="input-group-text"
+                                            style="border-radius: 0px;" id="basic-addon1"><i
+                                                class="fa fa-fw fa-envelope"></i></span>
+                                        <input style="font-size: 16px; border-radius: 0px;width: 100%!important;" id="email"
+                                            name="email" type="email" placeholder="Email" autocomplete="off"
+                                            class="form-control" required /> <span class="help-block"></span>
+                                    </div>
+                                    <div class="form-group" style="display:flex ;"> 
+                                        <span class="input-group-text"style="border-radius: 0px;" id="basic-addon1">
+                                            <i class="fa fa-fw fa-lock"></i>
+                                        </span>
+                                        <input style="font-size: 16px; border-radius: 0px;width: 100%!important;" id="password2" name="password" type="password" data-bs-toggle="popover" placeholder="Password" class="form-control" minlength="8" pattern="(?=.*\d)(?=.*[\W_]).{7,}" title="Must contain at least one number and one uppercase and lowercase letter,and special characters, and at least 8 or more characters" required /> 
+                                        <span class="eye" onclick="passwordShow2()">
+                                            <i class="fa fa-fw fa-eye" id="hide1s" style="align-self: center;
+                                                    margin: 7px; position: absolute;color: black;right: 0%; display:none"></i>
+                                            <i class="fa fa-fw fa-eye-slash" id="hide2s" style="align-self: center;
+                                                    margin: 7px; position: absolute;color: black;right: 0%;"></i>
+                                        </span> <span class="help-block"></span>
+                                    </div>
+                                    <div class="form-group" style="display:flex ;"> <span class="input-group-text"
+                                            style="border-radius: 0px;" id="basic-addon1"><i class="fa fa-fw fa-key"></i></span>
+                                        <input style="font-size: 16px; border-radius: 0px;width: 100%!important;"
+                                            id="password_confirmation" name="password_confirmation" type="password"
+                                            placeholder="Verify Password" class="form-control" required /> <span
+                                            class="help-block"></span>
+                                    </div>
+                                    <div class="form-group login-submit mt-4">
+                                        <button style="font-size: 16px;" data-dismiss="modal" type="submit"
+                                            class="btn btn-primary btn-xl w-100">Sign up</button>
+                                    </div>
+                                    <hr style="color: black;">
+                                    <p class="text-dark" style="margin: 0;">Already have an account? <a href="{% url 'loginpage' %}"  style="text-decoration: none;">Login</a> </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </section>
+    <footer class="container-fluid" style=" position: absolute;
+    bottom: 0px;
+    background-color: #1DA1F2;
+  
+    cursor: default;">
+<div class="footer-item">
+<p class="text-center" style="font-size:12px;color:white; margin: 1rem 0;">© 2022 Vaccimo, Inc</p>
+</div>
+</footer>
+    {% if error %}
+    <script>
+    $(document).on('ready', function(){
+        $('#exampleModal').modal('show');
+    });
+    </script>
+    {% endif %}
+    <script>
+        function passwordShow2() {
+            var pass = document.getElementById("password2");
+            var h1 = document.getElementById("hide1s");
+            var h2 = document.getElementById("hide2s");
+            if (pass.type === 'password') {
+                pass.type = "text";
+                h1.style.display = "block";
+                h2.style.display = "none";
+            } else {
+                pass.type = "password";
+                h1.style.display = "none";
+                h2.style.display = "block";
+            }
+        }
+    </script>
+    
+</body>
+</html>

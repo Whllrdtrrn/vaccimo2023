@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css '%}" />
+  <title>InformationPage</title>
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+</head>
+
+<body>
+  <!-- <header>
+		<div class="nav">
+			<div class="dropdown show">
+				<a class="btn btn-light dropdown-toggle" style=" margin: 20px;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="{% static 'images/img_avatar.png'%}" alt="Avatar" class="avatar">
+				</a>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<a class="dropdown-item" type="button" href="{%url 'information'%}" class="btn btn-primary logOut">Profile</a> 
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" type="button" href="{%url 'viewDetails'%}" class="btn btn-primary logOut">View Details</a> 
+					<a class="dropdown-item" type="button" href="{%url 'logout'%}" class="btn btn-danger viewDetails">Log Out</a> 
+				</div>
+			  </div>
+		</div>
+	</header> -->
+  <section class="vh-100" id="info">
+    <img id="bg-main" src="{% static 'images/login.jpg' %}" alt="Cover Image"
+      style="position: absolute; height: 100%; width: 100%" />
+    <div class="container" style="position: relative; top: 18%">
+      <div class="row">
+        <div class="col-md-4 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-5" src="{% static 'images/profiles.jpg' %}" width="150" /><span
+              class="font-weight-bold mt-2" style="text-transform: capitalize">{{prod.name}}</span>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="d-flex flex-row align-items-center back" onclick="history.back()">
+                <i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                <h6>Back to home</h6>
+              </div>
+              <h6 class="text-right">Edit Profile</h6>
+            </div>
+            <form action="" method="post">
+              {% csrf_token %}
+              <div class="col-lg-12 mb-3 text-center"> {% if prod.files %} <img id="blah_primary_back1"
+                  src="{{prod.files.url}}" style="width: auto; height: 200px;" alt="" /> {% endif %} </div>
+              <div class="row mt-2">
+                <div class="col-md-6">
+                  <label for="file" class="form-label" style="display: none;">Vaccination Card</label>
+                  <input class="form-control" type="file" accept="image/png, image/gif, image/jpeg" name="file"
+                    placeholder="file" id="img_primary_back1" value="{{prod.files}}"> <span class="help-block"></span>
+                </div>
+                <div class="col-md-6">
+                  <input style="font-size: 16px" id="name" name="name" type="text" placeholder="Full Name"
+                    autocomplete="off" class="form-control" required value="{{prod.name }}" />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <select style="font-size: 16px" id="vaccination_brand" name="vaccination_brand" type="text"
+                    placeholder="Vaccination Brand" autocomplete="off" class="form-control" required
+                    aria-selected="{{prod.vaccination_brand}}">
+                    {% if prod.vaccination_brand %}
+                    <option>{{prod.vaccination_brand}}</option>
+                    {% endif %}
+                    <option value="">
+                      --Please Select your vaccination brand--
+                    </option>
+                    <option value="Moderna">Moderna</option>
+                    <option value="Pfizer">Pfizer</option>
+                    <option value="AstraZeneca">AstraZeneca</option>
+                    <option value="Sinovac">Sinovac</option>
+                    <option value="Johnson and Johnson's">
+                      Johnson and Johnson's
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <select style="font-size: 16px" id="vaccination_site" name="vaccination_site" type="text"
+                    placeholder="Site of Injection" autocomplete="off" class="form-control" required
+                    value="{{prod.vaccination_site}}">
+                    {% if prod.vaccination_site %}
+                    <option>{{prod.vaccination_site}}</option>
+                    {% endif %}
+                    <option value="">
+                      --Please Select your vaccination site--
+                    </option>
+                    <option value="Upper Right Arm">Upper Right Arm</option>
+                    <option value="Upper Left Arm">Upper Left Arm</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <input style="font-size: 16px" id="address" name="address" type="text" placeholder="Full Address"
+                    autocomplete="off" class="form-control" required value="{{prod.address}}" />
+                </div>
+                <div class="col-md-6">
+                  <input style="font-size: 16px" id="contact_number" name="contact_number" type="number"
+                    placeholder="Contact Number" autocomplete="off" class="form-control" required
+                    value="{{prod.contact_number}}" />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <input type="date" name="bday" style="font-size: 16px" class="form-control" required
+                    value="{{prod.bday}}" />
+                </div>
+                <div class="col-md-6">
+                  <input style="font-size: 16px" id="age" name="age" type="text" placeholder="Age" autocomplete="off"
+                    class="form-control" required value="{{prod.age}}" />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <select style="font-size: 16px" id="gender" name="gender" class="form-control" required
+                    value="{{prod.gender}}">
+                    {% if prod.gender %}
+                    <option>{{prod.gender}}</option>
+                    {% endif %}
+                    <option value="">--Please Select your Gender--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-5 text-right">
+                <button class="btn btn-primary profile-button" type="submit">
+                  Save Profile
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script>
+    img_primary_back1.onchange = (evt) => {
+      const [file] = img_primary_back1.files;
+      if (file) {
+        blah_primary_back1.src = URL.createObjectURL(file);
+      }
+    };
+  </script>
+</body>
+
+</html>

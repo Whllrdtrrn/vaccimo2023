@@ -1,0 +1,104 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fa-fw {
+    color: black;
+}
+
+/* login */
+.be-wrapper {
+    color: white;
+    padding: 2%;
+    background-color: #ffff;
+    width: 30rem;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.modal-dialog {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.login {
+    position: fixed;
+    top: 35%;
+    width: 100%;
+    text-align: -webkit-center;
+}
+
+.form-group {
+    position: relative;
+    margin-top: 20px;
+    /* justify-content: center; */
+}
+
+.form-control {
+    /* width: 60% !important; */
+    width: 100% !important;
+
+}
+
+.panel-body {
+    margin-top: 35px;
+}
+
+.error {
+    font-size: 15px;
+    padding: 0px;
+}
+
+.footer {
+    background-color: #1DA1F2;
+    padding-bottom: 1px;
+    padding: 20px;
+    color: white;
+}
+
+.footer-item {
+    text-align: -webkit-center;
+
+}
+
+
+.footer ul {
+    justify-content: center;
+    display: flex;
+    width: 0px;
+}
+
+.footer ul a {
+    text-decoration: none;
+    color: #8b8b8b;
+    padding: 0px 1rem;
+    font-size: 15px;
+    transition: 0.03s;
+
+}
+
+.footer ul a:hover {
+    color: white;
+    font-size: 20px;
+    transition: 0.03s;
+}
+
+.footer p {
+    margin-bottom: 0px;
+    font-size: 12px;
+}
+
+.footer ul a:hover {
+    opacity: 0.7;
+}

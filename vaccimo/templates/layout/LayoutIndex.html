@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cdbootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cdbootstrap/css/cdb.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+        </script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/layoutIndex.css '%}" />
+    <title>Vaccimo</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="nav nav-tabs steps-container">
+            <li class="nav-item">
+                <!-- <a class="nav-link active" data-bs-toggle="tab" href="#home"> -->
+                <a class="nav-link active" data-bs-toggle="tab" href="#home">
+                    <div class="step" icon="fa fa-pencil-alt">
+                        <div class="step-title">
+                            <span class="step-number">01</span>
+                            <div class="step-text">Terms & Conditions</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu1">
+                    <div class="step" icon="fa fa-info-circle">
+                        <div class="step-title">
+                            <span class="step-number">02</span>
+                            <div class="step-text">Information Collection</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu2">
+                    <div class="step-title">
+                        <span class="step-number">03</span>
+                        <div class="step-text">Survey Form</div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu3">
+                    <div class="step-title">
+                        <span class="step-number">04</span>
+                        <div class="step-text">Side Effect</div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu4">
+                    <div class="step-title">
+                        <span class="step-number">05</span>
+                        <div class="step-text">Submited</div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <form method="POST" action=""> {% csrf_token %}
+        <div class=" tab-content">
+            <div class=" tab-pane InfoContainer container active" id="home">
+                {% include "partials/index/term.html" %}
+            </div>
+            <div class="tab-pane surveyContainer container fade" id="menu1">
+                {% include "partials/index/information.html" %}
+                <a class="btn btn-primary btnNext" style="width: auto;color: white !important;">Next</a>
+            </div>
+            <div class="tab-pane effectContainer container fade" id="menu2">
+                {% include "partials/index/survey.html" %}
+                <a class="btn btn-primary btnPrevious" style="width: auto;color: white !important;">Back</a>
+                <a class="btn btn-primary btnNext" style="width: auto;color: white !important;">Next</a>
+            </div>
+            <div class="tab-pane termContainer container fade" id="menu3">
+                {% include "partials/index/sideEffect.html" %}
+            </div>
+            <div class="tab-pane subContainer container fade" id="menu4">
+                <div class="text-center">
+                    <h1>Thank You !</h1>
+                    <p style="font-size: 23px;">Review the details before you submit</p>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a
+                            class="btn btn-primary btnNext" id="myCheck" style="color: white !important;margin: auto 0;
+                        ">Review Submission</a></button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true" style="left: 7rem;">
+            <div class="modal-dialog " style="margin: 0;">
+                <div class="modal-content" style="    width:90rem;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">View Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {% include "partials/index/modal.html" %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cdbootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cdbootstrap/js/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cdbootstrap/js/cdb.min.js"></script>
+
+    <script src="{% static 'js/index.js' %}">
+
+
+
+    </script>
+
+</body>
+
+</html>

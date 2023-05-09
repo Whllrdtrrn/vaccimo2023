@@ -1,0 +1,238 @@
+{% extends "layouts/LayoutDashboard.html" %}
+
+{% block title %} <title> Survey</title> {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+<style>
+	.sorting .sorting_asc{
+		display: none;
+	}
+
+</style>
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+	<div class="pcoded-content">
+		<!-- [ breadcrumb ] start -->
+		<div class="page-header">
+			<div class="page-block">
+				<div class="row align-items-center">
+					<div class="col-md-12">
+						<div class="page-header-title">
+							<h5 class="m-b-10">:: Survey</h5>
+						</div>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item"><a href="{% url 'dashboard'%}">Home</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'userAccount'%}">User Account</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'informationCollection'%}">Information
+									Collection</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'survey'%}">Survey</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- [ breadcrumb ] end -->
+		<!-- [ Main Content ] start -->
+		<div class="row">
+			<!-- [ sample-page ] start -->
+			<!-- [ Hover-table ] start -->
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="font-weight: bold;text-align-last: center;">Medical Background</h3>
+					</div>
+					<div class="card-body table-border-style">
+						<div class="table-responsive">
+							<table border="0" cellspacing="5" cellpadding="5">
+								<tbody><tr>
+									<td>Minimum Date:</td>
+									<td><input type="text" id="min" name="min"></td>
+								</tr>
+								<tr>
+									<td>Maximum Date:</td>
+									<td><input type="text" id="max" name="max"></td>
+								</tr>
+							</tbody></table>
+							<table id="myTable4" class="table table-hover">
+								<thead>
+									<tr>
+										<th>Date</th>
+										<th>User id</th>
+										<th>Name</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Have you (or any family member/s) been diagnosed with or tested positive for COVID-19 in the past three (3) months?">Q1</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Do you or have you the following symptoms in the past 14 days? Fever of greater than 37.5°C">Q2</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Do you or have you had any 'flu-like' symptoms, such as cough or chills, in the past 14 days?">Q3</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Do you experience shortness of breath or breathing difficulty?">Q4</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Do you have any difficulties with your sense of taste or smell at present?">Q5</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Headache, muscle or body ache?">Q6</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Weakness or fatigue?">Q7</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Are you experiencing diarrhea?">Q8</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Do you have any allergy to food, antibiotics, or any medicine?">Q9</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Have you ever had a severe reaction to vaccines in the past?">Q10</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Have you received any vaccine in the last 14 days?">Q11</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Do you have any of the following illness/disease?">Q12</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="For women : Are you pregnant">F-Q1</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="For women who are pregnant, are you in your 1st trimester (1 to 3 months) of pregnancy?">F-Q2</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="For women : Plans to get pregnant in the next 6 months?">F-Q3</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="For women : Do you have a bleeding disorder or are you taking a blood thinner? (Example of Bleeding disorder: Hemophilia, Thalassemia)(Example of blood thinning medications: Aspirin, Clopidogrel, Warfarin, Cilostazol)">F-Q4</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="HIV Diagnosis">Q13</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cancer/Malignancy">Q14</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Transplant Patient">Q15</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Under steroid treatment">Q16</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bed ridden, terminal illness, less than 6mos prognosis">Q17</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Are you bedridden?">Q18</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Are you wheelchair bound?">Q19</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Latex Allergy">allergy</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Mold Allergy">allergy</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pet Allergy">allergy</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pollen Allergy">allergy</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="With Co-morbidities?">Q20</th>
+										<th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Was diagnosed with COVID-19?">Q21</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for i in quesT %}
+									<tr>
+										<td class="cell-detail"> <span>{{i.allergy1}}</span> </td>
+										<td class="cell-detail"> <span>{{i.author_id}}</span></td>
+										<td class="cell-detail"> <span>{{i.author.first_name}} {{i.author.last_name}}</span></td>
+										<td class="cell-detail"> <span>{{i.Q0}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q1}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q2}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q3}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q4}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q5}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q6}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q7}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q8}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q9}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q10}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q15}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q11}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q12}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q13}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q14}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q16}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q17}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q18}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q19}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q20}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q21}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q22}}</span> </td>
+										<td class="cell-detail"> <span>{{i.allergy2}}</span> </td>
+										<td class="cell-detail"> <span>{{i.allergy3}}</span> </td>
+										<td class="cell-detail"> <span>{{i.allergy4}}</span> </td>
+										<td class="cell-detail"> <span>{{i.allergy5}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q23}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q24}}</span> </td>
+									</tr> {% endfor %}
+								</tbody>
+								<!--<tfoot>
+									<td class="cell-detail"> <span></span> </td>
+									<td class="cell-detail"> <span></span> </td>
+									<td class="cell-detail"> Total: <span></span> </td>
+									<td class="cell-detail"> <span>{{Q0}}</span> </td>
+										<td class="cell-detail"> <span>{{Q1}}</span> </td>
+										<td class="cell-detail"> <span>{{Q2}}</span> </td>
+										<td class="cell-detail"> <span>{{Q3}}</span> </td>
+										<td class="cell-detail"> <span>{{Q4}}</span> </td>
+										<td class="cell-detail"> <span>{{Q5}}</span> </td>
+										<td class="cell-detail"> <span>{{Q6}}</span> </td>
+										<td class="cell-detail"> <span>{{Q7}}</span> </td>
+										<td class="cell-detail"> <span>{{Q8}}</span> </td>
+										<td class="cell-detail"> <span>{{Q9}}</span> </td>
+										<td class="cell-detail"> <span>{{Q10}}</span> </td>
+										<td class="cell-detail"> <span>{{Q15}}</span> </td>
+										<td class="cell-detail"> <span>{{Q11}}</span> </td>
+										<td class="cell-detail"> <span>{{Q12}}</span> </td>
+										<td class="cell-detail"> <span>{{Q13}}</span> </td>
+										<td class="cell-detail"> <span>{{Q14}}</span> </td>
+										<td class="cell-detail"> <span>{{Q16}}</span> </td>
+										<td class="cell-detail"> <span>{{Q17}}</span> </td>
+										<td class="cell-detail"> <span>{{Q18}}</span> </td>
+										<td class="cell-detail"> <span>{{Q19}}</span> </td>
+										<td class="cell-detail"> <span>{{Q20}}</span> </td>
+										<td class="cell-detail"> <span>{{Q21}}</span> </td>
+										<td class="cell-detail"> <span>{{Q22}}</span> </td>
+										<td class="cell-detail"> <span>{{allergys}}</span> </td>
+										<td class="cell-detail"> <span>{{allergyss}}</span> </td>
+										<td class="cell-detail"> <span>{{allergysss}}</span> </td>
+										<td class="cell-detail"> <span>{{allergyssss}}</span> </td>
+										<td class="cell-detail"> <span>{{allergysssss}}</span> </td>
+										<td class="cell-detail"> <span>{{Q23}}</span> </td>
+										<td class="cell-detail"> <span>{{Q24}}</span> </td>
+								</tfoot>-->
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- [ Hover-table ] end -->
+
+
+			<!-- [ Typography ] end -->
+			<!-- [ sample-page ] end -->
+		</div>
+		<!-- [ Main Content ] end -->
+	</div>
+</div>
+
+<!-- [ Main Content ] end -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+<!-- [ Main Content ] end -->
+<script>
+	var minDate, maxDate;
+	 
+	 // Custom filtering function which will search data in column four between two values
+	 $.fn.dataTable.ext.search.push(
+		 function( settings, data, dataIndex ) {
+			 var min = minDate.val();
+			 var max = maxDate.val();
+			 var date = new Date( data[0] );
+	  
+			 if (
+				 ( min === null && max === null ) ||
+				 ( min === null && date <= max ) ||
+				 ( min <= date   && max === null ) ||
+				 ( min <= date   && date <= max )
+			 ) {
+				 return true;
+			 }
+			 return false;
+		 }
+	 );
+	  
+	 $(document).ready(function() {
+		 // Create date inputs
+		 minDate = new DateTime($('#min'), {
+			 format: 'MMMM Do YYYY'
+		 });
+		 maxDate = new DateTime($('#max'), {
+			 format: 'MMMM Do YYYY'
+		 });
+	  
+		 // DataTables initialisation
+		 var table = $('#myTable4').DataTable({
+			sorting: false,
+		 });
+	  
+		 // Refilter the table
+		 $('#min, #max').on('change', function () {
+			 table.draw();
+		 });
+	 });
+	</script>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

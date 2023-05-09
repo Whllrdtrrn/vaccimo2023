@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bootstrap4-toggle": "^3.6.1",
+    "datatables.net": "^1.13.1",
+    "datatables.net-dt": "^1.13.1",
+    "sweetalert2": "^11.6.5"
+  }
+}

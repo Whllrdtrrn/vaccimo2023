@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>side Effect Report Data</title>
+    
+    <style type="text/css">
+        /* CSS styles go here */
+        body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+      }
+      h4 {
+        color: rgb(0, 0, 0);
+        text-align: left;
+        }
+        .content{
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+      .header {
+        position: absolute;
+        height: 50px;
+        color: black;
+        text-align: center;
+        align-items: center;
+        line-height: 50px;
+        display: flex;
+      }
+      
+      .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+      }
+      @page {
+            margin-top: 1in;
+            margin-right: 1in;
+            margin-bottom: 1in;
+            margin-left: 1in;
+        }
+      </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Side Effect Report</h1>
+      </div>
+      <div class="content">
+        <div class="card">
+            <div class="card-header">
+                <h3>With Adverse Side Effect</h3>
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table id="myTable3" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>User Id</th>
+                                <th>Username</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for y in obj %}
+                            <tr style="line-height: 20px;">
+                                <td class="cell-detail"> <span>{{ forloop.counter }}</span> </td>
+                                <td class="cell-detail"> {{y.author_id}}<span></span> </td>
+                                <td class="cell-detail"> {{y.author.username}}<span></span> </td>
+                                <td class="cell-detail"> <span>{{y.warmth}}</span> </td>
+                                {% if y.feverish == '0'%}
+                                <td style="background-color: rgb(255, 204, 0);">No Symptoms</td>
+                                {% elif y.feverish == '1'%}
+                                <td style="background-color: rgb(255, 204, 0);">Mild</td>
+                                {% elif y.feverish == '2'%}
+                                <td style="background-color: rgb(255, 204, 0);">Mild</td>
+                                {% elif y.feverish == '3' %}
+                                <td style="background-color: rgb(255, 153, 51);">Moderate</td>
+                                {% elif y.feverish == '4' %}
+                                <td style="background-color: rgb(255, 153, 51);">Moderate</td>
+                                {% elif y.feverish == '5' %}
+                                <td style="background-color: rgb(255, 153, 51);">Moderate</td>
+                                {% elif y.feverish == '6' %}
+                                <td style="background-color: rgb(255, 153, 51);">Moderate</td>
+                                {% else %}
+                                <td style="background-color: rgb(255, 0, 0);">Severe</td>
+                                {% endif %} 
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+     </div>
+      <div class="footer">
+      </div>
+    
+</body>
+</html>

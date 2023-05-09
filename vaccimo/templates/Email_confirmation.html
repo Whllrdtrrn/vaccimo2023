@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/confirmation.css '%}" />
+    <title>Email Confirmation</title>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <article>
+                <div class="logo"> <i class="fa-solid fa-envelope-open"></i> </div>
+                <h2>Verify your email address</h2>
+                <p>Please confirm your email address to complete the registration</p>
+                <button type="button"><a  href="https://mail.google.com/mail/u/0/#inbox">CLICK TO VERIFY</a></button>
+            </article>
+        </div>
+    </section>
+</body>
+</html>

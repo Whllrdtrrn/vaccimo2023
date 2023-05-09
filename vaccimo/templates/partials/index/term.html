@@ -1,0 +1,60 @@
+<div class="container__heading">
+    <h2>Terms & Conditions</h2>
+</div>
+<div class="container__content">
+    <p style="font-size:15px ;text-align: justify;margin-top: 3rem;
+    overflow: hidden;"> <span style="font-weight: bolder;">Data Privacy Policy:</span> The Makati City Government
+        works
+        toward
+        protecting the privacy of the users of its Web Portal. We have carefully crafted this
+        privacy policy to define how we collect, use, disclose, transfer, protect, and store your
+        information. Please take a moment to familiarize yourself with our privacy practices and
+        contact us if you have any questions.
+        <br>
+        <br> Information Collected and Stored Automatically Personal information is data that can be
+        used to uniquely identify or contact a single person. Where personal information is required
+        to use or interact with our Web Portal, it is our policy that this information is private
+        and confidential unless expressed otherwise.
+        <br>
+        <br> The personal information you provide to us is stored in a secure location, accessible
+        only by authorized personnel, and is used only for the purposes for which you provided it
+        such as to post a message to the Tagboard or to join a Forum Discussion. We may also combine
+        it with other information to provide and improve our online content and services.
+        <br>
+        <br> What personal information we collect The only personal information that we collect is
+        what you decide to give us by signing up, sending us an email, and subscribing to our email
+        subscription services. If you choose to provide us with personal information — like filling
+        out a Contact Us form and submitting it to us through the website — we use that information
+        to respond to your message, and to help get you the information you requested. Similarly,
+        when you sign up for an account with us; we will collect your name, email address, alternate
+        email, birthdate, gender, address, occupation, and mobile number.
+    </p>
+    <div class="form-check mb-3 pl-5" style="    display: flex;
+    align-items: center;">
+        <input class="form-check-input" onclick="EnableDisable()" id="myCheck" type="checkbox" value="" />
+        <label class="form-check-label " style="font-size: x-large !important;" for="flexCheckChecked"> I agree to terms
+            and
+            condition </label>
+        <!--<a class="btn btn-primary btnNext disabled" id="txt_1_a" style="right: 0;
+        position: absolute;color: white !important;">Next</a>-->
+
+    </div>
+    <!-- <a class="btn btn-primary btnPrevious" style="width: auto;color: white !important;">Back</a> -->
+</div>
+<script>
+    function EnableDisable() {
+        var btnSubmit = document.getElementById("myCheck");
+        var element = document.getElementById("nextBtn");
+        if (btnSubmit.checked == true) {
+            element.removeAttribute("disabled");
+            document.getElementById("txt_check_1_input1").disabled = false;
+            document.getElementById("txt_check_1_input2").disabled = false;
+            document.getElementById("txt_check_1_input3").disabled = false;
+        } else {
+            element.setAttribute("disabled", "");
+            document.getElementById("txt_check_1_input1").disabled = true;
+            document.getElementById("txt_check_1_input2").disabled = true;
+            document.getElementById("txt_check_1_input3").disabled = true;
+        }
+    }
+</script>

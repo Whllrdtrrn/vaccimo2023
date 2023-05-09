@@ -1,0 +1,138 @@
+{% extends "layouts/LayoutDashboard.html" %}
+
+{% block title %} <title> User Account</title> {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+{% endblock stylesheets %}
+
+{% block content %}
+<style>
+	.dataTables_length{
+		visibility: collapse;
+	}
+</style>
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+	<div class="pcoded-content">
+		<!-- [ breadcrumb ] start -->
+		<div class="page-header">
+			<div class="page-block">
+				<div class="row align-items-center">
+					<div class="col-md-12">
+						<div class="page-header-title">
+							<h5 class="m-b-10">:: User Account</h5>
+						</div>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item"><a href="{% url 'dashboard'%}">Home</a></li>
+							<li class="breadcrumb-item disabled"><a href="{% url 'userAccount'%}">User Account</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- [ breadcrumb ] end -->
+		<!-- [ Main Content ] start -->
+		<!--<div class="row mb-3">
+			<div class="card">
+				<div class="col-md-8">
+					<h3>Typography</h3>
+					<p class="lead">Documentation and examples for Bootstrap typography, including global settings,
+						headings, body text, lists, and more.</p>
+					<p class="f-w-500">Check out <a
+							href="http://html.phoenixcoded.net/nextro-new/docs/index-bc-package.html#page-typography"
+							target="_blank" class="badge bg-light-primary">Documentation</a></p>
+				</div>
+			</div>
+		</div>-->
+		<div class="row">
+			<div class="card p-3">
+			<!-- [ Typography ] start -->
+			</table>
+			<div class="col-sm-12">
+				<table id="myTable11" class="table table-hover table-wrapper  "
+					style="text-transform: capitalize;padding-left:12px ">
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>User Id</th>
+							<th>Username</th>
+							<!--<th>Firstname</th>
+							<th>Lastname</th>   -->
+							<th>Email</th>
+							<th>Previous Login</th>
+							<!--<th>Action</th>-->
+							<!-- <th>Action</th> -->
+						</tr>
+					</thead>
+					<tbody style="text-transform: capitalize;">
+						{%for x in userAccount%}
+						<tr style="  border-bottom: 1px ; ">
+							<td class="cell-detail "> <span>{{ forloop.counter }}</span> </td>
+							<td class="cell-detail  text-left"> <span>{{x.id}}</span> </td>
+							<td class="cell-detail  text-left"> <span>{{x.username}}</span> </td>
+							<!--<td class="cell-detail  text-left"> <span>{{x.first_name}}</span> </td>
+							<td class="cell-detail  text-left"> <span>{{x.last_name}}</span> </td>-->
+							<td class="cell-detail"> <span>{{x.email}}</span> </td>
+							<td class="cell-detail"> <span>{% if x.last_login == Null %}default{% else %}{{x.last_login}}{% endif %} </span> </td>
+							<!--<td> {% if x.is_active == 1 %}
+								<a href="{% url 'toggle_status' id=x.id %}" type="button">
+									<button class="btn btn-danger">Deactivate</button>
+								</a> {%else%}
+								<a href="{% url 'toggle_status_active' id=x.id %}" type="button">
+									<button class="btn btn-success">Activate</button>
+								</a>
+								{%endif%}
+							</td>-->
+						</tr>
+						{%endfor%}
+					</tbody>
+				</table>
+			</div>
+			</div>
+
+
+			<!-- [ Typography ] end -->
+		</div>
+		<!-- [ Main Content ] end -->
+
+	</div>
+</div>
+<!-- [ Main Content ] end -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script>
+$(document).ready(function () {
+	$('#myTable11').DataTable({
+		sorting: false,
+		lengthMenu: [
+			[5, 25, 50, -1],
+			[5, 25, 50, 'All'],
+		]
+	});
+
+	$('input.global_filter').on('keyup click', function () {
+		filterGlobal();
+	});
+
+	$('input.column_filter').on('keyup click', function () {
+		filterColumn($(this).parents('tr').attr('data-column'));
+	});
+});
+
+</script>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+{% endblock javascripts %}

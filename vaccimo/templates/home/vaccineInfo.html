@@ -1,0 +1,441 @@
+{% extends "layouts/LayoutDashboard.html" %}
+{% load widget_tweaks %}
+
+{% block title %} <title> Vaccine Info</title> {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+{% endblock stylesheets %}
+
+
+{% block content %}
+<style>
+    .dataTables_filter{
+        display: none;
+    }
+    .dataTables_length{
+        display: none;
+    }
+    #id_vaccine_brand{
+        width: 100%;
+        height: 25px;
+    }
+    
+</style>
+<!-- [ Main Content ] start -->
+<section class="pc-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">:: Information
+                                Collection</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard'%}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'userAccount'%}">User Account</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'informationCollection'%}">Information
+                                    Collection</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="card" style="margin-top: 42px;">
+            <div class="card-header">
+                <h3 style="font-weight: bold;text-align-last: center;">Vaccine Information Reports</h3>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- [ Hover-table ] start -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 style="font-weight: bold;text-align-last: center;">1st Dose Reports</h3>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive d-grid" >
+                            <table id="myTable3" class="display" style="width:100%" >
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Vaccination Brand</th>
+                                        <th>Date Vaccinated</th>
+                                    </tr>
+                                    
+                                </thead>
+                                <tbody>
+                                    {% for i in quesT %}
+                                    <tr style="text-transform: capitalize;">
+                                        <!--<td class="cell-detail"> <span>{{ forloop.counter }}</span> </td>-->
+                                        <td class="cell-detail"> <span>{{i.nameFirst}} {{i.name}} {{i.nameLast}} </span> </td>
+                                        <td class="cell-detail"> <span>{{i.vaccination_brand}}</span> </td>
+                                        <td class="cell-detail"> <span>{{i.dateVaccinated}}</span> </td>
+                                        <!--<td class="cell-detail"> <span>{{i.date_created}}</span> </td>-->
+                                    </tr> {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ Hover-table ] end -->
+            <!-- [ Hover-table ] start -->
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 style="font-weight: bold;text-align-last: center;">2nd Dose Reports</h3>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive d-grid" >
+                            <table id="myTable8" class="display" style="width:100%" >
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Vaccination Brand</th>
+                                        <th>Date Vaccinated</th>
+                                    </tr>
+                                    
+                                </thead>
+                                <tbody>
+                                    {% for i in quesT %}
+                                    <tr style="text-transform: capitalize;">
+                                        <!--<td class="cell-detail"> <span>{{ forloop.counter }}</span> </td>-->
+                                        <td class="cell-detail"> <span>{{i.nameFirst}} {{i.name}} {{i.nameLast}} </span> </td>
+                                        <td class="cell-detail"> <span>{{i.vaccination_brand1}}</span> </td>
+                                        <td class="cell-detail"> <span>{{i.dateVaccinated1}}</span> </td>
+                                        <!--<td class="cell-detail"> <span>{{i.date_created}}</span> </td>-->
+                                    </tr> {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 style="font-weight: bold;text-align-last: center;">1st Booster Reports</h3>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive d-grid" >
+                            <table id="myTable7" class="display" style="width:100%" >
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Vaccination Brand</th>
+                                        <th>Date Vaccinated</th>
+                                    </tr>
+                                    
+                                </thead>
+                                <tbody>
+                                    {% for i in quesT %}
+                                    <tr style="text-transform: capitalize;">
+                                        <!--<td class="cell-detail"> <span>{{ forloop.counter }}</span> </td>-->
+                                        <td class="cell-detail"> <span>{{i.nameFirst}} {{i.name}} {{i.nameLast}} </span> </td>
+                                        <td class="cell-detail"> <span>{{i.vaccination_brand1}}</span> </td>
+                                        <td class="cell-detail"> <span>{{i.dateVaccinated1}}</span> </td>
+                                        <!--<td class="cell-detail"> <span>{{i.date_created}}</span> </td>-->
+                                    </tr> {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 style="font-weight: bold;text-align-last: center;">2nd Booster Reports</h3>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive d-grid" >
+                            <table id="myTable9" class="display" style="width:100%" >
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Vaccination Brand</th>
+                                        <th>Date Vaccinated</th>
+                                    </tr>
+                                    
+                                </thead>
+                                <tbody>
+                                    {% for i in quesT %}
+                                    <tr style="text-transform: capitalize;">
+                                        <!--<td class="cell-detail"> <span>{{ forloop.counter }}</span> </td>-->
+                                        <td class="cell-detail"> <span>{{i.nameFirst}} {{i.name}} {{i.nameLast}} </span> </td>
+                                        <td class="cell-detail"> <span>{{i.vaccination_brand1}}</span> </td>
+                                        <td class="cell-detail"> <span>{{i.dateVaccinated1}}</span> </td>
+                                        <!--<td class="cell-detail"> <span>{{i.date_created}}</span> </td>-->
+                                    </tr> {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ Hover-table ] end -->
+        <!-- [ Main Content ] end -->
+    </div>
+
+    </div>
+</section>
+<!-- [ Main Content ] end -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="https://cdn.datatables.net/searchpanes/2.1.2/js/dataTables.searchPanes.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script>
+	$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#myTable3 thead tr').clone(true).addClass('filters1').appendTo( '#myTable3 thead' );
+    var table = $('#myTable3').DataTable( {
+		pageLength: 5,
+        orderCellsTop: true,
+        fixedHeader: false,
+        sorting: false,
+   
+        placeholder: "",
+		dom: 'Bfrtip',
+		buttons: [
+			{
+				extend: 'pdfHtml5',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			},
+			{
+				extend: 'csv',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			},
+			{
+				extend: 'copy',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			}
+			
+		],
+        initComplete: function() {
+            var api = this.api();
+            // For each column
+            api.columns().eq(0).each(function(colIdx) {
+                // Set the header cell to contain the input element
+                var cell = $('.filters1 th').eq($(api.column(colIdx).header()).index());
+                var title = $(cell).text();
+				
+                $(cell).html( '<input type="text" placeholder="'+title+'" />' );
+                // On every keypress in this input
+                $('input', $('.filters1 th').eq($(api.column(colIdx).header()).hide().index()) )
+                    .off('keyup change')
+                    .on('keyup change', function (e) {
+                        e.stopPropagation();
+                        // Get the search value
+                        $(this).attr('title', $(this).val());
+                        var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                        var cursorPosition = this.selectionStart;
+                        // Search the column for that value
+                        api
+                            .column(colIdx)
+                            .search((this.value != "") ? regexr.replace('{search}', '((('+this.value+')))') : "", this.value != "", this.value == "")
+                            .draw();
+                        $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                    });
+            });
+        }
+    } );
+	
+});
+</script>
+<script>
+	$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#myTable7 thead tr').clone(true).addClass('filters2').appendTo( '#myTable7 thead' );
+    var table = $('#myTable7').DataTable( {
+		pageLength: 5,
+        orderCellsTop: true,
+        fixedHeader: false,
+        sorting: false,
+		dom: 'Bfrtip',
+		buttons: [
+			{
+				extend: 'pdfHtml5',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			},
+			{
+				extend: 'csv',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			},
+			{
+				extend: 'copy',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			}
+			
+		],
+        initComplete: function() {
+            var api = this.api();
+            // For each column
+            api.columns().eq(0).each(function(colIdx) {
+                // Set the header cell to contain the input element
+                var cell = $('.filters2 th').eq($(api.column(colIdx).header()).index());
+                var title = $(cell).text();
+				
+                $(cell).html( '<input type="text" placeholder="'+title+'" />' );
+                // On every keypress in this input
+                $('input', $('.filters2 th').eq($(api.column(colIdx).header()).hide().index()) )
+                    .off('keyup change')
+                    .on('keyup change', function (e) {
+                        e.stopPropagation();
+                        // Get the search value
+                        $(this).attr('title', $(this).val());
+                        var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                        var cursorPosition = this.selectionStart;
+                        // Search the column for that value
+                        api
+                            .column(colIdx)
+                            .search((this.value != "") ? regexr.replace('{search}', '((('+this.value+')))') : "", this.value != "", this.value == "")
+                            .draw();
+                        $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                    });
+            });
+        }
+    } );
+	
+});
+</script>
+<script>
+	$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#myTable8 thead tr').clone(true).addClass('filters8').appendTo( '#myTable8 thead' );
+    var table = $('#myTable8').DataTable( {
+		pageLength: 5,
+        orderCellsTop: true,
+        fixedHeader: false,
+        sorting: false,
+        placeholder: "",
+		dom: 'Bfrtip',
+		buttons: [
+			{
+				extend: 'pdfHtml5',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			},
+			{
+				extend: 'csv',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			},
+			{
+				extend: 'copy',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			}
+			
+		],
+        initComplete: function() {
+            var api = this.api();
+            // For each column
+            api.columns().eq(0).each(function(colIdx) {
+                // Set the header cell to contain the input element
+                var cell = $('.filters8 th').eq($(api.column(colIdx).header()).index());
+                var title = $(cell).text();
+				
+                $(cell).html( '<input type="text" placeholder="'+title+'" />' );
+                // On every keypress in this input
+                $('input', $('.filters8 th').eq($(api.column(colIdx).header()).hide().index()) )
+                    .off('keyup change')
+                    .on('keyup change', function (e) {
+                        e.stopPropagation();
+                        // Get the search value
+                        $(this).attr('title', $(this).val());
+                        var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                        var cursorPosition = this.selectionStart;
+                        // Search the column for that value
+                        api
+                            .column(colIdx)
+                            .search((this.value != "") ? regexr.replace('{search}', '((('+this.value+')))') : "", this.value != "", this.value == "")
+                            .draw();
+                        $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                    });
+            });
+        }
+    } );
+	
+});
+</script>
+<script>
+	$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#myTable9 thead tr').clone(true).addClass('filters9').appendTo( '#myTable9 thead' );
+    var table = $('#myTable9').DataTable( {
+		pageLength: 5,
+        orderCellsTop: true,
+        fixedHeader: false,
+        sorting: false,
+        placeholder: "",
+		dom: 'Bfrtip',
+		buttons: [
+			{
+				extend: 'pdfHtml5',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			},
+			{
+				extend: 'csv',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			},
+			{
+				extend: 'copy',
+				messageTop: 'PDF created by vavvimo with Buttons for DataTables.'
+			}
+			
+		],
+        initComplete: function() {
+            var api = this.api();
+            // For each column
+            api.columns().eq(0).each(function(colIdx) {
+                // Set the header cell to contain the input element
+                var cell = $('.filters9 th').eq($(api.column(colIdx).header()).index());
+                var title = $(cell).text();
+				
+                $(cell).html( '<input type="text" placeholder="'+title+'" />' );
+                // On every keypress in this input
+                $('input', $('.filters9 th').eq($(api.column(colIdx).header()).hide().index()) )
+                    .off('keyup change')
+                    .on('keyup change', function (e) {
+                        e.stopPropagation();
+                        // Get the search value
+                        $(this).attr('title', $(this).val());
+                        var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                        var cursorPosition = this.selectionStart;
+                        // Search the column for that value
+                        api
+                            .column(colIdx)
+                            .search((this.value != "") ? regexr.replace('{search}', '((('+this.value+')))') : "", this.value != "", this.value == "")
+                            .draw();
+                        $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                    });
+            });
+        }
+    } );
+	
+});
+</script>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

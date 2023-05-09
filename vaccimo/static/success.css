@@ -1,0 +1,27 @@
+body{
+    overflow: hidden;
+}
+.card{
+    width: 50% !important;
+    padding: 41px; font-size: 33px;
+    margin: auto;
+}
+.container{
+
+    height: 100vh;
+    /* position: absolute; */
+    position: relative;
+    text-align: center!important;
+    height: 100vh;
+    align-items: center;
+    top: 300px;
+    
+}
+
+@media all and (max-width: 700px){
+    .card{
+        width: 100% !important;
+        padding: 20px;
+        font-size: 20px;
+    }
+}

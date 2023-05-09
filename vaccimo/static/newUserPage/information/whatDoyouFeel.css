@@ -1,0 +1,30 @@
+
+:root {
+    --select-border: #777;
+    --select-focus: blue;
+    --select-arrow: var(--select-border);
+  }
+body {
+    background: #eee
+}
+#regForm {
+    background-color: #ffffff;
+    margin: 0px auto;
+    font-family: Raleway;
+    padding: 80px;
+    border-radius: 10px;
+    font-weight:bolder;
+    color: #1DA1F2;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1DA1F2;
+    border-color: #1DA1F2;
+}
+.container{
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+    display: flex;
+}

@@ -1,0 +1,260 @@
+{% extends "newUserPage/indexLayout.html" %}
+{% block static %}
+    {% load static %}
+{% endblock static %}
+{% block title %} <title>Side Effect</title> {% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="{% static 'newUserPage/sideeffect.css' %}">
+
+{% endblock stylesheets %}
+
+{% block content %}
+<style>
+    .custom-icon{
+        position: absolute;
+        right: 17px !important;
+    }
+    .custom-button{
+        width: 187px;
+    }
+    .card{   
+        width: auto;
+    }
+    .radio{
+        padding: 0;
+    }
+</style>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-9 col-auto">
+            {% include 'newUserPage/sideEffectNew/modal.html' %} 
+            <form class="forS w-100" id="regForm" method="POST" action="">
+                {% csrf_token %}
+                <h1 id="register">List Of Common Adverse Side Effects</h1>
+                <p style="text-align: center;">Check all the side effects that you felt. The description and first aid included below.</p>
+                <!--# first tab-->
+                <div class="mt-5">
+                    <div class="head text-center mb-4"><h3 style="color: #1da1f2; font-style: italic;">Mild</h3></div>
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="headache" id="headache_radio" value="Mild" onclick="test2(this)">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-headache" id="psw-headache"  data-toggle="modal" data-target="#exampleModal"> <span> Headache</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input " type="checkbox" name="fever" id="fever_radio" value="Mild" onclick="test3(this)">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-fever" id="psw-fever"  data-toggle="modal" data-target="#exampleModal"> <span>Fever</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="InjectionSitePain" id="muscle_ache_radio" value="Mild" onclick="test1(this)">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3 ">
+                                <button class="form-control gap-3 d-flex custom-button" type="button" name="psw-muscle_ache" id="psw-muscle_ache"  data-toggle="modal" data-target="#exampleModal"> <span>Injection Site Pain</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input " type="checkbox" name="chills" id="chills_radio" value="Mild" >
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3 ">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-chills" id="psw-chills"  data-toggle="modal" data-target="#exampleModal"> <span> Chills</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="vomiting" id="vomiting_radio" value="Mild">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-vomiting" id="psw-vomiting"  data-toggle="modal" data-target="#exampleModal"> <span> Vomiting</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="rashes" id="rashes_radio" value="Mild">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-rashes" id="psw-rashes"  data-toggle="modal" data-target="#exampleModal"> <span> Rashes</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="itchiness" id="itchiness_radio" value="Mild">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-itchiness" id="psw-itchiness"  data-toggle="modal" data-target="#exampleModal"> <span> Itchiness</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="cough" id="cough_radio" value="Mild">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-cough" id="psw-cough"  data-toggle="modal" data-target="#exampleModal"> <span> Cough</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="bodyPain" id="bodyPain_radio" value="Mild">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-bodyPain" id="psw-bodyPain"  data-toggle="modal" data-target="#exampleModal"> <span> Body Pain</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="soarThroat" id="soarThroat_radio" value="Mild">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-soarThroat" id="psw-soarThroat"  data-toggle="modal" data-target="#exampleModal"> <span>Soar Throat</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="stomachAche" id="stomachAche_radio" value="Mild">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-stomachAche" id="psw-stomachAche"  data-toggle="modal" data-target="#exampleModal"> <span>Stomach Ache</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>                          
+                    </div>
+                </div>
+            </div>
+                <div class="mt-5">
+                    <div class="head text-center mb-4"><h3 style="color: #1da1f2; font-style: italic;">Severe</h3></div>
+                    <div class="row">
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="difficultyOfBreathing" id="difficultyOfBreathing_radio" value="Severe" onclick="test2(this)">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-difficultyOfBreathing" id="psw-difficultyOfBreathing"  data-toggle="modal" data-target="#exampleModal"> <span> Difficulty Of Breathing</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="chestPain" id="chestPain_radio" value="Severe" onclick="test2(this)">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-chestPain" id="psw-chestPain"  data-toggle="modal" data-target="#exampleModal"> <span> Chest Pain</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div> 
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="disorentation" id="disorentation_radio" value="Severe" onclick="test2(this)">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-disorentation" id="psw-disorentation"  data-toggle="modal" data-target="#exampleModal"> <span> Disorentation</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="tunnelVision" id="tunnelVision_radio" value="Severe" onclick="test2(this)">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-tunnelVision" id="psw-tunnelVision"  data-toggle="modal" data-target="#exampleModal"> <span> Tunnel Vision</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div> 
+                        <div class="col-auto d-flex">
+                            <div class="col-auto col-sm-auto mb-3 radio">
+                                <input class="form-check-input" type="checkbox" name="seizure" id="seizure_radio" value="Severe" onclick="test2(this)">
+                            </div> 
+                            <div class="col-auto col-sm-auto mb-3">
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-seizure" id="psw-seizure"  data-toggle="modal" data-target="#exampleModal"> <span> Seizure</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                            </div>
+                        </div>                 
+                    </div>
+                </div>
+                <div class="col-auto d-flex mt-5 pt-3">
+                    <div class="form-group">
+                        <p>Did you feel other side effect? Specify.</p>
+                        <p>
+                            <input style="padding:3px; border-radius: 0;" placeholder="Example: Tiredness" id="nameLast" name="others" value="{{prod.others}}">
+                        </p>
+                    </div>
+                </div> 
+                <div style="overflow:auto;" id="nextprevious">
+                    <div style="float:right;" id="prevSubmit">
+                      <button type="submit" id="submit" ><i class="fa fa-angle-double-right"></i></button> 
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+
+<script>
+    const muscle_ache = document.getElementById('psw-muscle_ache');
+    const headache = document.getElementById('psw-headache');
+    const fever = document.getElementById('psw-fever');
+    const chills = document.getElementById('psw-chills');
+    const join_pain = document.getElementById('psw-join_pain');
+    const vomiting = document.getElementById('psw-vomiting');
+
+    const modal = document.querySelector('#exampleModal');
+    const modalTitle = modal.querySelector('.modal-title');
+    const modalDescription = modal.querySelector('#description');
+    const firstAiddescription = modal.querySelector('#firstAiddescription');
+    const firstAid = modal.querySelector('#firstAid');
+    
+    muscle_ache.addEventListener('click', function() {
+        modalTitle.innerHTML = "Injection Site Pain";
+        modalDescription.innerHTML = "Muscle ache, also known as myalgia, is a common condition that affects many people at some point in their lives. It is characterized by pain, tenderness, and stiffness in one or more muscles, which can range from mild to severe.";
+        firstAid.innerHTML = "Muscle ache";
+        firstAiddescription.innerHTML = "1. Rest: Give your body the rest it needs. Avoid any strenuous physical activity that may further strain your muscles. <br> 2. Ice: Applying ice to the affected area can help reduce inflammation and relieve pain. Wrap a cold pack or a bag of ice in a towel and apply it to the affected area for 15 to 20 minutes at a time, several times a day. <br> 3. Compression: Wrap the affected area with an elastic bandage to help reduce swelling and provide support. <br>4. Elevation: If possible, elevate the affected area to help reduce swelling. <br> 5. Over-the-counter pain relievers: Medications like acetaminophen (Tylenol) or ibuprofen (Advil, Motrin) can help relieve pain and reduce inflammation. Follow the recommended dosage on the label. <br> 6. Stretching: Gentle stretching exercises can help relieve muscle tension and improve flexibility. However, avoid stretching too vigorously or forcefully, as this can make your muscle ache worse.";
+
+    });
+    headache.addEventListener('click', function() {
+        modalTitle.innerHTML = "Headache";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    fever.addEventListener('click', function() {
+        modalTitle.innerHTML = "Fever";
+        modalDescription.innerHTML = "Fever is a medical condition characterized by an increase in body temperature above the normal range of 36-37°C (96.8-98.6°F). It is a common symptom of many illnesses, including viral and bacterial infections, autoimmune diseases, and other medical conditions.";
+        firstAid.innerHTML = "Fever";
+        firstAiddescription.innerHTML = "1. Stay hydrated: Drink plenty of fluids, such as water, clear broths, or electrolyte drinks, to avoid dehydration and help regulate body temperature. <br>2. Rest: Get plenty of rest and avoid overexertion, as this can elevate body temperature.<br>3. Dress appropriately: Wear lightweight clothing and use light bedding if you have a fever, as heavy clothing or blankets can trap body heat.<br> 4. Use fever-reducing medications: Over-the-counter medications such as acetaminophen (Tylenol) and ibuprofen (Advil, Motrin) can help reduce fever and alleviate discomfort. Always follow the recommended dosages and consult with a healthcare professional if you have any concerns or are taking other medications.<br> 5. Seek medical attention if necessary: If the fever persists for several days or is accompanied by other symptoms such as difficulty breathing, severe headache, chest pain, or confusion, seek medical attention immediately.";
+
+    });
+    chills.addEventListener('click', function() {
+        modalTitle.innerHTML = "Chills";
+        modalDescription.innerHTML = "Chills, also known as rigor, refer to the sudden feeling of coldness accompanied by shivering and trembling. Chills often occur as a response to a fever, which is the body's way of raising its temperature to fight an infection. The sensation of chills may be accompanied by other symptoms, such as headache, muscle aches, and fatigue. Chills may also be a side effect of certain medications or a symptom of certain medical conditions, such as malaria or pneumonia.";
+        firstAid.innerHTML = "Chills";
+        firstAiddescription.innerHTML = "1. Rest and stay hydrated: Getting plenty of rest and fluids will help your body fight off the infection causing the chills.<br>2. Dress warmly: Covering up with blankets and warm clothing can help you feel more comfortable.<br>3. Take over-the-counter medication: Medications like acetaminophen or ibuprofen can help reduce fever and alleviate chills.<br>4. Treat the underlying cause: If the chills are caused by an infection, it is important to address the underlying illness with the appropriate treatment. This may involve antibiotics or antiviral medications.<br>5. Seek medical attention: If your chills are severe, last longer than a few days, or are accompanied by other symptoms such as chest pain, difficulty breathing, or confusion, seek medical attention right away.";
+
+    });
+    join_pain.addEventListener('click', function() {
+        modalTitle.innerHTML = "Join Pain";
+        modalDescription.innerHTML = "Joint pain, also known as arthralgia, refers to any discomfort, aches, or soreness in any of the body's joints. The pain can range from mild to severe and can be acute or chronic. It can occur in any joint, including the knees, hips, shoulders, elbows, and wrists. Joint pain can be caused by a variety of factors, including injury, inflammation, infection, or certain medical conditions such as osteoarthritis, rheumatoid arthritis, gout, lupus, and fibromyalgia. In some cases, joint pain may also be caused by overuse or strain due to physical activity or repetitive motions.";
+        firstAid.innerHTML = "Join Pain";
+        firstAiddescription.innerHTML = "1. Rest the affected joint: Avoid any activities that may cause more pain or stress on the affected joint. If the joint pain is severe, immobilize the joint by using a brace or splint.<br>2. Apply ice: Apply a cold compress to the affected joint for 20-30 minutes at a time, several times a day. This can help reduce inflammation and relieve pain.<br>3. Elevate the affected joint: If possible, elevate the affected joint above heart level to help reduce swelling.<br>4. Take over-the-counter pain relievers: Nonsteroidal anti-inflammatory drugs (NSAIDs), such as ibuprofen or aspirin, can help relieve pain and reduce inflammation.<br>5. Seek medical attention: If the joint pain is severe or lasts for more than a few days, it is important to seek medical attention. A healthcare professional can provide a proper diagnosis and recommend appropriate treatment.";
+
+    });
+    vomiting.addEventListener('click', function() {
+        modalTitle.innerHTML = "Vomiting";
+        modalDescription.innerHTML = "Vomiting, also known as emesis, is the involuntary expulsion of the contents of the stomach through the mouth. It is a symptom that can be caused by a wide range of conditions, including gastrointestinal infections, food poisoning, motion sickness, pregnancy, medication side effects, and more serious medical conditions like kidney or liver disease, brain injury, or cancer. Vomiting can be accompanied by other symptoms such as nausea, abdominal pain, fever, and dehydration. In some cases, vomiting can be severe and lead to complications like dehydration, electrolyte imbalances, and malnutrition.";
+        firstAid.innerHTML = "Vomiting";
+        firstAiddescription.innerHTML = "1. Hydration: Vomiting can quickly lead to dehydration, so it is important to drink plenty of fluids to stay hydrated. Sipping small amounts of clear fluids like water, clear broth, or electrolyte replacement drinks can help.<br>2. Rest: Resting and avoiding any strenuous activities can help your body recover and reduce the risk of further vomiting.<br> 3.Medications: Over-the-counter anti-nausea medications like bismuth subsalicylate or dimenhydrinate can help reduce nausea and vomiting. If you have persistent vomiting or are unable to keep fluids down, you may need prescription medications or IV fluids.<br>4. Avoid solid foods: Stick to clear liquids for the first few hours after vomiting, and gradually reintroduce bland, easy-to-digest foods like crackers, rice, or bananas.<br>5. Seek medical attention: If vomiting persists for more than 24 hours, is severe or accompanied by other symptoms like severe abdominal pain, fever, or blood in the vomit, seek medical attention immediately.";
+    });
+  </script>
+
+{% endblock javascripts %}

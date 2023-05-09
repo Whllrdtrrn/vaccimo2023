@@ -1,0 +1,245 @@
+{% extends "newUserPage/indexLayout.html" %}
+{% block static %}
+    {% load static %}
+{% endblock static %}
+{% block title %} <title>Information Collection</title> {% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'newUserPage/information/index.css' %}">
+{% endblock stylesheets %}
+
+
+
+{% block content %}
+
+{% for msg in messages %}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if msg.tags == 'success' %}
+    <!-- sweetalert js -->
+        <script>
+            Swal.fire({
+            icon: 'success',
+            title: 'Welcome to Vaccimo!',
+            background: '#1da1f2',
+            color: 'white',
+            confirmButtonColor: '#ffffff38',
+            iconColor: 'white',
+            animation: true,
+            });
+        </script>
+    {% endif %}
+{% endfor %}
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <form id="regForm" method="POST" action="">
+                {% csrf_token %}
+                <h1 id="register">Personal Information Form</h1>
+                <div class="all-steps" id="all-steps">
+                  <span class="step"></span> 
+                  <span class="step"></span>
+                </div>
+                <div class="tab">
+                    {% include "partials/index/term.html" %}
+                </div>
+                <div class="tab">     
+                    <!--<div class="col-lg-12 mb-3 text-center"> {% if prod.file %} <img
+                            id="blah_primary_back" src="{{prod.file.url}}"
+                            style="width: auto; height: 200px;" alt="" /> {% endif %} </div>
+                    <div class="form-group">
+                        <h6>Vaccination Card</h6>
+                        <input class="form-control" type="file" accept="image/png, image/gif, image/jpeg" name="file" placeholder="file" id="img_primary_back" value="{{prod.file}}">
+                    </div>-->
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <h6>First Name</h6>
+                                <p>
+                                    <input oninput="this.className = ''" id="nameFirst" name="nameFirst" value="{{prod.nameFirst}}" required>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <h6>Last Name</h6>
+                                <p>
+                                    <input oninput="this.className = ''" id="nameLast" name="nameLast" value="{{prod.nameLast}}" required>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <h6>Middle Initial</h6>
+                                <p>
+                                    <input oninput="this.className = ''" id="name" name="name" maxlength="1" value="{{prod.name}}">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <h6>Suffix</h6>
+                                <p>
+                                    <select style="height: 45px;border-radius: 10px;" oninput="this.className = ''"   id="suffix" name="suffix"
+                                    class="form-control"  value="{{prod.suffix}}">
+                                    <option value="{{prod.suffix}}" selected hidden>{{prod.suffix}}</option>
+                                    <option value="N/A">N/A</option>
+                                    <option value="Junior (Jr.)">Junior (Jr.)</option>
+                                    <option value="Senior (Sr.)">Senior (Sr.)</option>
+                                    <option value="I">I</option>
+                                    <option value="II">II</option>
+                                    <option value="III">III</option>
+                                    <option value="IIII">IIII</option>
+                                    </select>  
+                                </p>
+ 
+                            </div>
+                        </div>
+                    </div>
+                            <div class="form-group">
+                                <h6>Contact Number</h6>
+                                <input oninput="this.className = ''" name="contact_number" type="number" value="{{prod.contact_number}}" required>
+                            </div>
+                    <div class="form-group">
+                        <h6>Age</h6>
+                        <input oninput="this.className = ''" id="age" name="age" type="number" value="{{prod.age}}" required>
+                    </div>
+                    <div class="form-group">
+                        <h6>Gender</h6>
+                            <select oninput="this.className = ''" style="font-size: 16px;"  id="gender" name="gender"
+                            class="form-control"  value="{{prod.gender}}">
+                            <option value="{{prod.gender}}" selected hidden>{{prod.gender}}</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            </select>   
+                    </div>
+                        <div class="form-group">
+                                <h6>Street</h6>
+                                <select oninput="this.className = ''" style="font-size: 16px;" id="address"
+                                name="address" type="text" placeholder="Vaccination Brand"
+                                autocomplete="off" class="form-control" 
+                                aria-selected="" value="{{prod.address}}" required>
+                                <option value="{{prod.address}}" selected hidden>{{prod.address}}</option>
+                                <option value="J.P Rizal">J.P Rizal</option>
+                                <option value="Manggahan">Manggahan</option>
+                            </select>
+                        </div>
+                </div>
+                <div style="overflow:auto;" id="nextprevious">
+                    <div id="prevSubmit" style="float:right;">
+                      <button type="button" id="prevBtn"  onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button> 
+                      <button type="button" id="nextBtn" disabled onclick="nextPrev(1)" ><i class="fa fa-angle-double-right "></i></button> 
+                      <button type="submit" id="submit" ><i class="fa fa-angle-double-left "></i></button> 
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+{% endblock content %}
+
+
+
+
+{% block javascripts %}
+<script>
+    const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
+    const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
+    
+    //img_primary_back.onchange = (evt) => {
+	//		const [file] = img_primary_back.files;
+	//		if (file) {
+	//			blah_primary_back.src = URL.createObjectURL(file);
+	//		}
+	//	};
+
+    var currentTab = 0;
+              document.addEventListener("DOMContentLoaded", function(event) {
+
+
+              showTab(currentTab);
+
+              });
+
+              function showTab(n) {
+              var x = document.getElementsByClassName("tab");
+              x[n].style.display = "block";
+              if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+                document.getElementById("submit").style.display = "none";
+                document.getElementById("nextBtn").style.display = "block";
+
+              } 
+              else if (n == 1) {
+                document.getElementById("submit").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+                document.getElementById("submit").style.display = "block";
+                document.getElementById("nextBtn").style.display = "none";
+                document.getElementById("prevSubmit").style.display = "flex";
+                document.getElementById("prevBtn").style.display = "block";
+              }   
+              else {
+                document.getElementById("submit").style.display = "none";
+                document.getElementById("nextBtn").style.display = "block";
+                document.getElementById("prevSubmit").style.display = "flex";
+                document.getElementById("prevBtn").style.display = "inline";
+          
+              }
+              if (n == (x.length - 1)) {
+              document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+              }
+              else {
+              document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+              }
+              fixStepIndicator(n)
+              }
+
+              function nextPrev(n) {
+              var x = document.getElementsByClassName("tab");
+              if (n == 1 && !validateForm()) return false;
+              x[currentTab].style.display = "none";
+              currentTab = currentTab + n;
+              if (currentTab >= x.length) {
+            
+              document.getElementById("nextprevious").style.display = "none";
+              document.getElementById("all-steps").style.display = "none";
+              document.getElementById("register").style.display = "none";
+              document.getElementById("text-message").style.display = "block";
+              }
+              showTab(currentTab);
+              }
+
+              function validateForm() {
+                   var x, y, i, valid = true;
+                   x = document.getElementsByClassName("tab");
+                   y = x[currentTab].getElementsByTagName("input");
+                   for (i = 1; i < y.length; i++) {
+                       if (y[i].value == "") {
+                           y[i].className += " invalid";
+                           valid = false;
+                       }
+
+
+                   }
+                   if (valid) {
+                       document.getElementsByClassName("step")[currentTab].className += " finish";
+                   }
+                   return valid;
+               }
+
+               function fixStepIndicator(n) {
+                   var i, x = document.getElementsByClassName("step");
+                   for (i = 0; i < x.length; i++) {
+                       x[i].className = x[i].className.replace(" active", "");
+                   }
+                   x[n].className += " active";
+               }
+</script>
+{% endblock javascripts %}

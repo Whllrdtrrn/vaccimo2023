@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>side Effect Report Data</title>
+  
+    <style>
+      .cell-detail{
+        writing-mode: vertical-lr;
+      }
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+        /* CSS styles go here */
+        body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+      }
+      h4 {
+        color: rgb(0, 0, 0);
+        text-align: left;
+        }
+  
+      .header {
+        height: 50px;
+        color: black;
+        text-align: center;
+        align-items: center;
+        line-height: 50px;
+        display: flex;
+      }
+     
+    @page{
+        size: letter landscape;
+        margin: 2cm;
+      }
+      
+      </style>
+</head>
+
+<body>
+      <div class="header">
+        <h1>Side Effect Report</h1>
+      </div>
+      <div class="content">
+        <div class="card">
+          <div class="table-responsive">
+            <table id="qwerty" class="display" style="width:100%">
+              <thead>
+                  <tr>
+                    <th>#</th>
+										<th>First Name</th>
+										<th>Middle Initial</th>
+										<th>Last Name</th>
+										<th>Age</th>
+										<th>Gender</th>
+										<th>Contact Number</th>
+										<th>Address</th>
+										<th>First Dose</th>
+										<th>Date Vaccinated</th>
+										<th>Second Dose</th>
+										<th>Date Vaccinated</th>
+										<th>First Booster</th>
+										<th>Date Vaccinated</th>
+										<th>Second Booster</th>
+										<th>Date Vaccinated</th>
+										<th>Date Created</th>
+                    <!--<th>date/time</th>-->
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td class="cell-detail"> <span>{{ forloop.counter }}</span> </td>
+										<td class="cell-detail"> {{obj.nameFirst}}<span></span> </td>
+										<td class="cell-detail"> {{obj.name}}<span></span> </td>
+										<td class="cell-detail"> {{obj.nameLast}}<span></span> </td>
+										<td class="cell-detail"> {{obj.age}}<span></span> </td>
+										<td class="cell-detail"> {{obj.gender}}<span></span> </td>
+										<td class="cell-detail"> {{obj.contact_number}}<span></span> </td>
+										<td class="cell-detail"> {{obj.address}}<span></span> </td>
+										<td class="cell-detail"> {{obj.vaccination_brand}}<span></span> </td>
+										<td class="cell-detail"> {{obj.dateVaccinated}}<span></span> </td>
+										<td class="cell-detail"> {{obj.vaccination_brand1}}<span></span> </td>
+										<td class="cell-detail"> {{obj.dateVaccinated1}}<span></span> </td>
+										<td class="cell-detail"> {{obj.vaccination_brand2}}<span></span> </td>
+										<td class="cell-detail"> {{obj.dateVaccinated2}}<span></span> </td>
+										<td class="cell-detail"> {{obj.vaccination_brand3}}<span></span> </td>
+										<td class="cell-detail"> {{obj.dateVaccinated3}}<span></span> </td>
+										<td class="cell-detail"> {{obj.date_created}}<span></span> </td>
+                    <!--<td class="cell-detail"> <span>{{i.date_created}}</span> </td>-->
+                  </tr>
+              </tbody>
+             
+          </table>
+          
+          </div>
+  </div>
+      </div>
+</body>
+</html>

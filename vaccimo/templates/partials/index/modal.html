@@ -1,0 +1,392 @@
+<div class="row panel panel-success" style="width: 100%;">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+
+                <div class="row" style="align-self: center">
+                    <div class="col-lg-9 col-md-9">
+                        <ul class="nav nav-tabs" style="gap:1rem;">
+                            <li class="active"><a data-toggle="tab" href="#Summery" class="text-success"><i
+                                        class="fa fa-indent"></i> Information Collection</a></li>
+                            <li><a data-toggle="tab" href="#Contact" class="text-success"><i
+                                        class="fa fa-bookmark-o"></i> Survey</a></li>
+                            <li><a data-toggle="tab" href="#Address" class="text-success"><i class="fa fa-home"></i>
+                                    Side Effect</a></li>
+
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="Summery" class="tab-pane fade in active">
+
+                                <div class="table-responsive panel">
+                                    <table class="table">
+                                        <tbody>
+
+                                            <tr>
+                                                <td class="text-success">Full Name</td>
+                                                <td id="nameResult"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Vaccination Brand
+                                                </td>
+                                                <td id="brandResult"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Vaccination Site
+                                                </td>
+                                                <td id="siteResult"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Address
+                                                </td>
+                                                <td id="addressResult"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Contact</td>
+                                                <td id="contactResult"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="text-success">Birthdate</td>
+                                                <td id="bdayResult"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Age</td>
+                                                <td id="ageResult"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Gender</td>
+                                                <td id="genderResult"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div id="Address" class="tab-pane fade">
+                                <div class="table-responsive panel">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-success">Muscle Ache</td>
+                                                <td id="Muscle">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Headache</td>
+                                                <td id="Headache">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Fever</td>
+                                                <td id="Fever">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Redness</td>
+                                                <td id="Redness">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Swelling</td>
+                                                <td id="Swelling">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Tenderness</td>
+                                                <td id="Tenderness">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Warmth</td>
+                                                <td id="Warmth">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Itch</td>
+                                                <td id="Itch">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Induration</td>
+                                                <td id="Induration">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Feverish</td>
+                                                <td id="Feverish">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Chills</td>
+                                                <td id="Chills">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Joint Pain</td>
+                                                <td id="Joint">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Fatigue</td>
+                                                <td id="Fatigue">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Nausea</td>
+                                                <td id="Nausea">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success">Vomiting</td>
+                                                <td id="Vomiting">
+                                                    No
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="Contact" class="tab-pane fade">
+                                <div class="table-responsive panel">
+                                    <table class="table">
+                                        <tbody>
+
+                                            <tr>
+                                                <td class="text-success"><i>Have you (or any family member/s) been
+                                                        diagnosed with
+                                                        or tested positive for COVID-19 in the past three (3)
+                                                        months?&nbsp;</i></td>
+                                                <td id="Q0result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Fever of greater than 37.5°C</i></td>
+                                                <td id="Q1result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Do you or have you had any 'flu-like'
+                                                        symptoms, such as cough or chills, in the
+                                                        past 14 days?</i></td>
+                                                <td id="Q2result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Do you experience shortness of breath or
+                                                        breathing difficulty?</i></td>
+                                                <td id="Q3result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Do you have any difficulties with your
+                                                        sense of taste or smell at present?</i></td>
+                                                <td id="Q4result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Headache, muscle or body ache</i></td>
+                                                <td id="Q5result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Weakness or fatigue</i></td>
+                                                <td id="Q6result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>>- Are you experiencing diarrhea?</i></td>
+                                                <td id="Q7result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>Do you have any allergy to food,
+                                                        antibiotics, or any
+                                                        medicine?&nbsp;</i></td>
+                                                <td id="Q8result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>Have you ever had a severe reaction to
+                                                        vaccines in the
+                                                        past?&nbsp;</i></td>
+                                                <td id="Q9result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>Have you received any vaccine in the last 14
+                                                        days?&nbsp;</i></td>
+                                                <td id="Q10result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Are you pregnant</i></td>
+                                                <td id="Q11result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- For women who are pregnant, are you in
+                                                        your 1st trimester (1 to 3 months) of
+                                                        pregnancy?</i></td>
+                                                <td id="Q12result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Plans to get pregnant in the next 6
+                                                        months?</i></td>
+                                                <td id="Q13result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Do you have a bleeding disorder or are you
+                                                        taking a
+                                                        blood thinner? (Example of Bleeding disorder: Hemophilia,
+                                                        Thalassemia)
+                                                        (Example of blood thinning medications: Aspirin, Clopidogrel,
+                                                        Warfarin,
+                                                        Cilostazol)&nbsp;</i></td>
+                                                <td id="Q14result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Autoimmune disease</i></td>
+                                                <td id="Q15result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- HIV Diagnosis</i></td>
+                                                <td id="Q16result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Cancer/Malignancy</i></td>
+                                                <td id="Q17result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Transplant Patient</i></td>
+                                                <td id="Q18result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Under steroid treatment</i></td>
+                                                <td id="Q19result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Bed ridden, terminal illness, less than
+                                                        6mos prognosis</i></td>
+                                                <td id="Q20result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- FAre you bedridden?&nbsp;</i></td>
+                                                <td id="Q21result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Are you wheelchair bound?&nbsp;</i></td>
+                                                <td id="Q22result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Drug Allergy</i></td>
+                                                <td id="allergyResult">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Insect Allergy</i></td>
+                                                <td id="allergy1Result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Latex Allergy</i></td>
+                                                <td id="allergy2Result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Mold Allergy</i></td>
+                                                <td id="allergy3Result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Pet Allergy</i></td>
+                                                <td id="allergy4Result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Pollen Allergy</i></td>
+                                                <td id="allergy5Result">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- With Co-morbidities?</i></td>
+                                                <td id="Q23">
+                                                    No
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-success"><i>- Was diagnosed with COVID-19? </i></td>
+                                                <td id="Q24">
+                                                    No
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.table-responsive -->
+
+    </div>
+</div>

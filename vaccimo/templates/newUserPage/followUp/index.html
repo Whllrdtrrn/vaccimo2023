@@ -1,0 +1,47 @@
+{% extends "newUserPage/indexLayout.html" %}
+{% block static %}
+    {% load static %}
+{% endblock static %}
+{% block title %} <title> Follow Up</title> {% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'newUserPage/information/whatDoyouFeel.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-12">
+            <div id="regForm">
+                <h1 id="register">Have You Felt Any Side Effects?</h1>
+                <div class="container">
+                    <form method="POST" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                        <input type="hidden" value="1" name="name">
+                        <button class="btn btn-primary " name="btnform2" type="submit" style="width: 5rem;">Yes</button>
+                    </form>
+                    <form method="POST" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                        <input type="hidden" value="0" name="name">
+                        <button class="btn btn-primary " name="btnform1" type="submit" style="width: 5rem;">No</button>
+                    </form>
+                        <!--<a class="btn btn-primary "href="{% url 'sideeffect' %}" style="width: 5rem;">Yes</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+{% block javascripts %}
+
+
+{% endblock javascripts %}

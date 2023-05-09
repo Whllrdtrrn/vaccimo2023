@@ -1,0 +1,926 @@
+<div class="container  text-center p-5">
+    <div class="text" style="position: relative;color:#333">
+        <h1>What Do You Feel?</h1>
+        <p> What pain do you feel? Yes, if you experience something. NO if you are feeling nothing.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-12 example" style=" overflow-y: auto;">
+                        <div class="col-md- mb-3">
+                            <button type="button" class="btn btn-danger mb-3" data-toggle="modal"
+                                onclick="document.getElementById('id01').style.display='block'"> Emergency Hotline
+                            </button>
+                        </div>
+                        <div class="row" style="    justify-content: center;">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Muscle Ache" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+
+                                <select oninput="sideEffect1()" name="muscle_ache" class="form-control"
+                                    id="txt_check_1_input1" style="text-align: center;" value="" required>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary " data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">First
+                                                            Aid</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Rest the injured limb</li>
+                                                            <li>* Ice the area. Use a cold pack, a slush bath or a
+                                                                compression sleeve filled with cold water to help
+                                                                limit swelling after an injury.</li>
+                                                            <li>* Compress the area with an elastic wrap or bandage.
+                                                            </li>
+                                                            <li>* Elevate the injured limb above your heart whenever
+                                                                possible to help prevent or limit swelling.</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Headache" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect2()" name="headache" class="form-control"
+                                    id="txt_check_2_input1" style="text-align: center;" required
+                                    value="{{prod.headache}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p><a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal2">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* lie down in a dark, quiet room</li>
+                                                            <li>* drink liquids</li>
+                                                            <li>* take acetaminophen or ibuprofen as needed</li>
+                                                            <li>* put a cool, moist cloth across the forehead or
+                                                                eyes</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Fever" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect3()" name="fever" class="form-control"
+                                    id="txt_check_3_input1" style="text-align: center;" required value="{{prod.fever}}">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal3">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal3" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Drink plenty of fluids to stay hydrated.</li>
+                                                            <li>* Dress in lightweight clothing.</li>
+                                                            <li>* Use a light blanket if you feel chilled, until the
+                                                                chills end.</li>
+                                                            <li>* Take acetaminophen or ibuprofen</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Redness" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect4()" name="redness" class="form-control"
+                                    id="txt_check_4_input1" style="text-align: center;" required
+                                    value="{{prod.redness}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal4">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal4" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Rest the injured limb</li>
+                                                            <li>* Ice the area. Use a cold pack, a slush bath or a
+                                                                compression sleeve filled with
+                                                                <br> cold water to help limit swelling after an
+                                                                injury.
+                                                            </li>
+                                                            <li>* Compress the area with an elastic wrap or bandage.
+                                                            </li>
+                                                            <li>* Elevate the injured limb above your heart whenever
+                                                                possible to help prevent or
+                                                                <br> limit swelling.
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Swelling" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect5()" name="swelling" class="form-control"
+                                    id="txt_check_5_input1" style="text-align: center;" required
+                                    value="{{prod.swelling}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal5">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal5" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Rest the injured limb</li>
+                                                            <li>* Ice the area. Use a cold pack, a slush bath or a
+                                                                compression sleeve filled with
+                                                                <br> cold water to help limit swelling after an
+                                                                injury.
+                                                            </li>
+                                                            <li>* Compress the area with an elastic wrap or bandage.
+                                                            </li>
+                                                            <li>* Elevate the injured limb above your heart whenever
+                                                                possible to help prevent or
+                                                                <br> limit swelling.
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Tenderness" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect6()" name="tenderness" class="form-control"
+                                    id="txt_check_6_input1" style="text-align: center;" required
+                                    value="{{prod.tenderness}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal6">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal6" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Rest the injured limb</li>
+                                                            <li>* Ice the area. Use a cold pack, a slush bath or a
+                                                                compression sleeve filled with
+                                                                <br> cold water to help limit swelling after an
+                                                                injury.
+                                                            </li>
+                                                            <li>* Compress the area with an elastic wrap or bandage.
+                                                            </li>
+                                                            <li>* Elevate the injured limb above your heart whenever
+                                                                possible to help prevent or
+                                                                <br> limit swelling.
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Warmth" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect7()" name="warmth" class="form-control"
+                                    id="txt_check_7_input1" style="text-align: center;" required
+                                    value="{{prod.warmth}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal7">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal7" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Move the person out of the heat and into a shady
+                                                                or air-conditioned place.</li>
+                                                            <li>* Lay the person down and elevate the legs and feet
+                                                                slightly.</li>
+                                                            <li>* Remove tight or heavy clothing.</li>
+                                                            <li>* Have the person sip chilled water, a decaffeinated
+                                                                sports drink containing
+                                                                <br> electrolytes or other nonalcoholic beverage
+                                                                without caffeine.
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Itch" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect8()" name="itch" class="form-control" id="txt_check_8_input1"
+                                    style="text-align: center;" required value="{{prod.itch}}">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal7">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal8" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Apply hydrocortisone cream or calamine lotion.
+                                                                Cover the area with a bandage.</li>
+                                                            <li>* If there's swelling, apply a cold compress to the
+                                                                area.</li>
+                                                            <li>* Take an antihistamine to reduce itching, swelling,
+                                                                and hives.</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Induration" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect9()" name="induration" class="form-control"
+                                    id="txt_check_9_input1" style="text-align: center;" required
+                                    value="{{prod.induration}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal7">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal9" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Apply hydrocortisone cream or calamine lotion.
+                                                                Cover the area with a bandage.</li>
+                                                            <li>* If there's swelling, apply a cold compress to the
+                                                                area.</li>
+                                                            <li>* Take an antihistamine to reduce itching, swelling,
+                                                                and hives.</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Feverish" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect10()" name="feverish" class="form-control"
+                                    id="txt_check_10_input1" style="text-align: center;" required
+                                    value="{{prod.feverish}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal7">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal10" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Drink plenty of fluids to stay hydrated.</li>
+                                                            <li>* Drink Meds</li>
+                                                            <li>* Use a light blanket if you feel chilled, until the
+                                                                chills end.</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Chills" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect11()" name="chills" class="form-control"
+                                    id="txt_check_11_input1" style="text-align: center;" required
+                                    value="{{prod.chills}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal7">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal11" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Drink plenty of fluids to stay hydrated.</li>
+                                                            <li>* Dress in lightweight clothing.</li>
+                                                            <li>* Use a light blanket if you feel chilled, until the
+                                                                chills end.</li>
+                                                            <li>* Take acetaminophen or ibuprofen</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Joint Pain" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect12()" name="join_pain" class="form-control"
+                                    id="txt_check_12_input1" style="text-align: center;" required
+                                    value="{{prod.join_pain}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal7">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal12" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Move the person out of the heat and into a shady
+                                                                or air-conditioned place.</li>
+                                                            <li>* Lay the person down and elevate the legs and feet
+                                                                slightly.</li>
+                                                            <li>* Remove tight or heavy clothing.</li>
+                                                            <li>* Have the person sip chilled water, a decaffeinated
+                                                                sports drink containing
+                                                                <br> electrolytes or other nonalcoholic beverage
+                                                                without caffeine.
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Fatigue" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect13()" name="fatigue" class="form-control"
+                                    id="txt_check_13_input1" style="text-align: center;" required
+                                    value="{{prod.fatigue}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal7">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal13" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Lay the person down and elevate the legs and feet
+                                                                slightly.</li>
+                                                            <li>* Remove tight or heavy clothing.</li>
+                                                            <li>* Have the person sip chilled water, a decaffeinated
+                                                                sports drink containing
+                                                                <br> electrolytes or other nonalcoholic beverage
+                                                                without caffeine.
+                                                            </li>
+                                                            <li>* Cool the person by spraying or sponging with cool
+                                                                water and fanning.</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Nausea" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect14()" name="nausea" class="form-control"
+                                    id="txt_check_14_input1" style="text-align: center;" required
+                                    value="{{prod.nausea}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal7">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal14" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Drinking gradually larger amounts of clear liquids
+                                                            </li>
+                                                            <li>* Avoiding solid food until the vomiting episode has
+                                                                passed</li>
+                                                            <li>* Resting</li>
+                                                            <li>* Temporarily discontinuing all oral medications,
+                                                                which can irritate the stomach and
+                                                                <br> make vomiting worse
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Vomiting" name="psw-repeat"
+                                        id="psw-repeat" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select oninput="sideEffect15()" name="vomiting" class="form-control"
+                                    id="txt_check_15_input1" required style="text-align: center;"
+                                    value="{{prod.vomiting}}">
+
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <p>
+                                            <a class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal7">
+                                                First Aid
+                                            </a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal15" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                            title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ul class="list-unstyled">
+                                                            <li>* Drinking gradually larger amounts of clear liquids
+                                                            </li>
+                                                            <li>* Avoiding solid food until the vomiting episode has
+                                                                passed</li>
+                                                            <li>* Resting</li>
+                                                            <li>* Temporarily discontinuing all oral medications,
+                                                                which can irritate the stomach and
+                                                                <br> make vomiting worse
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md- mb-1 mt-5">
+                        <div class="w3-container ">
+
+                            <!-- <button type="button" class="btn btn-primary mb-2 " data-bs-toggle="modal" data-bs-target="#exampleModal">Submit</button> -->
+                            <div id="id01" class="w3-modal">
+                                <div class="w3-modal-content w3-animate-zoom">
+                                    <header class="modal-header"> <span
+                                            onclick="document.getElementById('id01').style.display='none'"
+                                            class="w3-button w3-display-topright">&times;</span>
+                                        <br>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p>CESU HOTLINE</p>
+                                        <p>(02)8870-1442-1444-1446)</p>
+                                        <br>
+                                        <p>OSMAK</p>
+                                        <p>882-6316 local 421,422 or 429,or text 0956-251-7000 for Globe
+                                            <br> and 0931-056-7558 for sun
+                                        </p>
+                                    </div>
+                                    <footer class="modal-footer">
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="document.getElementById('id01').style.display='none'">Close</button>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary btnPrevious" style="
+                    width: auto;color: white !important;">Back</a>
+                    <a class="btn btn-primary btnNext" style="
+                    width: auto;color: white !important;">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+<script> -->

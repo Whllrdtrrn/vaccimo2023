@@ -1,0 +1,31 @@
+{% load static %}
+<section id="home">
+
+    <div class="hero ">
+        <img class="d-block mx-auto mb-4" src="{% static 'images/makati-logo.png' %}" alt="" width="120" height="100" style="max-width: fit-content;">
+        <h1 class="display-5 fw-bold mb-4 " style="line-height: 70.33px;
+        font-size: 60px;text-align: center;">Adverse Side Effects <br> Monitoring System</h1>
+        <div class="col-lg-6 mx-auto">
+
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{% url 'loginpage' %}"> <button type="button" class="btn btn-primary btn-lg px-4 gap-3" style="font-weight: bolder;">LOGIN
+                    </button></a>
+            </div>
+        </div>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/img1.jpg' %}" class="d-block w-100 h-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/img2.jpg' %}" class="d-block w-100 h-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/img3.jpg' %}" class="d-block w-100 h-100" alt="...">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

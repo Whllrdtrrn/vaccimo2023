@@ -1,0 +1,983 @@
+{% extends "layouts/LayoutDashboard.html" %}
+{% load static %}
+
+{% block title %} <title>Dashboard</title>  {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">:: Dashboard</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard'%}">Home</a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <!-- support-section start -->
+            <div class="col-xl-12 col-md-12">
+                <div class="">
+                    <div class="card-body">
+                        <div class="row pb-2">
+                            <div class="col-3"> 
+                                <div class="col-auto m-b-10">
+                                    <div id="chart1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3"> 
+                                <div class="col-auto m-b-10 sm">
+                                    <div id="chart2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3"> 
+                                <div class="col-auto m-b-10 sm">
+                                    <div id="chart3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3"> 
+                                <div class="col-auto m-b-10 sm">
+                                    <div id="chart4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-12">
+                <div class="card flat-card">
+                    <div class="row-table">
+                        <div class="col-sm-6 card-body br">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="material-icons-two-tone text-primary mb-1">person</i>
+                                </div>
+                                <div class="col-sm-8 text-md-center">
+                                    <h5>{{total_user}}</h5>
+                                    <span>USERS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 d-none d-md-table-cell d-lg-table-cell d-xl-table-cell card-body br">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="material-icons-two-tone text-primary mb-1">face</i>
+                                </div>
+                                <div class="col-sm-8 text-md-center">
+                                    <h5>{{maleTotal}}</h5>
+                                    <span>Male</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="material-icons-two-tone text-primary mb-1">face_4</i>
+                                </div>
+                                <div class="col-sm-8 text-md-center">
+                                    <h5>{{femaleTotal}}</h5>
+                                    <span>Female</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-table">
+                        <div class="col-sm-6 card-body br">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="material-icons-two-tone text-primary mb-1">group</i>
+                                </div>
+                                <div class="col-sm-8 text-md-center">
+                                    <h5>{{childTotal}}</h5>
+                                    <span>Child<br>(18-below)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 d-none d-md-table-cell d-lg-table-cell d-xl-table-cell card-body br">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="material-icons-two-tone text-primary mb-1">group</i>
+                                </div>
+                                <div class="col-sm-8 text-md-center">
+                                    <h5>{{adultTotal}}</h5>
+                                    <span>Adult<br>(18-59)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="material-icons-two-tone text-primary mb-1">group</i>
+                                </div>
+                                <div class="col-sm-8 text-md-center">
+                                    <h5>{{seniorTotal}}</h5>
+                                    <span>Senior<br>(60-Above)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card support-bar overflow-hidden">
+                            <div class="card-body pb-0">
+                                <h2 class="m-0"></h2>
+                                <span class="text-primary">Total</span>
+                                <p class="mb-3 mt-3">Number of users divided by the total per day </p>
+                            </div>
+                            <div id="support-chart"></div>
+                            <div class="card-footer border-0 bg-primary text-white background-pattern-white">
+                                <div class="row text-center">
+                                    {%for x in dateTotal%}
+                                    <div class="col">
+                                        <h4 class="m-0 text-white">{{x.total}}</h4>
+                                        <span> {{x.date}}</span>     
+                                    </div>
+                                    {% empty %}
+									<div class="col">
+                                        <h4 class="m-0 text-white">No one has signed up today.</h4>
+                                    </div>      
+                                    {%endfor%}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-6">
+                        <div class="card support-bar overflow-hidden">
+                            <div class="card-body pb-0">
+                                <h2 class="m-0">1432</h2>
+                                <span class="text-primary">Order delivered</span>
+                                <p class="mb-3 mt-3">Total number of order delivered in this month.</p>
+                            </div>
+                            <div class="card-footer border-0">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <h4 class="m-0">130</h4>
+                                        <span>May</span>
+                                    </div>
+                                    <div class="col">
+                                        <h4 class="m-0">251</h4>
+                                        <span>June</span>
+                                    </div>
+                                    <div class="col">
+                                        <h4 class="m-0 ">235</h4>
+                                        <span>July</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="support-chart1"></div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Adverse Side Effect Vaccine</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row pb-2">
+                            <div class="col-auto m-b-10">
+                                <h3 class="mb-1">{{item_listsTotal}}</h3>
+                                <span>Total</span>
+                            </div>
+                        </div>
+                        <div id="account-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- support-section end -->
+            <!-- customer-section start -->
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h6>Vaccination Brand</h6>
+                        <!--<span>It takes continuous effort to maintain high customer satisfaction levels Internal and
+                            external.</span>-->
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <div class="col">
+                                <div id="satisfaction-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card table-card">
+                    <div class="card-header">
+                        <h5>User</h5>
+                    </div>
+                    <div class="pro-scroll" style="height:255px;position:relative;overflow: hidden;">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover m-b-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="text-transform: capitalize;">
+                                        {%for x in userAccount%}
+                                        <tr style="  border-bottom: 1px ; ">
+                                            <td class="cell-detail  text-left"> <span>{{x.username}}</span> </td>
+                                            <td class="cell-detail"> <span>{{x.email}}</span> </td>
+                                            <td class="cell-detail"> <span>{{x.last_login}}</span> </td>
+                                        </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="col-xl-6 col-md-12">
+                    <!--// carousel start-->
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="height: 363px;">
+                        <div class="carousel-inner">
+                            <!--// first carousel-item-->
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-sm-6 ">
+                                            <div class="card prod-p-card background-pattern-black">
+                                                <div class="card-body">
+                                                    <div class="row align-items-center m-b-0">
+                                                        <div class="col">
+                                                            <h6 class="m-b-5">Muscle Ache</h6>
+                                                            <h3 class="m-b-0">{{muscle_ache}}</h3>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="material-icons-two-tone text-primary">person</i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                            <div class="card prod-p-card bg-primary background-pattern-white">
+                                                <div class="card-body">
+                                                    <div class="row align-items-center m-b-0">
+                                                        <div class="col">
+                                                            <h6 class="m-b-5 text-white">Chills</h6>
+                                                            <h3 class="m-b-0 text-white">{{chills}}</h3>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="material-icons-two-tone text-white">person</i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card prod-p-card bg-primary background-pattern-white">
+                                            <div class="card-body">
+                                                <div class="row align-items-center m-b-0">
+                                                    <div class="col">
+                                                        <h6 class="m-b-5 text-white">fatigue</h6>
+                                                        <h3 class="m-b-0 text-white">{{fatigue}}</h3>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="material-icons-two-tone text-white">person</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card prod-p-card  background-pattern">
+                                            <div class="card-body">
+                                                <div class="row align-items-center m-b-0">
+                                                    <div class="col">
+                                                        <h6 class="m-b-5 text-black">Fever</h6>
+                                                        <h3 class="m-b-0 text-black">{{feverTotal}}</h3>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="material-icons-two-tone text-primary">person</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card prod-p-card background-pattern">
+                                            <div class="card-body">
+                                                <div class="row align-items-center m-b-0">
+                                                    <div class="col">
+                                                        <h6 class="m-b-5 text-black">Vomiting</h6>
+                                                        <h3 class="m-b-0 text-black">{{vomiting}}</h3>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="material-icons-two-tone text-primary">person</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <!--end 1st carousel-item-->
+                            <!--start 2nd carousel-item-->
+                            <div class="carousel-item">
+                                <div class="row">
+                                  
+                                    <div class="col-sm-6">
+                                        <div class="card prod-p-card bg-primary background-pattern-white">
+                                            <div class="card-body">
+                                                <div class="row align-items-center m-b-0">
+                                                    <div class="col">
+                                                        <h6 class="m-b-5 text-white">Head Ache</h6>
+                                                        <h3 class="m-b-0 text-white">{{headache}}</h3>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="material-icons-two-tone text-white">person</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card prod-p-card bg-primary background-pattern-white">
+                                            <div class="card-body">
+                                                <div class="row align-items-center m-b-0">
+                                                    <div class="col">
+                                                        <h6 class="m-b-5 text-white">Induration</h6>
+                                                        <h3 class="m-b-0 text-white">{{induration}}</h3>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="material-icons-two-tone text-white">person</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-sm-6">
+                                        <div class="card prod-p-card background-pattern">
+                                            <div class="card-body">
+                                                <div class="row align-items-center m-b-0">
+                                                    <div class="col">
+                                                        <h6 class="m-b-5 text-black">Join Pain</h6>
+                                                        <h3 class="m-b-0 text-black">{{join_pain}}</h3>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="material-icons-two-tone text-primary">person</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card prod-p-card bg-primary background-pattern-white">
+                                            <div class="card-body">
+                                                <div class="row align-items-center m-b-0">
+                                                    <div class="col">
+                                                        <h6 class="m-b-5 text-white">Nausea</h6>
+                                                        <h3 class="m-b-0 text-white">{{nausea}}</h3>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="material-icons-two-tone text-white">person</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end 2nd item carousel-->
+                            <!--start 3rd carousel-item-->
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="card prod-p-card background-pattern">
+                                            <div class="card-body">
+                                                <div class="row align-items-center m-b-0">
+                                                    <div class="col">
+                                                        <h6 class="m-b-5">Redness</h6>
+                                                        <h3 class="m-b-0">{{redness}}</h3>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="material-icons-two-tone text-primary">person</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card prod-p-card bg-primary background-pattern-white">
+                                            <div class="card-body">
+                                                <div class="row align-items-center m-b-0">
+                                                    <div class="col">
+                                                        <h6 class="m-b-5 text-white">Swelling</h6>
+                                                        <h3 class="m-b-0 text-white">{{swelling}}</h3>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="material-icons-two-tone text-white">person</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <!--end 3rd item carousel-->
+                         </div>
+                    </div>
+                    <!--// carousel end-->
+                    
+                <!--<div class="card feed-card">
+                    <div class="card-header">
+                        <h5>Feeds</h5>
+                    </div>
+                    <div class="feed-scroll" style="overflow: hidden;height:385px;position:relative;">
+                        <div class="card-body">
+                            <div class="row m-b-25 align-items-center">
+                                <div class="col-auto p-r-0">
+                                    <i data-feather="bell" class="bg-light-primary feed-icon p-2 wid-30 hei-30"></i>
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6 class="m-b-5">You have 3 pending tasks. <span
+                                                class="text-muted float-end f-14">Just Now</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row m-b-25 align-items-center">
+                                <div class="col-auto p-r-0">
+                                    <i data-feather="shopping-cart"
+                                        class="bg-light-danger feed-icon p-2 wid-30 hei-30"></i>
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6 class="m-b-5">New order received <span class="text-muted float-end f-14">30
+                                                min ago</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row m-b-25 align-items-center">
+                                <div class="col-auto p-r-0">
+                                    <i data-feather="file-text"
+                                        class="bg-light-success feed-icon p-2 wid-30 hei-30"></i>
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6 class="m-b-5">You have 3 pending tasks. <span
+                                                class="text-muted float-end f-14">Just Now</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row m-b-25 align-items-center">
+                                <div class="col-auto p-r-0">
+                                    <i data-feather="bell" class="bg-light-primary feed-icon p-2 wid-30 hei-30"></i>
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6 class="m-b-5">You have 4 tasks Done. <span
+                                                class="text-muted float-end f-14">1 hours ago</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row m-b-25 align-items-center">
+                                <div class="col-auto p-r-0">
+                                    <i data-feather="file-text"
+                                        class="bg-light-success feed-icon p-2 wid-30 hei-30"></i>
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6 class="m-b-5">You have 2 pending tasks. <span
+                                                class="text-muted float-end f-14">Just Now</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row m-b-25 align-items-center">
+                                <div class="col-auto p-r-0">
+                                    <i data-feather="shopping-cart"
+                                        class="bg-light-danger feed-icon p-2 wid-30 hei-30"></i>
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6 class="m-b-5">New order received <span class="text-muted float-end f-14">4
+                                                hours ago</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row m-b-25 align-items-center">
+                                <div class="col-auto p-r-0">
+                                    <i data-feather="shopping-cart"
+                                        class="bg-light-danger feed-icon p-2 wid-30 hei-30"></i>
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6 class="m-b-5">New order Done <span class="text-muted float-end f-14">Just
+                                                Now</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row m-b-25 align-items-center">
+                                <div class="col-auto p-r-0">
+                                    <i data-feather="file-text"
+                                        class="bg-light-success feed-icon p-2 wid-30 hei-30"></i>
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6 class="m-b-5">You have 5 pending tasks. <span
+                                                class="text-muted float-end f-14">5 hours ago</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row m-b-0 align-items-center">
+                                <div class="col-auto p-r-0">
+                                    <i data-feather="bell" class="bg-light-primary feed-icon p-2 wid-30 hei-30"></i>
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6 class="m-b-5">You have 4 tasks Done. <span
+                                                class="text-muted float-end f-14">2 hours ago</span></h6>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6>Side Effect</h6>
+                            <!--<span>It takes continuous effort to maintain high customer satisfaction levels Internal and
+                                external.</span>-->
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    <div id="satisfaction-chart1"></div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            
+            <!-- customer-section end -->
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script src="{% static 'js/plugins/apexcharts.min.js' %}"></script>
+<script src="{% static 'js/pages/dashboard-sale.js' %}"></script>
+<script>
+ var options1 = {
+    chart: {
+    height: 280,
+    type: "radialBar",
+  },
+  series: [{{totalNoSymptoms}}],
+  colors: ["#20E647"],
+  plotOptions: {
+    radialBar: {
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#7267EF"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+          color: "#fff",
+          fontSize: "30px",
+          show: true
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#87D4F9"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ["No Symptoms"]
+};
+
+new ApexCharts(document.querySelector("#chart1"), options1).render();
+
+var options2 = {
+    chart: {
+    height: 280,
+    type: "radialBar",
+  },
+
+  series: [{{totalMild}}],
+  colors: ["#20E647"],
+  plotOptions: {
+    radialBar: {
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#7267EF"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+          color: "#fff",
+          fontSize: "30px",
+          show: true
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#87D4F9"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ["Mild"]
+};
+
+new ApexCharts(document.querySelector("#chart2"), options2).render();
+var options3 = {
+chart: {
+    height: 280,
+    type: "radialBar",
+  },
+
+  series: [{{totalModerate}}],
+  colors: ["#20E647"],
+  plotOptions: {
+    radialBar: {
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#7267EF"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+          color: "#fff",
+          fontSize: "30px",
+          show: true
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#87D4F9"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ["Moderate"]
+};
+
+new ApexCharts(document.querySelector("#chart3"), options3).render();
+
+var options4 = {
+    chart: {
+    height: 280,
+    type: "radialBar",
+  },
+
+  series: [{{totalSevere}}],
+  colors: ["#20E647"],
+  plotOptions: {
+    radialBar: {
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#7267EF"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+          color: "#fff",
+          fontSize: "30px",
+          show: true
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#87D4F9"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ["Severe"]
+};
+
+new ApexCharts(document.querySelector("#chart4"), options4).render();
+
+</script>
+<script>
+    // [ satisfaction-chart ] start
+    // [ account-chart ] start
+    (function() {
+        var options={
+            chart: {
+                height: 350,
+                type: 'line',
+                stacked: false,
+            },
+            stroke: {
+                width: [0,3],
+                curve: 'smooth'
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: '20%'
+                }
+            },
+            colors: ['#7267EF','#c7d9ff'],
+            series: [{
+                name: 'Total Yes',
+                type: 'column',
+                data: [{{muscle_ache}},{{fatigue}},{{feverTotal}},{{headache}},{{induration}},{{join_pain}},{{muscle_ache}},{{nausea}},{{redness}},{{swelling}},{{vomiting}}],
+            },{
+                name: 'Total No',
+                type: 'line',
+                data: [{{muscle_acheN}},{{fatigueN}},{{feverTotalN}},{{headacheN}},{{indurationN}},{{join_painN}},{{muscle_acheN}},{{nauseaN}},{{rednessN}},{{swellingN}},{{vomitingN}}],
+            }],
+            fill: {
+                opacity: [0.85,1],
+                },
+            labels: ['Muscle Ache','Fatigue','Fever','Headache','Induration','Itch','Join Pain','Nausea','Redness','Swelling','Tenderness','Vomiting'],
+                markers:{
+                size: 0
+            },
+            xaxis: {
+                type: 'text'
+            },
+            yaxis: {
+                min: 0
+            },
+            tooltip: {
+                shared: true,
+                    intersect: false,
+                        y: {
+                    formatter: function (y) {
+                        if(typeof y!=="undefined") {
+                            return ""+y.toFixed(0);
+                        }
+                        return y;
+
+                    }
+                }
+            },
+            legend: {
+                labels: {
+                    useSeriesColors: true
+                },
+                markers: {
+                    customHTML: [
+                        function() {
+                            return ''
+                        },
+                        function() {
+                            return ''
+                        }
+                    ]
+                }
+            }
+                }
+            var chart=new ApexCharts(
+                document.querySelector("#account-chart"),
+                options
+            );
+            chart.render();
+            }) ();
+
+            // [ account-chart ] end
+</script>
+<script>
+    // [ satisfaction-chart ] start
+    (function () {
+        var options = {
+            chart: {
+                height: 260,
+                type: 'pie',
+            },
+            series: [{{totalModerna}},{{totalPfizer}},{{totalAstraZeneca}},{{totalSinovac}},{{totalJnj}}],
+            labels: [`Moderna - {{totalModerna}}`, `Pfizer - {{totalPfizer}}`,`AstraZeneca - {{totalAstraZeneca}}`,`Sinovac - {{totalSinovac}}`,`Johnson and Johnson's - {{totalJnj}}`],
+            legend: {
+            show: true,
+            horizontalAlign: 'center', 
+            },
+            dataLabels: {
+                enabled: true,
+                dropShadow: {
+                    enabled: false,
+                }
+            },
+            theme: {
+                monochrome: {
+                    enabled: true,
+                    color: '#7267EF',
+                }
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 320,
+
+                    },
+                    legend: {
+                        position: 'bottom',
+                        offsetY: 0,
+                        
+                    }
+                }
+            }]
+        }
+        var chart = new ApexCharts(document.querySelector("#satisfaction-chart"), options);
+        chart.render();
+    })();
+    // [ satisfaction-chart ] end
+</script>
+<script>
+    // [ satisfaction-chart1 ] start
+    (function () {
+        var options = {
+            chart: {
+                height: 260,
+                type: 'pie',
+            },
+            series: [{{totalHaveSideeffect}},{{totalNoSideeffect}}],
+            labels: [`With Adverse Side Effect - {{totalHaveSideeffect}}`, `With Out Adverse Side Effect  - {{totalNoSideeffect}}`],
+            legend: {
+                show: true,
+                position: 'bottom',
+
+            },
+            dataLabels: {
+                enabled: true,
+                dropShadow: {
+                    enabled: false,
+                }
+            },
+            theme: {
+                monochrome: {
+                    enabled: true,
+                    color: '#7267EF',
+                }
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 320,
+
+                    },
+                    legend: {
+                        position: 'bottom',
+                        offsetY: 0,
+                    }
+                }
+            }]
+        }
+        var chart = new ApexCharts(document.querySelector("#satisfaction-chart1"), options);
+        chart.render();
+    })();
+    // [ satisfaction-chart1 ] end
+</script>
+{% endblock javascripts %}

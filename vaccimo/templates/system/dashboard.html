@@ -1,0 +1,684 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css'%}" />
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+	<title>Dashboard</title>
+</head>
+<style>
+	.dataTables_length {
+		display: none;
+	}
+
+	.dataTables_info {
+		display: none;
+	}
+
+	.card {
+		height: 0%;
+	}
+</style>
+
+<body>
+	<main>
+		<section class=" leftnav-container">
+			<div class="adminlogo">
+				<!-- <div class="circle"><img src="{%static 'images/w.jpg' %}" alt=""width="100" height="100" class="rounded-circle"style="object-fit: cover;"></div> -->
+				<h3 style="  font-size: 35px !important;
+                     ">Vac<span style="color: #0bb8c6;">cimo</span></h3>
+			</div>
+			<div class="leftnav">
+				<!-- <div class="link-item ">
+                        <a><i class="fa fa-fw fa-home"></i>Dashboard</a>
+                     </div>
+                     <div class="link-item ">
+                        <a><i class="fa fa-fw fa-home"></i>user management</a>
+                     </div>   
+                     <div class="link-item">
+                        <a><i class="fa fa-fw fa-home"></i>side effect</a>
+                     </div>       -->
+				<ul>
+					<li>
+						<a href="#" class="tab active" onclick="openCity(event, 'Dashboard')" id="defaultOpen"> <span
+								class="icon"><i class="fa fa-fw fa-home"></i></span> <span class="item">My
+								Dashboard</span> </a>
+					</li>
+					<li style="display: none;">
+						<a href="#" class="tab" onclick="openCity(event, 'Account')"> <span class="icon"><i
+									class="fa fa-fw fa-user"></i></span> <span class="item">User Account</span> </a>
+					</li>
+					<li>
+						<a href="#" class="tab" onclick="openCity(event, 'information')"> <span class="icon"><i
+									class="fa fa-fw fa-info"></i></span> <span class="item">Information</span> </a>
+					</li>
+					<li>
+						<a href="#" class="tab" onclick="openCity(event, 'sideeffect')"> <span class="icon"><i
+									class="fa fa-fw fa-heartbeat"></i></span> <span class="item">Side effect</span> </a>
+					</li>
+					<li>
+						<a href="#" class="tab" onclick="openCity(event, 'questionaire')"> <span class="icon"><i
+									class="fa fa-fw fa-question"></i></span> <span class="item">Questionaire</span> </a>
+					</li>
+					<li>
+						<a class="btn btn-primary" href="{% url 'clustering' %}" class="tab"
+							style=" display: inline-block;margin-left: 20px;"> Clustering </a>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!-- section dashboard -->
+		<section class="middle-container" id="Dashboard">
+			<header>
+				<div class="navbar">
+					<div class="logo">Dashboard</div>
+					<div class="dropdown">
+						<a onclick="myFunction()" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+							class="dropdown-toggle dropbtn  "><img src="{%static 'images/profile.jpg' %}" alt=""
+								width="40" height="40" class="rounded-circle" style="object-fit: cover;"><span
+								class="user-name"></span></a>
+						<div id="myDropdown" class="dropdown-content">
+							<ul>
+								<li>
+									<div class="user-info " style="color: black;">
+										<div class="user-name">Morning, </div>
+										<div class="user-name">Admin!!</div>
+									</div>
+								</li>
+								<li><a href=" {%url 'logout'%}" class="logout"> Logout</a></li>
+							</ul>
+						</div>
+					</div>
+			</header>
+			<div class="card-container ">
+				<div class="card bg-white">
+					<div class="card-header">
+						<h5 class="card-title"><span style=" font-size: 30px;align-items: center;margin-right: 10px;"><i
+									class="fa fa-users"></i></span> User</h5>
+					</div>
+					<div class="card-body">
+						<h3 class="card-title">{{total_user}}</h3>
+					</div>
+				</div>
+				<div class="card bg-white">
+					<div class="card-header">
+						<h5 class="card-title"><span style=" font-size: 30px;align-items: center;margin-right: 10px;"><i
+									class="fa fa-user-secret"></i></span>Total Admin</h5>
+					</div>
+					<div class="card-body">
+						<h3 class="card-title">{{total_admin}}</h3>
+					</div>
+				</div>
+				<div class="card bg-white">
+					<div class="card-header">
+						<h5 class="card-title"><span style=" font-size: 30px;align-items: center;margin-right: 10px;"><i
+									class="fa fa-eye"></i></span>Total Views</h5>
+					</div>
+					<div class="card-body">
+						<h3 class="card-title">{{total_user}}</h3>
+					</div>
+				</div>
+			</div>
+			</div>
+
+			<div class="row " style="position: relative;">
+				<div class="card w3-white">
+					<div class="panel-body">
+						<div class="contain" style="overflow-y: auto;
+                        height: 100%; margin:10px;">
+							<table id="myTable" id="myTable" class="table table-hover table-wrapper "
+								style="text-transform: capitalize;padding-left:12px ">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>full name</th>
+										<th>gender</th>
+										<th>date</th>
+									</tr>
+								</thead>
+								<tbody style="text-transform: capitalize;max-height: 300px; text-align: start; ">
+									{%for i in item_list %}
+									<tr style="  border-bottom: 1px ; ">
+										<td class="cell-detail "> <span>{{ forloop.counter }}</span> </td>
+										<td class="cell-detail  "> <span>{{i.name}}</span> </td>
+										<td class="cell-detail"> <span>{{i.gender}}</span> </td>
+										<td class="cell-detail"> <span>{{i.date_created}}</span> </td>
+									</tr>
+									{%endfor%}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- section account -->
+		<section class="middle-container" id="Account" style="visibility: collapse;">
+			<header>
+				<div class="navbar">
+					<div class="logo">User Account</div>
+					<div class="dropdown">
+						<a onclick="myFunction()" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+							class="dropdown-toggle dropbtn  "><img src="{%static 'images/profile.jpg' %}" alt=""
+								width="40" height="40" class="rounded-circle" style="object-fit: cover;"><span
+								class="user-name"></span></a>
+						<div id="myDropdown1" class="dropdown-content">
+							<ul>
+								<li>
+									<div class="user-info " style="color: black;">
+										<div class="user-name">Morning, </div>
+										<div class="user-name">Admin!!</div>
+									</div>
+								</li>
+								<li><a href="{%url 'logout'%}" class="logout"> Logout</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div class="row ">
+				<div class="card w3-white" style="height: 100%;">
+					<div class="panel-body" style="height: 100%;">
+						<div class="contain" style="overflow-y: auto;
+                           height: 100%; margin:10px;">
+							<table id="myTable1" class="table table-hover table-wrapper  "
+								style="text-transform: capitalize;padding-left:12px ">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>Username</th>
+										<th>Email</th>
+										<th>date/time</th>
+										<th>Action</th>
+										<!-- <th>Action</th> -->
+									</tr>
+								</thead>
+								<tbody style="text-transform: capitalize;">
+									{%for x in userAccount%}
+									<tr style="  border-bottom: 1px ; ">
+										<td class="cell-detail "> <span>{{ forloop.counter }}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{x.username}}</span> </td>
+										<td class="cell-detail"> <span>{{x.email}}</span> </td>
+										<td class="cell-detail"> <span>{{x.last_login}}</span> </td>
+										<td> {% if x.is_active == 1 %}
+											<a href="{% url 'toggle_status' id=x.id %}" type="button">
+												<button class="btn btn-danger">Deactivate</button>
+											</a> {%else%}
+											<a href="{% url 'toggle_status_active' id=x.id %}" type="button">
+												<button class="btn btn-success">Activate</button>
+											</a>
+											{%endif%}
+										</td>
+									</tr>
+									{%endfor%}
+								</tbody>
+							</table>
+							<div class="footer ">
+								<!--                            
+                              <script>
+                                 $(function() {
+                                   $('.toggle-class').change(function() {
+                                       var status = $(userAccount).prop({is_active}) == true ? 1 : 0; 
+                                       var id = $(userAccount).data({id}); 
+                                        
+                                       $.ajax({
+                                           type: "GET",
+                                           dataType: "json",
+                                           url: '/changeStatus',
+                                           data: {'status': status, 'id': id},
+                                           success: function(data){
+                                             console.log(data.success)
+                                           }
+                                       });
+                                   })
+                                 })
+                               </script> -->
+								<div class=" text-center"> </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="middle-container" id="sideeffect">
+			<header>
+				<div class="navbar">
+					<div class="logo">Side Effect</div>
+					<div class="dropdown">
+						<a onclick="myFunction()" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+							class="dropdown-toggle dropbtn  "><img src="{%static 'images/profile.jpg' %}" alt=""
+								width="40" height="40" class="rounded-circle" style="object-fit: cover;"><span
+								class="user-name"></span></a>
+						<div id="myDropdown2" class="dropdown-content">
+							<ul>
+								<li>
+									<div class="user-info " style="color: black;">
+										<div class="user-name">Morning, </div>
+										<div class="user-name">{{name}}!</div>
+									</div>
+								</li>
+								<li><a href="{%url 'logout'%}" class="logout"> Logout</a></li>
+							</ul>
+						</div>
+					</div>
+			</header>
+			<div class="row ">
+				<div class="card w3-white" style="height: 100%;">
+					<div class="panel-body" style="height: 100%;">
+						<div class="contain" style="overflow-y: auto;
+                           height: 99%; margin: 5px; ">
+
+							<table id="myTable2" class="table table-hover table-wrapper "
+								style="text-transform: capitalize;padding-left:12px ">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>Muscle ache</th>
+										<th>Headache</th>
+										<th>fever</th>
+										<th>redness</th>
+										<th>swelling</th>
+										<th>tenderness</th>
+										<th>warmth</th>
+										<th>itch</th>
+										<th>induration</th>
+										<th>feverish</th>
+										<th>chills</th>
+										<th>join pain</th>
+										<th>fatigue</th>
+										<th>nausea</th>
+										<th>vomiting</th>
+										<!-- <th>Action</th> -->
+									</tr>
+								</thead>
+								<tbody style="text-transform: capitalize;"> {% for y in item_lists %}
+									<tr style="  border-bottom: 1px ; ">
+										<td class="cell-detail"> <span>{{ forloop.counter }}</span> </td>
+										<td class="cell-detail"> <span>{{y.muscle_ache}}</span> </td>
+										<td class="cell-detail"> <span>{{y.headache}}</span> </td>
+										<td class="cell-detail"> <span>{{y.fever}}</span> </td>
+										<td class="cell-detail"> <span>{{y.redness}}</span> </td>
+										<td class="cell-detail"> <span>{{y.swelling}}</span> </td>
+										<td class="cell-detail"> <span>{{y.tenderness}}</span> </td>
+										<td class="cell-detail"> <span>{{y.warmth}}</span> </td>
+										<td class="cell-detail"> <span>{{y.itch}}</span> </td>
+										<td class="cell-detail"> <span>{{y.induration}}</span> </td>
+										<td class="cell-detail"> <span>{{y.feverish}}</span> </td>
+										<td class="cell-detail"> <span>{{y.chills}}</span> </td>
+										<td class="cell-detail"> <span>{{y.join_pain}}</span> </td>
+										<td class="cell-detail"> <span>{{y.fatigue}}</span> </td>
+										<td class="cell-detail"> <span>{{y.nausea}}</span> </td>
+										<td class="cell-detail"> <span>{{y.vomiting}}</span> </td>
+									</tr> {% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="middle-container" id="information">
+			<header>
+				<div class="navbar">
+					<div class="logo">Information</div>
+					<div class="dropdown">
+						<a onclick="myFunction()" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+							class="dropdown-toggle dropbtn  "><img src="{%static 'images/profile.jpg' %}" alt=""
+								width="40" height="40" class="rounded-circle" style="object-fit: cover;"><span
+								class="user-name"></span></a>
+						<div id="myDropdown3" class="dropdown-content">
+							<ul>
+								<li>
+									<div class="user-info " style="color: black;">
+										<div class="user-name">Morning, </div>
+										<div class="user-name">Admin!!</div>
+									</div>
+								</li>
+								<li><a href="{%url 'logout'%}" class="logout"> Logout</a></li>
+							</ul>
+						</div>
+					</div>
+			</header>
+			<div class="row ">
+				<div class="card w3-white" style="height: 100%;">
+					<div class="panel-body" style="height: 100%;">
+						<div class="contain" style="overflow-y: auto;
+                        height: 100%; margin:10px;">
+							<table cellpadding="3" cellspacing="0" border="0">
+								<tbody>
+									<tr id="filter_global">
+									</tr>
+									<tr id="filter_col" data-column="0">
+
+									</tr>
+									<tr id="filter_col1" data-column="1">
+										<td>Name: </td>
+										<td align="center"><input type="text" class="column_filter" id="col1_filter">
+										</td>
+									</tr>
+									<tr id="filter_col2" data-column="2">
+									</tr>
+									<tr id="filter_col3" data-column="3">
+										<td>Vaccination Brand: </td>
+										<td align="center"><input type="text" class="column_filter" id="col3_filter">
+										</td>
+									</tr>
+									<tr id="filter_col3" data-column="4">
+									</tr>
+									<tr id="filter_col3" data-column="5">
+										<td>Age: </td>
+										<td align="center"><input type="text" class="column_filter" id="col5_filter">
+										</td>
+									</tr>
+									<tr id="filter_col3" data-column="6">
+									</tr>
+									<tr id="filter_col3" data-column="7">
+										<td>Gender: </td>
+										<td align="center"><input type="text" class="column_filter" id="col7_filter">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table id="myTable3" class="table table-hover table-wrapper  "
+								style="text-transform: capitalize;padding-left:12px ">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Name</th>
+										<th>Contact Number</th>
+										<th>Vaccination Brand</th>
+										<!-- <th>Vaccination Site</th> -->
+										<th>Address</th>
+										<th>Age</th>
+										<th>Birth Date</th>
+										<th>Gender</th>
+										<th>date/time</th>
+										<!-- <th>Delete</th> -->
+									</tr>
+								</thead>
+								<tbody style="text-transform: capitalize;"> {% for i in item_list %}
+									<tr style="  border-bottom: 1px ; ">
+										<td class="cell-detail"> <span>{{ forloop.counter }}</span> </td>
+										<td class="cell-detail"> <span>{{i.name}}</span> </td>
+										<td class="cell-detail"> <span>{{i.contact_number}}</span> </td>
+										<td class="cell-detail"> <span>{{i.vaccination_brand}}</span> </td>
+										<!-- <td class="cell-detail"> <span>{{i.vaccination_site}}</span> </td> -->
+										<td class="cell-detail"> <span>{{i.address}}</span> </td>
+										<td class="cell-detail"> <span>{{i.age}}</span> </td>
+										<td class="cell-detail"> <span>{{i.bday}}</span> </td>
+										<td class="cell-detail"> <span>{{i.gender}}</span> </td>
+										<td class="cell-detail"> <span>{{i.date_created}}</span> </td>
+									</tr> {% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="middle-container" id="questionaire">
+			<header>
+				<div class="navbar">
+					<div class="logo">Questionaire</div>
+					<div class="dropdown">
+						<a onclick="myFunction()" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+							class="dropdown-toggle dropbtn  "><img src="{%static 'images/profile.jpg' %}" alt=""
+								width="40" height="40" class="rounded-circle" style="object-fit: cover;"><span
+								class="user-name"></span></a>
+						<div id="myDropdown4" class="dropdown-content">
+							<ul>
+								<li>
+									<div class="user-info " style="color: black;">
+										<div class="user-name">Morning, </div>
+										<div class="user-name">Admin!!</div>
+									</div>
+								</li>
+								<li><a href="{%url 'logout'%}" class="logout"> Logout</a></li>
+							</ul>
+						</div>
+					</div>
+			</header>
+
+			<div class="row ">
+				<div class="card w3-white" style="height: 100%;">
+					<div class="panel-body" style="height: 100%;">
+						<div class="contain" style="overflow-y: auto;
+                        height: 99%; margin: 5px; ">
+							<table id="myTable4" class="table table-hover table-wrapper "
+								style="text-transform: capitalize;padding-left:12px ">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>Q1</th>
+										<th>Q2</th>
+										<th>Q3</th>
+										<th>Q4</th>
+										<th>Q5</th>
+										<th>Q6</th>
+										<th>Q7</th>
+										<th>Q8</th>
+										<th>Q9</th>
+										<th>Q10</th>
+										<th>Q11</th>
+										<th>Q12</th>
+										<th>Q13</th>
+										<th>Q14</th>
+										<th>Q15</th>
+										<th>Q16</th>
+										<th>Q17</th>
+										<th>Q18</th>
+										<th>Q19</th>
+										<th>Q20</th>
+										<th>Q21</th>
+										<th>Q22</th>
+										<th>allergy</th>
+										<th>Q23</th>
+										<th>Q24</th>
+										<!-- <th>Delete</th> -->
+									</tr>
+								</thead>
+								<tbody style="text-transform: capitalize;"> {% for i in quesT %}
+									<tr style="  border-bottom: 1px ; ">
+										<td class="cell-detail "> <span>{{ forloop.counter }}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q1}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q2}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q3}}</span> </td>
+										<td class="cell-detail text-center"> <span>{{i.Q4}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q5}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q6}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q7}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q8}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q9}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q10}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q11}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q12}}</span> </td>
+										<td class="cell-detail"> <span>{{i.Q13}}</span> </td>
+										<td class="cell-detail text-center"> <span>{{i.Q14}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q15}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q16}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q17}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q18}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q19}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q20}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q21}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q22}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.allergy}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q23}}</span> </td>
+										<td class="cell-detail  text-left"> <span>{{i.Q24}}</span> </td>
+										<!-- <td>
+                                          <a href="{% url 'delete'% i.id} ">delete</a>
+                                      </td> -->
+									</tr> {% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf8"></script>
+	<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+	<script>
+		// filter search
+		function filterGlobal() {
+			$('#myTable3')
+				.DataTable()
+				.search($('#global_filter').val())
+				.draw();
+		}
+		function filterColumn(i) {
+			$('#myTable3')
+				.DataTable()
+				.column(i)
+				.search(
+					$('#col' + i + '_filter').val(),
+				)
+				.draw();
+		}
+		$(document).ready(function () {
+			$('#myTable').DataTable({
+				lengthMenu: [
+					[5, 25, 50, -1],
+					[5, 25, 50, 'All'],
+				]
+			});
+
+			$('input.global_filter').on('keyup click', function () {
+				filterGlobal();
+			});
+
+			$('input.column_filter').on('keyup click', function () {
+				filterColumn($(this).parents('tr').attr('data-column'));
+			});
+		});
+
+		// sorting data
+		$(document).ready(function () {
+			$('#myTable').DataTable({
+				lengthMenu: [
+					[5, 25, 50, -1],
+					[5, 25, 50, 'All'],
+				]
+			});
+		});
+
+		$(document).ready(function () {
+			$('#myTable1').DataTable({
+				lengthMenu: [
+					[5, 25, 50, -1],
+					[5, 25, 50, 'All'],
+				],
+			});
+		});
+
+		$(document).ready(function () {
+			$('#myTable2').DataTable({
+				lengthMenu: [
+					[5, 25, 50, -1],
+					[5, 25, 50, 'All'],
+				],
+			});
+		});
+
+		$(document).ready(function () {
+			$('#myTable3').DataTable({
+				lengthMenu: [
+					[5, 25, 50, -1],
+					[10, 25, 50, 'All'],
+				],
+			});
+		});
+
+		$(document).ready(function () {
+			$('#myTable4').DataTable({
+				lengthMenu: [
+					[5, 25, 50, -1],
+					[10, 25, 50, 'All'],
+				],
+				search: {
+					return: true,
+				},
+			});
+		});
+
+		function myFunction() {
+			document.getElementById("myDropdown").classList.toggle("show");
+			document.getElementById("myDropdown1").classList.toggle("show");
+			document.getElementById("myDropdown2").classList.toggle("show");
+			document.getElementById("myDropdown3").classList.toggle("show");
+			document.getElementById("myDropdown4").classList.toggle("show");
+			document.getElementById("myDropdown6").classList.toggle("show");
+
+
+		}
+		// Close the dropdown if the user clicks outside of it
+		window.onclick = function (event) {
+			if (!event.target.matches('img')) {
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for (i = 0; i < dropdowns.length; i++) {
+					var openDropdown = dropdowns[i];
+					if (openDropdown.classList.contains('show')) {
+						openDropdown.classList.remove('show');
+					}
+				}
+			}
+		}
+
+		function openCity(evt, cityName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("middle-container");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tab");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(cityName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+		document.getElementById("defaultOpen").click();
+	// $(function() {
+	//     $('.toggle-class').change(function() {
+	//         var status = $(this).prop('checked') == true ? 1 : 0;
+	//         var user_id = $(this).data('id');
+	//         $.ajax({
+	//             type: "GET",
+	//             dataType: "json",
+	//             url: '/changeStatus',
+	//             data: {'status': status, 'user_id': user_id},
+	//             success: function(data){
+	//               console.log(data.success)
+	//             }
+	//         });
+	//     })
+	//   })
+
+
+	</script>
+
+
+
+</body>
+
+</html>

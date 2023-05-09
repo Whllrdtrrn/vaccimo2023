@@ -1,0 +1,35 @@
+{% for msg in messages %}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if msg.tags == 'success' %}
+<!-- sweetalert js -->
+<script>
+    var m = "{{ msg }}";
+    Swal.fire({
+        icon: 'success',
+        title: m,
+        background: '#1da1f2',
+        color: 'white',
+        confirmButtonColor: '#ffffff38',
+        iconColor: 'white',
+        animation: true,
+    });
+</script>
+{% elif msg.tags == 'error' %}
+<script>
+    var m = "{{ msg }}";
+    Swal.fire({
+        icon: 'error',
+        title: m,
+    });
+</script>
+{% elif msg.tags == 'info' %}
+<script>
+    var m = "{{ msg }}";
+    Swal.fire({
+        icon: 'success',
+        title: m,
+    });
+</script>
+{% endif %}
+{% endfor %}

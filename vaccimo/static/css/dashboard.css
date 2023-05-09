@@ -1,0 +1,224 @@
+
+*{
+    margin: 0%;
+    padding: 0%;
+    margin: 0%;
+}
+
+body{
+    box-sizing: border-box;
+    height: 100vh;
+
+}
+main{
+  position: fixed;
+  display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+   
+}
+.card-title{
+  margin-bottom: 0px !important;
+}
+header{
+    z-index: 100;
+    width: 100%;
+
+    
+}
+.logo{
+    font-size: 35px;
+    
+}
+.navbar{
+    color: #FFFFFF;
+    position: relative;
+    align-content: space-between;
+    text-align: center;
+    margin: 0% 50px;
+    align-items: center;
+    
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 1000;
+    
+
+  }
+  .dropdown-content ul{  
+      list-style: none;
+      padding: 0%;
+  }
+  .dropdown-content {
+    top: 54px;
+    left: -105%;
+    text-align: left;
+    display: none;
+    position: absolute;
+    background: linear-gradient(177.65deg, #5321CA -2.19%, rgba(27, 0, 92, 0.53) 110.15%);
+    min-width: 130px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropbtn {
+    padding: 0px;
+    font-size: 1px;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    
+
+  }
+  .user-info{
+    color: white;
+    padding: 10px 10px;
+  }
+  .user-info .user-name{
+    color: white;
+  }
+  .logout{
+    padding: 0px 10px;
+  }
+  .dropdown-content a {
+   
+    color: white;
+    text-decoration: none;
+    display: block;
+    z-index: 1000;
+
+  }
+  .dropdown a:hover {background: linear-gradient(177.65deg, #5321CA -2.19%, rgba(27, 0, 92, 0.53) 110.15%);}
+
+  .show {display: block;}
+
+  .leftnav-container{
+    position: relative;
+    height: 100vh;
+    width: 20%;
+    background: linear-gradient(177.65deg, #5321CA -2.19%, rgba(27, 0, 92, 0.53) 110.15%);
+    box-shadow: 0px 21px 21px 1px rgba(45, 29, 71, 0.53);
+  }
+  .leftnav{
+    position: relative;
+    cursor: pointer;
+    font-size: 21px;
+    top: 80px;
+  }
+  .leftnav ul {
+    list-style: none;
+    padding: 0%;
+
+  }
+.leftnav ul li a{
+  text-decoration: none;
+  margin: 10px 0;
+    display: block;
+    
+    padding: 13px 20px;
+    color: white;
+    font-size: 16px;
+    position: relative;
+}
+.leftnav ul li a .icon{
+  color: #dee4ec;
+  width: 30px;
+  display: inline-block;
+}
+ .leftnav ul li a:hover,
+ .leftnav ul li a.active{
+  color: white;
+  
+  font-weight: bold;
+
+  background: #6367B4;
+  border-radius: 7px;
+  border-right: 5px solid  #23005B;;
+}
+
+ .leftnav ul li a:hover .icon,
+ .leftnav ul li a.active .icon{
+  color: white;
+  font-weight: bold;
+}
+
+ .leftnav ul li a:hover:before,
+ .leftnav ul li a.active:before{
+    display: block;
+}
+
+
+.middle-container{
+    position: relative;
+    display: none;
+
+    width: 80%;
+    height: 100%;
+    
+    background: radial-gradient(99.73% 98.31% at 51.96% 40.13%, rgba(96, 103, 242, 0.8) 0.01%, rgba(52, 52, 52, 0.8) 94.06%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    box-shadow: 10px 28px 36px 17px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(51px);   
+}
+
+.card-container{
+    display: flex;
+    margin: 40px 50px 0 50px;
+  }
+.card-container .card{
+    border-radius: 10px;
+    color: #23005B;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    height: 8rem;
+    position: relative;
+    overflow: hidden;
+    
+}
+.row{
+  border-radius: 10px;
+  margin: 40px 50px 0 50px;
+}
+.card {
+  border-radius: 10px;
+  height: 60vh;
+
+}
+.panel-body{
+  height: 100%;
+  font-size: 15px;
+}
+.panel-body th{
+  color: #23005B;
+
+}
+.panel-body td{
+  color: #23005B;
+
+}
+ .adminlogo {
+  text-align: -webkit-center;
+  padding:  0.5rem 0px;
+  color: #FFFFFF;
+ }
+ 
+
+ thead{
+  background-color: #7d82e6;
+
+ }
+
+ .alert {
+  position: relative;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+.table{
+  padding: 10px;
+}
+
+

@@ -1,0 +1,541 @@
+{% extends "newUserPage/indexLayout.html" %}
+{% block static %}
+    {% load static %}
+{% endblock static %}
+{% block title %} <title>Survey</title>  {% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'newUserPage/information/index.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+<style>
+    .wrapper-check .form-check {
+        padding: 0 !important;
+    }
+</style>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <form class="forS" id="regForm" method="POST" action="">
+                {% csrf_token %}
+                <h1 id="register">Screening Questionaire for Vaccination</h1>
+                <div class="all-steps" id="all-steps">
+                  <span class="step"></span> 
+                  <span class="step"></span>
+                  <span class="step"></span>
+                  <span class="step"><</span>
+                  <span class="step"></span>
+                  <span class="step"></span>
+                </div>
+                <div class="tab">
+                    
+                    <h6><span style="color:#1DA1F2;">Q1).</span> Have you (or any family member/s) been diagnosed with
+                        or tested positive for COVID-19 in the past three (3) months?</h6>
+                    <div class="wrapper-check">
+                         <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Q0" id="flexRadioDefault1" value="Yes" required>
+                            <label class="form-check-label" for="flexRadioDefault1" style="border: none;">
+                                Yes
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Q0" id="flexRadioDefault2" value="No" required>
+                            <label class="form-check-label" for="flexRadioDefault2"  style="border: none;">
+                              No
+                            </label>
+                          </div>
+                     </div>    
+                    <h6><span style="color:#1DA1F2;">Q2).</span>  Do you or have you the following symptoms in the past
+                        14 days? Fever of greater than 37.5°C</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q1" id="flexRadioDefault3" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault3" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q1" id="flexRadioDefault4" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault4"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div>   
+                    <h6><span style="color:#1DA1F2;">Q3).</span>  Do you or have you had any 'flu-like' symptoms, such as cough or chills, in the
+                        past 14 days?</h6>
+                        <div class="wrapper-check">
+                            <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q2" id="flexRadioDefault5" value="Yes" required>
+                               <label class="form-check-label" for="flexRadioDefault5" style="border: none;">
+                                   Yes
+                               </label>
+                             </div>
+                             <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q2" id="flexRadioDefault6" value="No" required>
+                               <label class="form-check-label" for="flexRadioDefault6"  style="border: none;">
+                                 No
+                               </label>
+                             </div>
+                        </div>   
+                    <h6><span style="color:#1DA1F2;">Q4).</span>   Do you experience shortness of breath or breathing difficulty?</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q3" id="flexRadioDefault7" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault7" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q3" id="flexRadioDefault8" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault8"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div>           
+                </div>
+                <div class="tab">
+                    <h6><span style="color:#1DA1F2;">Q5).</span>    Do you have any difficulties with your sense of taste or smell at present?</h6>
+                        <div class="wrapper-check">
+                            <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q4" id="flexRadioDefault9" value="Yes" required>
+                               <label class="form-check-label" for="flexRadioDefault9" style="border: none;">
+                                   Yes
+                               </label>
+                             </div>
+                             <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q4" id="flexRadioDefault10" value="No" required>
+                               <label class="form-check-label" for="flexRadioDefault10"  style="border: none;">
+                                 No
+                               </label>
+                             </div>       
+                        </div>
+                    <h6><span style="color:#1DA1F2;">Q6).</span>    Headache, muscle or body ache?</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q5" id="flexRadioDefault11" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault11" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q5" id="flexRadioDefault12" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault12"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div>        
+                    <h6><span style="color:#1DA1F2;">Q7).</span>   Weakness or fatigue?</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q6" id="flexRadioDefault13" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault13" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q6" id="flexRadioDefault14" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault14"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div>       
+                    <h6><span style="color:#1DA1F2;">Q8).</span>   Are you experiencing diarrhea?</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q7" id="flexRadioDefault15" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault15" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q7" id="flexRadioDefault16" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault16"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div>       
+                </div>
+                <div class="tab">
+                    <h6><span style="color:#1DA1F2;">Q9).</span>   Do you have any allergy to food, antibiotics, or any
+                        medicine?</h6>
+                        <div class="wrapper-check">
+                            <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q8" id="flexRadioDefault17" value="Yes" required>
+                               <label class="form-check-label" for="flexRadioDefault17" style="border: none;">
+                                   Yes
+                               </label>
+                             </div>
+                             <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q8" id="flexRadioDefault18" value="No" required>
+                               <label class="form-check-label" for="flexRadioDefault18"  style="border: none;">
+                                 No
+                               </label>
+                             </div>
+                        </div>       
+                    <h6><span style="color:#1DA1F2;">Q10).</span>  Have you ever had a severe reaction to vaccines in the
+                        past?</h6>
+                        <div class="wrapper-check">
+                            <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q9" id="flexRadioDefault19" value="Yes" required>
+                               <label class="form-check-label" for="flexRadioDefault19" style="border: none;">
+                                   Yes
+                               </label>
+                             </div>
+                             <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q9" id="flexRadioDefault20" value="No" required>
+                               <label class="form-check-label" for="flexRadioDefault20"  style="border: none;">
+                                 No
+                               </label>
+                             </div>
+                        </div>       
+                    <h6><span style="color:#1DA1F2;">Q11).</span>  Have you received any vaccine in the last 14
+                        days?</h6>
+                        <div class="wrapper-check">
+                            <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q10" id="flexRadioDefault21" value="Yes" required>
+                               <label class="form-check-label" for="flexRadioDefault21" style="border: none;">
+                                   Yes
+                               </label>
+                             </div>
+                             <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q10" id="flexRadioDefault22" value="No" required>
+                               <label class="form-check-label" for="flexRadioDefault22"  style="border: none;">
+                                 No
+                               </label>
+                             </div>
+                        </div>     
+                    <h6><span style="color:#1DA1F2;">Q12).</span>  Do you have any of the following
+                        illness/disease?</h6>
+                        <div class="wrapper-check">
+                            <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q15" id="flexRadioDefault23" value="Yes" required>
+                               <label class="form-check-label" for="flexRadioDefault23" style="border: none;">
+                                   Yes
+                               </label>
+                             </div>
+                             <div class="form-check">
+                               <input class="form-check-input" type="radio" name="Q15" id="flexRadioDefault24" value="No" required>
+                               <label class="form-check-label" for="flexRadioDefault24"  style="border: none;">
+                                 No
+                               </label>
+                             </div>
+                        </div>     
+                </div>
+                <!--{% if users.gender == female %}
+                    <div class="tab">
+                        <h6>For women :</h6>
+                        <h6>Q1). Are you pregnant</h6>
+                        <div class="select">
+                            <select id="standard-select" name="Q11" value="{{prod.Q11}}">
+                            <option value=""></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <h6>Q2). For women who are pregnant, are you in your 1st trimester (1 to 3 months) of
+                            pregnancy?</h6>
+                        <div class="select">
+                            <select id="standard-select" name="Q12" value="{{prod.Q12}}">
+                            <option value=""></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div> 
+                        <h6>Q3). Plans to get pregnant in the next 6 months?</h6>
+                        <div class="select">
+                            <select id="standard-select" name="Q13" value="{{prod.Q13}}">
+                            <option value=""></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div> 
+                        <h6>Q4). Do you have a bleeding disorder or are you taking a
+                            blood thinner? (Example of Bleeding disorder: Hemophilia, Thalassemia)
+                            (Example of blood thinning medications: Aspirin, Clopidogrel, Warfarin,
+                            Cilostazol)</h6>
+                        <div class="select">
+                            <select id="standard-select" name="Q14" value="{{prod.Q14}}">
+                            <option value=""></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div> 
+                    </div>
+                {% endif %}-->
+                <div class="tab">
+                    <h6><span style="color:#1DA1F2;">Q13).</span> HIV Diagnosis</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q16" id="flexRadioDefault25" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault25" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q16" id="flexRadioDefault26" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault26"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div>   
+                    <h6><span style="color:#1DA1F2;">Q14).</span> Cancer/Malignancy</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q17" id="flexRadioDefault27" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault27" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q17" id="flexRadioDefault28" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault28"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div> 
+                    <h6><span style="color:#1DA1F2;">Q15).</span> Transplant Patient</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q18" id="flexRadioDefault29" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault29" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q18" id="flexRadioDefault30" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault30"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div> 
+                    <h6><span style="color:#1DA1F2;">Q16).</span> Under steroid treatment</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q19" id="flexRadioDefault31" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault31" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q19" id="flexRadioDefault32" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault32"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div> 
+                </div>
+
+                <div class="tab">
+                    <h6><span style="color:#1DA1F2;">Q17).</span> Bed ridden, terminal illness, less than 6mos prognosis</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q20" id="flexRadioDefault33" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault33" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q20" id="flexRadioDefault34" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault34"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div> 
+                    <h6><span style="color:#1DA1F2;">Q18).</span> Are you bedridden?</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q21" id="flexRadioDefault35" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault35" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q21" id="flexRadioDefault36" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault36"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div> 
+                    <h6><span style="color:#1DA1F2;">Q19).</span> Are you wheelchair bound?</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q22" id="flexRadioDefault37" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault37" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q22" id="flexRadioDefault38" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault38"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div> 
+                    <h6 style="color:#1DA1F2">Allergies (Please check all that
+                        apply):</h6>
+                    <ul>
+                    <li>
+                        <input type="checkbox" id="cb3" name="allergy1" value="Insect Allergy">
+                        <label for="cb3">Insect Allergy</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb3" name="allergy2" value="Latex Allergy">
+                        <label for="cb3">Latex Allergy</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb3" name="allergy3" value="Mold Allergy">
+                        <label for="cb3">Mold Allergy</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb3" name="allergy4" value="Pet Allergy" >
+                        <label for="cb3">Pet Allergy</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="cb3" name="allergy5" value="Pollen Allergy" >
+                        <label for="cb3">Pollen Allergy</label>
+                    </li>
+                    </ul>
+                </div>
+
+                <div class="tab">
+                    <h6><span style="color:#1DA1F2;">Q20).</span> With Co-morbidities?</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q23" id="flexRadioDefault39" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault39" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q23" id="flexRadioDefault40" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault40"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div> 
+                    <h6><span style="color:#1DA1F2;">Q21).</span> Was diagnosed with COVID-19?</h6>
+                    <div class="wrapper-check">
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q24" id="flexRadioDefault41" value="Yes" required>
+                           <label class="form-check-label" for="flexRadioDefault41" style="border: none;">
+                               Yes
+                           </label>
+                         </div>
+                         <div class="form-check">
+                           <input class="form-check-input" type="radio" name="Q24" id="flexRadioDefault42" value="No" required>
+                           <label class="form-check-label" for="flexRadioDefault42"  style="border: none;">
+                             No
+                           </label>
+                         </div>
+                    </div> 
+                </div>      
+                <div style="overflow:auto;" id="nextprevious">
+                    <div style="float:right;" id="prevSubmit">
+                      <button type="button" id="prevBtn"  onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button> 
+                      <button type="button" id="nextBtn" onclick="nextPrev(1)" ><i class="fa fa-angle-double-right "></i></button> 
+                      <button type="submit" id="submit" ><i class="fa fa-angle-double-left "></i></button> 
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+{% block javascripts %}
+
+<script>
+    
+    var currentTab = 0;
+              document.addEventListener("DOMContentLoaded", function(event) {
+
+
+              showTab(currentTab);
+
+              });
+
+              function showTab(n) {
+              var x = document.getElementsByClassName("tab");
+              x[n].style.display = "block";
+              if (n == 0) {
+              document.getElementById("prevBtn").style.display = "none";
+              document.getElementById("submit").style.display = "none";
+
+              } 
+              else if (n == 5) {
+                document.getElementById("submit").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+                document.getElementById("submit").style.display = "block";
+                document.getElementById("nextBtn").style.display = "none";
+                document.getElementById("prevSubmit").style.display = "flex";
+                document.getElementById("prevBtn").style.display = "block";
+              }   
+              else {
+              document.getElementById("submit").style.display = "none";
+              document.getElementById("nextBtn").style.display = "block";
+              document.getElementById("prevSubmit").style.display = "flex";
+              document.getElementById("prevBtn").style.display = "inline";
+              }
+              if (n == (x.length - 1)) {
+              document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+              }
+              else {
+              document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+              }
+              fixStepIndicator(n)
+              }
+
+              function nextPrev(n) {
+              var x = document.getElementsByClassName("tab");
+              if (n == 1 && !validateForm()) return false;
+              x[currentTab].style.display = "none";
+              currentTab = currentTab + n;
+              if (currentTab >= x.length) {
+            
+              document.getElementById("nextprevious").style.display = "none";
+              document.getElementById("all-steps").style.display = "none";
+              document.getElementById("register").style.display = "none";
+              document.getElementById("text-message").style.display = "block";
+
+
+
+
+              }
+              showTab(currentTab);
+              }
+
+              function validateForm() {
+                   var x, y, i, valid = true;
+                   x = document.getElementsByClassName("tab");
+                   y = x[currentTab].getElementsByTagName("");
+                   for (i = 1; i < y.length; i++) {
+                       if (y[i].value == "") {
+                           y[i].className += " invalid";
+                           valid = false;
+                       }
+
+
+                   }
+                   if (valid) {
+                       document.getElementsByClassName("step")[currentTab].className += " finish";
+                   }
+                   return valid;
+               }
+
+               function fixStepIndicator(n) {
+                   var i, x = document.getElementsByClassName("step");
+                   for (i = 0; i < x.length; i++) {
+                       x[i].className = x[i].className.replace(" active", "");
+                   }
+                   x[n].className += " active";
+               }
+</script>
+{% endblock javascripts %}

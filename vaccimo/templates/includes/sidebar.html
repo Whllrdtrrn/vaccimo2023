@@ -1,0 +1,99 @@
+<!-- [ navigation menu ] start -->
+{% load static %}
+
+<nav class="pc-sidebar ">
+	<div class="navbar-wrapper">
+		<div class="navbar-content">
+			<ul class="pc-navbar">
+				<li class="pc-item pc-caption">
+					<label>Navigation</label>
+				</li>
+				<li class="pc-item">
+					<a href="{% url 'dashboard'%}" class=" pc-link "><span class=" pc-micon"><i
+								class="material-icons-two-tone">home</i></span><span
+							class="pc-mtext">Dashboard</span></a>
+				</li>
+				<li class="pc-item pc-caption">
+					<label>table</label>
+				</li>
+				<li class="pc-item">
+					<a href="{% url 'userAccount'%}" class="pc-link "><span class="pc-micon"><i
+								class="material-icons-two-tone">account_circle</i></span><span class="pc-mtext">User
+							Account</span></a>
+				</li>
+				<li class="pc-item">
+					<a href="{% url 'informationCollection'%}" class="pc-link "><span class="pc-micon"><i
+								class="material-icons-two-tone">info</i></span><span class="pc-mtext">Information
+							Collection</span></a>
+				</li>
+
+				<li class="pc-item">
+					<a href="{% url 'survey'%}" class="pc-link "><span class="pc-micon"><i
+								class="material-icons-two-tone">article</i></span><span class="pc-mtext">Vaccine</span></a>
+				</li>
+				<!--<li class="pc-item">
+					<a href="{% url 'sideEffect'%}" class="pc-link "><span class="pc-micon"><i
+								class="material-icons-two-tone">coronavirus</i></span><span class="pc-mtext">Side
+							Effect</span></a>
+				</li>-->
+				<li class="pc-item">
+					<a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="pc-link "><span class="pc-micon"><i
+								class="material-icons-two-tone">coronavirus</i></span><span class="pc-mtext">Side
+							Effect</span></a>
+				</li>
+					<div class="collapse" id="collapseExample">
+						<li class="pc-item">
+							<a href="{% url 'sideeffectFirstDose'%}" class="pc-link " style="margin-left: 36px !important;"><span class="pc-mtext">First Dose</span></a>
+						</li>
+						<li class="pc-item">
+							<a href="{% url 'sideEffectSecondDose'%}" class="pc-link " style="margin-left: 36px !important;"><span class="pc-mtext">Second Dose</span></a>
+						</li>
+						<li class="pc-item">
+							<a href="{% url 'sideEffectFirstBooster'%}" class="pc-link " style="margin-left: 36px !important;"><span class="pc-mtext">First Booster</span></a>
+						</li>
+						<li class="pc-item">
+							<a href="{% url 'sideEffectSecondBooster'%}" class="pc-link " style="margin-left: 36px !important;"><span class="pc-mtext">Second Booster</span></a>
+						</li>
+					  </div>
+				<li class="pc-item pc-caption">
+					<label>Reports</label>
+					<span>Reports table</span>
+				</li>
+				<li class="pc-item">
+					<a href="{% url 'sideEffectReports' %}" class="pc-link "><span class="pc-micon"><i
+								class="material-icons-two-tone">coronavirus</i></span><span
+							class="pc-mtext">Report Generation Module</span></a>
+				</li>
+				<!--<li class="pc-item">
+					<a class="pc-link "  data-bs-toggle="collapse"  href="#multiCollapseExample12" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span class="pc-micon"><i
+								class="material-icons-two-tone">bubble_chart</i></span><span
+							class="pc-mtext">Category Reports</span></a>
+				</li>
+				<div class="collapse multi-collapse" id="multiCollapseExample12" >
+					<li class="pc-item">
+						<a class="pc-link "><span class="pc-mtext">Age </span></a>
+						<a class="pc-link "><span class="pc-mtext">Gender </span></a>
+					</li>
+				  </div>-->
+				
+				<li class="pc-item pc-caption">
+					<label>Clustering</label>
+					<span>clustering charts</span>
+				</li>
+				<li class="pc-item">
+					<a href="{% url 'clustering' %}" class="pc-link "><span class="pc-micon"><i
+								class="material-icons-two-tone">bubble_chart</i></span><span
+							class="pc-mtext">Clustering</span></a>
+				</li>
+
+<!--
+				<li class="pc-item"><a href="sample-page.html" class="pc-link "><span class="pc-micon"><i
+								class="material-icons-two-tone">storefront</i></span><span class="pc-mtext">Sample
+							page</span></a></li>-->
+
+			</ul>
+			
+		</div>
+	</div>
+</nav>
+<!-- [ navigation menu ] end -->

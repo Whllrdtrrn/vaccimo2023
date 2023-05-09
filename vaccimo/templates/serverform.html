@@ -1,0 +1,559 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>SurveyPage</title>
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/serverForm.css'%}" />
+</head>
+
+
+<body>
+
+	<header>
+		<div class="nav">
+			<div class="dropdown show">
+				<a class="btn btn-light dropdown-toggle" style=" margin: 20px;" href="#" role="button"
+					id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="{% static 'images/img_avatar.png'%}" alt="Avatar" class="avatar">
+				</a>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<a class="dropdown-item btn-success" type="button" href="{%url 'profileEdit'%}">Profile</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item  btn-primary" type="button" href="{%url 'viewDetails'%}">View Details</a>
+					<a class="dropdown-item  btn-danger" type="button" href="{%url 'logout'%}">Log Out</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<img id="bg-main" src="{% static 'images/login.jpg' %}" alt="Cover Image"
+		style="position: absolute; height: 100%; width: 100%;" />
+	<div class="container-body">
+		<div class="text">
+			<h1>Screening Questionaire for Vaccination</h1>
+		</div>
+		<div class="card ">
+			<div class="container example mt-3">
+				<form method="POST" action="" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="cardServer1" style="height: 25rem;
+		  overflow-y: auto;">
+						<table width="auto" cellpadding="2">
+							<tr>
+								<td colspan="4" height="40"><span style="color:red"><b>QUESTION :</b></span></td>
+							</tr>
+							<tr>
+								<td width="400" height="60"><b><i>Have you (or any family member/s) been diagnosed with
+											or tested positive for COVID-19 in the past three (3) months?&nbsp;</i></b>
+								</td>
+								<td width="auto">
+									<!-- <select name="Q0" class="form-control" style="text-align:center" id="txt_check_1_input1" required value="{{prod.Q0}}">
+									{% if prod.Q0 %}
+									<option >{{prod.Q0}}</option>
+									{% endif %}
+									<option value="">--Select --</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q0" value="Yes">Yes</input>
+										<input type="radio" name="Q0" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4" height="40"><b><i>Do you or have you the following symptoms in the past
+											14 days?</i></b></td>
+							</tr>
+							<tr>
+								<td><i>- Fever of greater than 37.5°C</i></td>
+								<td width="auto">
+									<!-- <select name="Q1" class="form-control" style="text-align:center" id="txt_check_1_input1" required value="{{prod.Q1}}">
+									{% if prod.Q1 %}
+									<option >{{prod.Q1}}</option>
+									{% endif %}
+									<option value="">--Select --</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q1" value="Yes">Yes</input>
+										<input type="radio" name="Q1" value="No" checked>No</input>
+
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- Do you or have you had any 'flu-like' symptoms, such as cough or chills, in the
+										past 14 days?</i></td>
+								<td width="auto">
+									<!-- <select name="Q2" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+									{% if prod.Q2 %}
+									<option >{{prod.Q2}}</option>
+									{% endif %}
+									<option value="">--Select --</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q2" value="Yes">Yes</input>
+										<input type="radio" name="Q2" value="No" checked>No</input>
+
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- Do you experience shortness of breath or breathing difficulty?</i></td>
+								<td width="auto">
+									<!-- <select name="Q3" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+									{% if prod.Q3 %}
+									<option >{{prod.Q3}}</option>
+									{% endif %}
+									<option value="">--Select --</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q3" value="Yes">Yes</input>
+										<input type="radio" name="Q3" value="No" checked>No</input>
+
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- Do you have any difficulties with your sense of taste or smell at present?</i>
+								</td>
+								<td width="auto">
+									<!-- <select name="Q4" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+									{% if prod.Q4 %}
+									<option >{{prod.Q4}}</option>
+									{% endif %}
+									<option value="">--Select --</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q4" value="Yes">Yes</input>
+										<input type="radio" name="Q4" value="No" checked>No</input>
+
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- Headache, muscle or body ache</i></td>
+								<td width="auto">
+									<!-- <select name="Q5" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+									{% if prod.Q5 %}
+									<option >{{prod.Q5}}</option>
+									{% endif %}
+									<option value="">--Select --</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q5" value="Yes">Yes</input>
+										<input type="radio" name="Q5" value="No" checked>No</input>
+
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- Weakness or fatigue</i></td>
+								<td width="auto">
+									<!-- <select name="Q6" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+									{% if prod.Q6 %}
+									<option >{{prod.Q6}}</option>
+									{% endif %}
+									<option value="">--Select --</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q6" value="Yes">Yes</input>
+										<input type="radio" name="Q6" value="No" checked>No</input>
+
+									</div>
+								</td>
+							<tr>
+								<td><i>- Are you experiencing diarrhea?</i></td>
+								<td width="auto">
+									<!-- <select name="Q7" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q7 %}
+									<option >{{prod.Q7}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q7" value="Yes">Yes</input>
+										<input type="radio" name="Q7" value="No" checked>No</input>
+
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400" height="40"><b><i>Do you have any allergy to food, antibiotics, or any
+											medicine?&nbsp;</i></b></td>
+								<td width="auto">
+									<!-- <select name="Q8" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q8 %}
+									<option >{{prod.Q8}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q8" value="Yes">Yes</input>
+										<input type="radio" name="Q8" value="No" checked>No</input>
+
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400" height="40"><b><i>Have you ever had a severe reaction to vaccines in the
+											past?&nbsp;</i></b></td>
+								<td width="auto">
+									<!-- <select name="Q9" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q9 %}
+									<option >{{prod.Q9}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q9" value="Yes">Yes</input>
+										<input type="radio" name="Q9" value="No" checked>No</input>
+
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400" height="40"><b><i>Have you received any vaccine in the last 14
+											days?&nbsp;</i></b></td>
+								<td width="auto">
+									<!-- <select name="Q10" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q10 %}
+									<option >{{prod.Q10}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q10" value="Yes">Yes</input>
+										<input type="radio" name="Q10" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							{% if user.gender == female %}
+							<tr>
+								<td colspan="4" height="40"><b><i>For women :</i></b></td>
+							</tr>
+							<tr>
+								<td><i>- Are you pregnant</i></td>
+								<td width="auto">
+									<!-- <select name="Q11" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q11 %}
+									<option >{{prod.Q11}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q11" value="Yes">Yes</input>
+										<input type="radio" name="Q11" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- For women who are pregnant, are you in your 1st trimester (1 to 3 months) of
+										pregnancy?</i></td>
+								<td width="auto">
+									<!-- <select name="Q12" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q12 %}
+									<option >{{prod.Q12}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q12" value="Yes">Yes</input>
+										<input type="radio" name="Q12" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- Plans to get pregnant in the next 6 months?</i></td>
+								<td width="auto">
+									<!-- <select name="Q13" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q13 %}
+									<option >{{prod.Q13}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q13" value="Yes">Yes</input>
+										<input type="radio" name="Q13" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400" height="40"><b><i>Do you have a bleeding disorder or are you taking a
+											blood thinner? (Example of Bleeding disorder: Hemophilia, Thalassemia)
+											(Example of blood thinning medications: Aspirin, Clopidogrel, Warfarin,
+											Cilostazol)&nbsp;</i></b></td>
+								<td width="auto">
+									<!-- <select name="Q14" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q14 %}
+									<option >{{prod.Q14}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q14" value="Yes">Yes</input>
+										<input type="radio" name="Q14" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							{% endif%}
+							<tr>
+								<td colspan="4" height="40"><b><i>Do you have any of the following
+											illness/disease?</i></b></td>
+							</tr>
+							<tr>
+								<td><i>- Autoimmune disease</i></td>
+								<td width="auto">
+									<!-- <select name="Q15" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q15 %}
+									<option >{{prod.Q15}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q15" value="Yes">Yes</input>
+										<input type="radio" name="Q15" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- HIV Diagnosis</i></td>
+								<td width="auto">
+									<!-- <select name="Q16" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q16 %}
+									<option >{{prod.Q16}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q16" value="Yes">Yes</input>
+										<input type="radio" name="Q16" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- Cancer/Malignancy</i></td>
+								<td width="auto">
+									<!-- <select name="Q17" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+										{% if prod.Q17 %}
+									<option >{{prod.Q17}}</option>
+									{% endif %}
+										<option value="">--Select --</option>
+										<option value="Yes">Yes</option>
+										<option value="No">No</option>
+									</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q17" value="Yes">Yes</input>
+										<input type="radio" name="Q17" value="No" checked>No</input>
+									</div>
+								</td>
+							<tr>
+								<td><i>- Transplant Patient</i></td>
+								<td width="auto">
+									<!-- <select name="Q18" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+											{% if prod.Q18 %}
+									<option >{{prod.Q18}}</option>
+									{% endif %}
+											<option value="">--Select --</option>
+											<option value="Yes">Yes</option>
+											<option value="No">No</option>
+										</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q18" value="Yes">Yes</input>
+										<input type="radio" name="Q18" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- Under steroid treatment</i></td>
+								<td width="auto">
+									<!-- <select name="Q19" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+											{% if prod.Q19 %}
+									<option >{{prod.Q19}}</option>
+									{% endif %}
+											<option value="">--Select --</option>
+											<option value="Yes">Yes</option>
+											<option value="No">No</option>
+										</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q19" value="Yes">Yes</input>
+										<input type="radio" name="Q19" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td><i>- Bed ridden, terminal illness, less than 6mos prognosis</i></td>
+								<td width="auto">
+									<!-- <select name="Q20" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+											{% if prod.Q20 %}
+									<option >{{prod.Q20}}</option>
+									{% endif %}
+											<option value="">--Select --</option>
+											<option value="Yes">Yes</option>
+											<option value="No">No</option>
+										</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q20" value="Yes">Yes</input>
+										<input type="radio" name="Q20" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400" height="40"><b><i>Are you bedridden?&nbsp;</i></b></td>
+								<td width="auto">
+									<!-- <select name="Q21" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+											{% if prod.Q21 %}
+									<option >{{prod.Q21}}</option>
+									{% endif %}
+											<option value="">--Select --</option>
+											<option value="Yes">Yes</option>
+											<option value="No">No</option>
+										</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q21" value="Yes">Yes</input>
+										<input type="radio" name="Q21" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400" height="40"><b><i>Are you wheelchair bound?&nbsp;</i></b></td>
+								<td width="auto">
+									<!-- <select name="Q22" class="form-control" style="text-align:center" id="txt_check_1_input1" required>
+											{% if prod.Q22 %}
+									<option >{{prod.Q22}}</option>
+									{% endif %}
+											<option value="">--Select --</option>
+											<option value="Yes">Yes</option>
+											<option value="No">No</option>
+										</select> -->
+									<div class="radioServer">
+										<input type="radio" name="Q22" value="Yes">Yes</input>
+										<input type="radio" name="Q22" value="No" checked>No</input>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<p style="color:red;text-align:left ;  margin: 15px; ">Note: If you answered yes to any of the
+						above-mentioned diseases/condition, please provide a medical clearance from your physician on
+						the day of your vaccination.</p>
+
+					<div class="cardServer" style="height: 100%;">
+						<table width="auto">
+							<tr>
+								<td style="padding: 0 1rem;"><b><i>Allergies <small>(Please check all that
+												apply):</small></i></b>
+									<br>
+									<input type="checkbox" name="allergy" value="Drug Allergy" /><small>Drug
+										Allergy</small> &nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" name="allergy" value="Food Allergy" /><small>Food
+										Allergy</small> &nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" name="allergy1" value="Insect Allergy" /><small>Insect
+										Allergy</small> &nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" name="allergy2" value="Latex Allergy" /><small>Latex
+										Allergy</small> &nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" name="allergy3" value="Mold Allergy" /><small>Mold
+										Allergy</small>&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" name="allergy4" value="Pet Allergy" /><small>Pet
+										Allergy</small>&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" name="allergy5" value="Pollen Allergy" /><small>Pollen
+										Allergy</small>
+									<br>
+									<div class="radioCO">
+										<div class="morbidities">
+											<b><i>With Co-morbidities? <span style="color:red;">*</span></i></b>
+											<div class="radioServer">
+												<input type="radio" name="Q23" value="Yes">Yes</input>
+												<input type="radio" name="Q23" value="No" checked>No</input>
+											</div>
+										</div>
+										<div class="diagnosed">
+											<b><i>Was diagnosed with COVID-19? <span style="color:red;">*</span></i></b>
+											<br>
+											<div class="radioServer">
+												<input type="radio" name="Q24" value="Yes">Yes</input>
+												<input type="radio" name="Q24" value="No" checked>No</input>
+											</div>
+										</div>
+									</div>
+									<p><small>Please make sure you have reviewed all answers and uploaded all necessary
+											documents, if any. No changes shall be possible after submission.<br>
+											<input type="checkbox" onclick="EnableDisable()" id="myCheck">I have
+											reviewed my reply and uploaded the correct documents and attest that they
+											are all correct.</small> </p>
+								</td>
+							</tr>
+						</table>
+					</div>
+			</div>
+			<button id="txt_1_a" type="submit" class="btn btn-primary mb-3 disabled">SUBMIT</button>
+		</div>
+		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script>
+		function EnableDisable() {
+			var btnSubmit = document.getElementById("myCheck");
+			var element = document.getElementById("txt_1_a");
+			if (btnSubmit.checked == true) {
+				element.classList.remove("disabled");
+			} else {
+				element.classList.add("disabled");
+			}
+		}
+
+	</script>
+</body>
+
+</html>

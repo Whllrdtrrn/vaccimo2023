@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html>
+<html >
+{% include "link.html" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css '%}" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">  
+
+    <title>Homepage</title>
+</head>
+  
+<body >
+    <section id="service">
+        {% include "header.html" %}
+            <div class=" container-fluid container-lg px-lg-4  py-lg-5" id="featured-3">
+                <h2 class="pb-2 border-bottom">Services</h2>
+                <div class="row  g-4 py-5 row-cols-1 row-cols-lg-3">
+                  <div class=" feature col-4 col-md">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center  bg-gradient mb-3">
+                        <img class="rounded-circle mb-3" src=   "{% static 'images/par.png' %}"
+                        alt=".." />
+                    </div>
+                    <h3 class="fs-3 ">WHAT ADVERSE REACTION SHOULD YOU INDICATE?</h3>
+                    <p class="text-service">We urge individuals to report any medical problems that occur after getting vaccinated. The
+                        immunization may create certain issues. Others may not have a link.
+                            The application you use to submit a report to us
+                            collects information such as:The vaccinationThe individual who was immunizedThe response
+                            that occurred</p>
+                  
+                  </div>
+                  <div class="feature col-4 col-md ">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center  bg-gradient mb-3">
+                        <img class="rounded-circle mb-5" src="{% static 'images/par2.png' %}"
+                        alt=".." />
+                    </div>
+                    <h3 class="fs-3"> WHY SHOULD CARE ABOUT SIDE EFFECTS?</h3>
+                    <p class="text-service">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                   
+                  </div>
+                  <div class="feature col-4 col-md">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center  bg-gradient mb-3">
+                        <img class="rounded-circle mb-3" src="{% static 'images/par3.png' %}"
+                        alt=".." />
+                    </div>
+                    <h3 class="fs-3">REGISTER TO VACCIMO:</h3>
+                    <p class="text-service">You can participate in Vaccimo after receiving any dose of COVID-19 vaccination by visiting
+                        vsafe.cdc.gov on your desktop or mobile device.
+                            Keep your vaccination information card handy to help you recall which vaccines you got
+                            and when</p>
+
+                  </div>
+                </div>
+              </div>
+            <!-- <div class="service-list">
+                <div class="card-list"> <img class="rounded-circle mb-3" src="{% static 'images/par.png' %}"
+                        alt=".." />
+                    <br>
+                    <br>
+                    <h2>WHAT ADVERSE REACTION SHOULD YOU INDICATE?</h2>
+                    <br>
+                    <p> We urge individuals to report any medical problems that occur after getting vaccinated. The
+                        immunization may create certain issues. Others may not have a link.
+                            The application you use to submit a report to us
+                            collects information such as:The vaccinationThe individual who was immunizedThe response
+                            that occurred </p>
+                   
+                </div>
+                <div class="card-list"> <img class="rounded-circle mb-5" src="{% static 'images/par2.png' %}"
+                        alt=".." />
+                    <br>
+                    <h2>
+                        WHY SHOULD CARE ABOUT SIDE <br />
+                        EFFECTS?
+                    </h2>
+                    <br>
+                    <p> Vaccimo contains valuable information to vaccine safety specialists, allowing them to
+                        examine any vaccination safety risks, including the different kind of COVID-19
+                        vaccines.
+                            It is especially beneficial for spotting unusual or unexpected patterns of health issues
+                            (also known as "adverse events") that may suggest a potential vaccination safety risk.
+                            Severe reactions that might
+                            lead to long-term health problems are exceedingly rare after any immunization,
+                            particularly COVID-19 vaccination. If side effects do develop, they usually occur within
+                            six weeks of getting a vaccination
+                            dose.
+                       </p>
+                </div>
+                <div class="card-list"> <img class="rounded-circle mb-3" src="{% static 'images/par3.png' %}"
+                        alt=".." />
+                    <br>
+                    <br>
+                    <h2>REGISTER TO VACCIMO:</h2>
+                    <br>
+                    <p> You can participate in Vaccimo after receiving any dose of COVID-19 vaccination by visiting
+                        vsafe.cdc.gov on your desktop or mobile device.
+                            Keep your vaccination information card handy to help you recall which vaccines you got
+                            and when.</p>
+                   
+                </div>
+            </div> -->
+            <footer class=" footer">
+                <div class="footer-item">
+                    <p class="text-center">© 2022 Vaccimo, Inc</p>
+                </div>
+            </footer>
+    </section>
+   
+    <script src="{% static 'js/script.js' %}">
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html >
+{% include "link.html" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css '%}" />
+    <title>Homepage</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">  
+
+</head>
+<body>
+   
+    <section id="about">
+        {% include "header.html" %}
+        <div class="container about-container scrollAble    " >
+            <div class="about-title">
+                <h1>ABOUT US</h1>
+            </div>
+            <div class="row featurette">
+                <div class="col-md" style="text-align: justify;">
+                    <p class="lead"> VACCIMO is a monitoring system,which means it appears to be based on
+                        participants who reported their experiences to us. VACCIMO is not required to assess whether
+                        a vaccination caused a health problem, but it is particularly beneficial for spotting odd or
+                        unexpected patterns of adverse event reporting that may signal a probable vaccine safety
+                        concern. In this manner, VACCIMO can give us with pertinent information indicating that
+                        extra study and investigation are required to better examine a potential safety problem.
+                        VACCIMO offers individual and confidential health check-ins via app, allowing users and
+                        easily share how you or your dependents are feeling after receiving a COVID-19 vaccine. This
+                        data enables us to monitor the safety of COVID-19 vaccines in order to monitor. </p>
+                </div>
+                <div class="col-md d-none d-md-block "> <img class="featurette-image img-fluid  img-thumbnail mx-auto"
+                    
+                        data-src="holder.js/500x500/auto" alt="500x500" src="{% static 'images/about.jpg' %}"
+                        data-holder-rendered="true" /> 
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-item">
+                <p class="text-center">© 2022 Vaccimo, Inc</p>
+            </div>
+        </footer>
+    </section>
+   
+    <script src="{% static 'js/script.js' %}">
+    </script>
+</body>
+</html>

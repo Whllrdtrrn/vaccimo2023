@@ -1,0 +1,80 @@
+{% extends "newUserPage/indexLayout.html" %}
+{% block static %}
+    {% load static %}
+{% endblock static %}
+{% block title %} <title>Information Collection</title> {% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'newUserPage/information/index.css' %}">
+{% endblock stylesheets %}
+
+
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <form id="regForm" method="POST" action="">
+                {% csrf_token %}
+                <h1 id="register">Vaccine Information</h1>      
+                <div class="mt-5">     
+                    <div class="form-group">
+                        <h6>Vaccine Dosage</h6>
+                        <!--<select oninput="this.className = ''" style="font-size: 16px;" id="vaccineDose"
+                            name="vaccination_site" type="text" placeholder="Vaccination Brand"
+                            autocomplete="off" class="form-control"  required
+                            aria-selected="">
+                            <option value="First Dose" selected>First Dose</option>
+                        </select>-->
+                        <input type="text" name="firstBooster" value="First Booster" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <h6>Vaccination Brand</h6>
+                        <select style="font-size: 16px;" id="vaccination_brand2"
+                        name="vaccination_brand2" type="text" placeholder="Vaccination Brand"
+                         class="form-control" required>
+                        {% if prod.vaccination_brand2 %}
+                        <option value="{{prod.vaccination_brand2}}" selected hidden>{{prod.vaccination_brand2}}</option>
+                        {% endif %}
+                        <option value=""></option>
+                        <option value="Moderna">Moderna</option>
+                        <option value="Pfizer">Pfizer</option>
+                        <option value="AstraZeneca">AstraZeneca</option>
+                        <option value="Sinovac">Sinovac</option>
+                        <option value="Johnson and Johnson's">Johnson and Johnson's</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <h6>Date Vaccinated</h6>
+                    <input placeholder="Date vaccinated" type="date" name="dateVaccinated2" value="{{prod.dateVaccinated2}}" required>
+                </div>
+                <div style="overflow:auto;" id="nextprevious">
+                    <div id="prevSubmit" style="float:right;">
+                      <button type="button" id="prevBtn"  onclick="history.back()"><i class="fa fa-angle-double-left"></i></button> 
+                      <button type="submit" id="submit" ><i class="fa fa-angle-double-right "></i></button> 
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+{% endblock content %}
+
+
+
+
+{% block javascripts %}
+<script>
+    const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
+    const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
+</script>
+{% endblock javascripts %}

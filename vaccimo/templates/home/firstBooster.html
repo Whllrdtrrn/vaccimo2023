@@ -1,0 +1,278 @@
+{% extends "layouts/LayoutDashboard.html" %}
+{% load widget_tweaks %}
+
+{% block title %} <title> Side Effect</title> {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+	<div class="pcoded-content">
+		<!-- [ breadcrumb ] start -->
+		<div class="page-header">
+			<div class="page-block">
+				<div class="row align-items-center">
+					<div class="col-md-12">
+						<div class="page-header-title">
+							<h5 class="m-b-10">:: Side Effect</h5>
+						</div>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item"><a href="{% url 'dashboard'%}">Home</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'userAccount'%}">User Account</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'informationCollection'%}">Information
+									Collection</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'survey'%}">Survey</a></li>
+							<li class="breadcrumb-item"><a href="{% url 'sideEffect'%}">Side Effect</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- [ breadcrumb ] end -->
+		<!-- [ Main Content ] start -->
+		<div class="row mb-3">
+			<div class="col-md-8">
+			</div>
+		</div>
+		<div class="row">
+			<!-- [ Hover-table ] start -->
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="font-weight: bold;text-align-last: center;">Adverse Side Effects</h3>
+						<h5 style="font-weight: bold;text-align-last: center;">(First Booster)</h5>
+					</div>
+					<div class="card-body table-border-style">
+						<div class="table-responsive">
+							<h2>With Adverse Side Effects</h2>
+							<table id="myTable2" class="table table-hover">
+								<thead>
+									<tr>
+										<th>User Id</th>
+										<th>Injection Site Pain</th>
+										<th>Headache</th>
+										<th>Fever</th>
+										<th>Rashes</th>
+										<th>Itchiness</th>
+										<th>Cough</th>
+										<th>Body Pain</th>
+										<th>Soar Throat</th>
+										<th>Stomach Ache</th>
+										<th>Vomiting</th>
+										<th>Difficulty Of Breathing</th>
+										<th>Chest Pain</th>
+										<th>Disorentation</th>
+										<th>Tunnel Vision</th>
+										<th>Seizure</th>
+										<th>Others</th>
+										<th>Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for y in firstboosters %}
+									<tr>
+										<td class="cell-detail"> {{y.author_id}}<span></span> </td>
+										<td class="cell-detail"> <span>{{y.InjectionSitePain}}</span> </td>
+										<td class="cell-detail"> <span>{{y.headache}}</span> </td>
+										<td class="cell-detail"> <span>{{y.fever}}</span> </td>
+										<td class="cell-detail"> <span>{{y.rashes}}</span> </td>
+										<td class="cell-detail"> <span>{{y.itchiness}}</span> </td>
+										<td class="cell-detail"> <span>{{y.cough}}</span> </td>
+										<td class="cell-detail"> <span>{{y.bodyPain}}</span> </td>
+										<td class="cell-detail"> <span>{{y.soarThroat}}</span> </td>
+										<td class="cell-detail"> <span>{{y.stomachAche}}</span> </td>
+										<td class="cell-detail"> <span>{{y.vomiting}}</span> </td>
+										<td class="cell-detail"> <span>{{y.difficultyOfBreathing}}</span> </td>
+										<td class="cell-detail"> <span>{{y.chestPain}}</span> </td>
+										<td class="cell-detail"> <span>{{y.disorentation}}</span> </td>
+										<td class="cell-detail"> <span>{{y.tunnelVision}}</span> </td>
+										<td class="cell-detail"> <span>{{y.seizure}}</span> </td>
+										<td class="cell-detail"> <span>{{y.others}}</span> </td>
+										<td class="cell-detail"> <span>{{y.date}}</span> </td>
+										<!--<td class="cell-detail"> <span>{{y.author.first_name}} {{y.author.last_name}}</span></td>
+										<td class="cell-detail"> <span>{% if y.muscle_ache == '1'%}Yes{% elif y.muscle_ache == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.headache == '1'%}Yes{% elif y.headache == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.fever == '1'%}Yes{% elif y.fever == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.redness == '1'%}Yes{% elif y.redness == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.swelling == '1'%}Yes{% elif y.swelling == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.induration == '1'%}Yes{% elif y.induration == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.chills == '1'%}Yes{% elif y.chills == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.join_pain == '1'%}Yes{% elif y.join_pain == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.fatigue == '1'%}Yes{% elif y.fatigue == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.nausea == '1'%}Yes{% elif y.nausea == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+										<td class="cell-detail"> <span>{% if y.vomiting == '1'%}Yes{% elif y.vomiting == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>-->
+									</tr>
+									{% endfor %}
+								</tbody>
+								<!--<tfoot>
+									<tr style="font-weight: bold;">
+										<td class="cell-detail"> <span></span> </td>
+										<td class="cell-detail"> <span></span> </td>
+										<td class="cell-detail"> Total: <span></span> </td>
+										<td class="cell-detail"> <span>{{muscle_ache}}</span> </td>
+										<td class="cell-detail"> <span>{{headache}}</span> </td>
+										<td class="cell-detail"> <span>{{fever}}</span> </td>
+										<td class="cell-detail"> <span>{{redness}}</span> </td>
+										<td class="cell-detail"> <span>{{swelling}}</span> </td>
+										<td class="cell-detail"> <span>{{induration}}</span> </td>
+										<td class="cell-detail"> <span>{{chills}}</span> </td>
+										<td class="cell-detail"> <span>{{join_pain}}</span> </td>
+										<td class="cell-detail"> <span>{{fatigue}}</span> </td>
+										<td class="cell-detail"> <span>{{nausea}}</span> </td>
+										<td class="cell-detail"> <span>{{vomiting}}</span> </td>
+									</tr>		
+								</tfoot>-->
+							</table>
+							
+			</div>
+			<!-- [ Hover-table ] end -->
+		</div>
+		<div class="card-body table-border-style">
+			<div class="table-responsive">
+				<h2>Without Adverse Side Effects</h2>
+				<table id="myTable26" class="table table-hover">
+					<thead>
+						<tr>
+							<th>User Id</th>
+							<th>Injection Site Pain</th>
+							<th>Headache</th>
+							<th>Fever</th>
+							<th>Rashes</th>
+							<th>Itchiness</th>
+							<th>Cough</th>
+							<th>Body Pain</th>
+							<th>Soar Throat</th>
+							<th>Stomach Ache</th>
+							<th>Vomiting</th>
+							<th>Difficulty Of Breathing</th>
+							<th>Chest Pain</th>
+							<th>Disorentation</th>
+							<th>Tunnel Vision</th>
+							<th>Seizure</th>
+							<th>Others</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for y in firstboostersOut %}
+						<tr>
+							<td class="cell-detail"> {{y.author_id}}<span></span> </td>
+							<td class="cell-detail"> <span>{{y.InjectionSitePain}}</span> </td>
+							<td class="cell-detail"> <span>{{y.headache}}</span> </td>
+							<td class="cell-detail"> <span>{{y.fever}}</span> </td>
+							<td class="cell-detail"> <span>{{y.rashes}}</span> </td>
+							<td class="cell-detail"> <span>{{y.itchiness}}</span> </td>
+							<td class="cell-detail"> <span>{{y.cough}}</span> </td>
+							<td class="cell-detail"> <span>{{y.bodyPain}}</span> </td>
+							<td class="cell-detail"> <span>{{y.soarThroat}}</span> </td>
+							<td class="cell-detail"> <span>{{y.stomachAche}}</span> </td>
+							<td class="cell-detail"> <span>{{y.vomiting}}</span> </td>
+							<td class="cell-detail"> <span>{{y.difficultyOfBreathing}}</span> </td>
+							<td class="cell-detail"> <span>{{y.chestPain}}</span> </td>
+							<td class="cell-detail"> <span>{{y.disorentation}}</span> </td>
+							<td class="cell-detail"> <span>{{y.tunnelVision}}</span> </td>
+							<td class="cell-detail"> <span>{{y.seizure}}</span> </td>
+							<td class="cell-detail"> <span>{{y.others}}</span> </td>
+							<td class="cell-detail"> <span>{{y.date}}</span> </td>
+							<!--<td class="cell-detail"> <span>{{y.author.first_name}} {{y.author.last_name}}</span></td>
+							<td class="cell-detail"> <span>{% if y.muscle_ache == '1'%}Yes{% elif y.muscle_ache == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.headache == '1'%}Yes{% elif y.headache == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.fever == '1'%}Yes{% elif y.fever == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.redness == '1'%}Yes{% elif y.redness == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.swelling == '1'%}Yes{% elif y.swelling == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.induration == '1'%}Yes{% elif y.induration == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.chills == '1'%}Yes{% elif y.chills == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.join_pain == '1'%}Yes{% elif y.join_pain == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.fatigue == '1'%}Yes{% elif y.fatigue == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.nausea == '1'%}Yes{% elif y.nausea == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>
+							<td class="cell-detail"> <span>{% if y.vomiting == '1'%}Yes{% elif y.vomiting == 'Yes' %}Yes{% else %}No{% endif %} </span> </td>-->
+						</tr>
+						{% endfor %}
+					</tbody>
+	</div>
+</div>
+</div>
+		<!-- [ Main Content ] end -->
+
+	</div>
+</div>
+<!-- [ Main Content ] end -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="https://cdn.datatables.net/searchpanes/2.1.2/js/dataTables.searchPanes.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+<script>
+	 $('#myTable2').DataTable({
+                sorting: false,
+                dom: 'Bfrtip',
+                buttons: [
+					{
+						extend: 'pdfHtml5',
+						messageTop: 'PDF created by Vaccimo with Buttons for DataTables.',
+						orientation: 'landscape',
+                		pageSize: 'LEGAL'
+					},
+					{
+						extend: 'csv',
+						messageTop: 'PDF created by Vaccimo with Buttons for DataTables.'
+					},
+					{
+						extend: 'copy',
+						messageTop: 'PDF created by Vaccimo with Buttons for DataTables.'
+					},
+					{
+						extend: 'print',
+						messageTop: 'PDF created by Vaccimo with Buttons for DataTables.'
+					}
+					
+				],       
+            });
+</script>
+<script>
+	$('#myTable26').DataTable({
+			   sorting: false,
+			   dom: 'Bfrtip',
+			   buttons: [
+				   {
+					   extend: 'pdfHtml5',
+					   messageTop: 'PDF created by Vaccimo with Buttons for DataTables.',
+					   orientation: 'landscape',
+					   pageSize: 'LEGAL'
+				   },
+				   {
+					   extend: 'csv',
+					   messageTop: 'PDF created by Vaccimo with Buttons for DataTables.'
+				   },
+				   {
+					   extend: 'copy',
+					   messageTop: 'PDF created by Vaccimo with Buttons for DataTables.'
+				   },
+				   {
+					   extend: 'print',
+					   messageTop: 'PDF created by Vaccimo with Buttons for DataTables.'
+				   }
+				   
+			   ],       
+		   });
+</script>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+{% endblock javascripts %}
