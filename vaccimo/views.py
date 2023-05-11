@@ -806,6 +806,12 @@ def sideEffectNew(request):
             prod.tunnelVision = request.POST.get('tunnelVision', 'No')
             prod.seizure = request.POST.get('seizure', 'No')
             prod.others = request.POST.get('others', 'No')
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting] and 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Both'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe' 
             prod.author = request.user
             prod.save()
         prods = firstdoserestore() 
@@ -826,6 +832,10 @@ def sideEffectNew(request):
             prods.tunnelVision = request.POST.get('tunnelVision', prod.tunnelVision)
             prods.seizure = request.POST.get('seizure', prod.seizure)
             prods.others = request.POST.get('others', prod.others)
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prods.author = request.user
             prods.save()
             return redirect('/vaccimo/secondDoseQ/')
@@ -850,6 +860,10 @@ def sideEffectNew(request):
             prod.tunnelVision = request.POST.get('tunnelVision', 'No')
             prod.seizure = request.POST.get('seizure', 'No')
             prod.others = request.POST.get('others', '')
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prod.author = request.user
             prod.save()
         prods = firstdoserestore()
@@ -870,6 +884,10 @@ def sideEffectNew(request):
             prods.tunnelVision = request.POST.get('tunnelVision', prod.tunnelVision)
             prods.seizure = request.POST.get('seizure', prod.seizure)
             prods.others = request.POST.get('others', prod.others)
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prods.author = request.user
             prods.save()
             return redirect('/vaccimo/secondDoseQ/')
@@ -1205,6 +1223,10 @@ def sideEffectNew2(request):
             prod.tunnelVision = request.POST.get('tunnelVision', 'No')
             prod.seizure = request.POST.get('seizure', 'No')
             prod.others = request.POST.get('others', '')
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prod.author = request.user
             prod.save()
         prods = seconddoserestore()
@@ -1225,6 +1247,10 @@ def sideEffectNew2(request):
             prods.tunnelVision = request.POST.get('tunnelVision', prod.tunnelVision)
             prods.seizure = request.POST.get('seizure', prod.seizure)
             prods.others = request.POST.get('others', prod.others)
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prods.author = request.user
             prods.save()
             return redirect('/vaccimo/firstBoosterQuestion/')
@@ -1249,6 +1275,10 @@ def sideEffectNew2(request):
             prod.tunnelVision = request.POST.get('tunnelVision', 'No')
             prod.seizure = request.POST.get('seizure', 'No')
             prod.others = request.POST.get('others', '')
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prod.author = request.user
             prod.save()
         prods = seconddoserestore()
@@ -1269,6 +1299,10 @@ def sideEffectNew2(request):
             prods.tunnelVision = request.POST.get('tunnelVision', prod.tunnelVision)
             prods.seizure = request.POST.get('seizure', prod.seizure)
             prods.others = request.POST.get('others', prod.others)
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prods.author = request.user
             prods.save()
             return redirect('/vaccimo/firstBoosterQuestion/')
@@ -1421,6 +1455,10 @@ def sideEffectNew3(request):
             prod.tunnelVision = request.POST.get('tunnelVision', 'No')
             prod.seizure = request.POST.get('seizure', 'No')
             prod.others = request.POST.get('others', '')
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prod.author = request.user
             prod.save()
         prods = firstboosterrestore()
@@ -1441,6 +1479,10 @@ def sideEffectNew3(request):
             prods.tunnelVision = request.POST.get('tunnelVision', prod.tunnelVision)
             prods.seizure = request.POST.get('seizure', prod.seizure)
             prods.others = request.POST.get('others', prod.others)
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prods.author = request.user
             prods.save()
             return redirect('/vaccimo/secondBoosterQuestion/')
@@ -1465,6 +1507,10 @@ def sideEffectNew3(request):
             prod.tunnelVision = request.POST.get('tunnelVision', 'No')
             prod.seizure = request.POST.get('seizure', 'No')
             prod.others = request.POST.get('others', '')
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
         prods = firstboosterrestore()
         if request.method == 'POST':
             prods.InjectionSitePain = request.POST.get('InjectionSitePain', prod.InjectionSitePain)
@@ -1483,6 +1529,10 @@ def sideEffectNew3(request):
             prods.tunnelVision = request.POST.get('tunnelVision', prod.tunnelVision)
             prods.seizure = request.POST.get('seizure', prod.seizure)
             prods.others = request.POST.get('others', prod.others)
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prods.author = request.user
             prods.save()
             return redirect('/vaccimo/secondBoosterQuestion/')
@@ -1636,6 +1686,10 @@ def sideEffectNew4(request):
             prod.tunnelVision = request.POST.get('tunnelVision', 'No')
             prod.seizure = request.POST.get('seizure', 'No')
             prod.others = request.POST.get('others', '')
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prod.author = request.user
             prod.save()
         prods = secondboosterrestored()
@@ -1656,6 +1710,10 @@ def sideEffectNew4(request):
             prods.tunnelVision = request.POST.get('tunnelVision', prod.tunnelVision)
             prods.seizure = request.POST.get('seizure', prod.seizure)
             prods.others = request.POST.get('others', prod.others)
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prods.author = request.user
             prods.save()
             messages.success(request, 'Successfully Submited!!!')
@@ -1681,6 +1739,10 @@ def sideEffectNew4(request):
             prod.tunnelVision = request.POST.get('tunnelVision', 'No')
             prod.seizure = request.POST.get('seizure', 'No')
             prod.others = request.POST.get('others', '')
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prod.author = request.user
         prods = secondboosterrestored()
         if request.method == 'POST':
@@ -1700,6 +1762,10 @@ def sideEffectNew4(request):
             prods.tunnelVision = request.POST.get('tunnelVision', prod.tunnelVision)
             prods.seizure = request.POST.get('seizure', prod.seizure)
             prods.others = request.POST.get('others', prod.others)
+            if 'Mild' in [prod.headache, prod.InjectionSitePain, prod.fever, prod.rashes, prod.itchiness, prod.cough, prod.bodyPain, prod.soarThroat, prod.stomachAche, prod.vomiting]:
+                prod.status = 'Mild'
+            if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
+                prod.status = 'Severe'
             prod.save()
             return redirect('/')
         else:
@@ -2356,6 +2422,16 @@ def dashboard(request):
     totalsecondDoses = user.objects.filter(secondDose=1).count()
     totalfirstBoosters = user.objects.filter(firstBooster=1).count()
     totalsecondBoosters = user.objects.filter(secondBooster=1).count()
+    severr = firstdose.objects.filter(status='Severe').count()
+    mildd = firstdose.objects.filter(status='Mild').count()
+    severr1 = seconddose.objects.filter(status='Severe').count()
+    mildd1 = seconddose.objects.filter(status='Mild').count()
+    severr2 = firstbooster.objects.filter(status='Severe').count()
+    mildd2 = firstbooster.objects.filter(status='Mild').count()
+    severr3 = secondbooster.objects.filter(status='Severe').count()
+    mildd3 = secondbooster.objects.filter(status='Mild').count()
+    tMild = mildd + mildd1 + mildd2 + mildd3
+    tSevere = severr + severr1 + severr2 + severr3
     num_days = 3
     dates = [datetime.today().date() - timedelta(days=x) for x in range(num_days)]
     # create a filter that includes multiple dates
@@ -2366,6 +2442,8 @@ def dashboard(request):
     dateTotalss = list(firstdose.objects.values_list('date', flat=True))
     dateTotals = dateTotal.count()
     context = {
+        'tMild': tMild,
+        'tSevere': tSevere,
         'dateTotalss': dateTotalss,
         'totalMild': totalMild,
          'nfirstDoses': nfirstDoses,

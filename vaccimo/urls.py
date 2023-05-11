@@ -1,8 +1,14 @@
 from django.urls import path
 from django.contrib import admin
 from vaccimo import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    path('reset_password/', auth_views.PasswordResetView.as_view(template_name='passwordReset/change-password.html'), name = 'passwordReset'),
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name='passwordReset/password_reset_done.html'), name = 'password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='passwordReset/confirm.html'), name = 'password_reset_confirm'),
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='passwordReset/complete.html'), name = 'password_reset_complete'),
+
     # pdf 
     path('pdf/<int:pk>/', views.generate_pdf, name='generate_pdf'),
     path('pdf/', views.pdfAllReport, name='pdfAllReport'),

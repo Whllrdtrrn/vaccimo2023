@@ -9,8 +9,6 @@ from django.utils import timezone
 
 # Create your models here.
 #User = settings.AUTH_USER_MODEL
-default=datetime.datetime(2023, 5, 7, 0, 0, tzinfo=timezone.utc)
-
 
 def filepath(request,filename):
     old_filename = filename
@@ -24,27 +22,28 @@ def filepath(request,filename):
 class user(models.Model):
     id = models.AutoField(primary_key=True,)
     file = models.ImageField(upload_to=filepath, null=True, blank=True)
-    email = models.CharField(max_length=100, null=True)
-    name = models.CharField(max_length=100, null=True)
+    email = models.CharField(max_length=100, default='N/A')
+    name = models.CharField(max_length=100, default='N/A')
     suffix = models.CharField(max_length=100, default='N/A')
-    nameFirst = models.CharField(max_length=100, null=True)
-    nameLast = models.CharField(max_length=100, null=True)
-    contact_number = models.CharField(max_length=100, null=True)
-    firstDose = models.CharField(max_length=100, null=True)
-    secondDose = models.CharField(max_length=100, null=True)
-    firstBooster = models.CharField(max_length=100, null=True)
-    secondBooster = models.CharField(max_length=100, null=True)
-    address = models.CharField(max_length=100, null=True)
-    age = models.CharField(max_length=100, null=True)
-    dateVaccinated = models.CharField(max_length=100, null=True)
-    dateVaccinated1 = models.CharField(max_length=100, null=True)
-    dateVaccinated2 = models.CharField(max_length=100, null=True)
-    dateVaccinated3 = models.CharField(max_length=100, null=True)
-    vaccination_brand = models.CharField(max_length=100, null=True)
-    vaccination_brand1 = models.CharField(max_length=100, null=True)
-    vaccination_brand2 = models.CharField(max_length=100, null=True)
-    vaccination_brand3 = models.CharField(max_length=100, null=True)    
-    gender = models.CharField(max_length=100, null=True)
+    nameFirst = models.CharField(max_length=100, default='N/A')
+    nameLast = models.CharField(max_length=100, default='N/A')
+    contact_number = models.CharField(max_length=100, default='N/A')
+    firstDose = models.CharField(max_length=100, default='N/A')
+    secondDose = models.CharField(max_length=100, default='N/A')
+    firstBooster = models.CharField(max_length=100, default='N/A')
+    secondBooster = models.CharField(max_length=100, default='N/A')
+    address = models.CharField(max_length=100, default='N/A')
+    age = models.CharField(max_length=100, default='N/A')
+    dateVaccinated = models.CharField(max_length=100, default='N/A')
+    dateVaccinated1 = models.CharField(max_length=100, default='N/A')
+    dateVaccinated2 = models.CharField(max_length=100, default='N/A')
+    dateVaccinated3 = models.CharField(max_length=100, default='N/A')
+    vaccination_brand = models.CharField(max_length=100, default='N/A')
+    vaccination_brand1 = models.CharField(max_length=100, default='N/A')
+    vaccination_brand2 = models.CharField(max_length=100, default='N/A')
+    vaccination_brand3 = models.CharField(max_length=100, default='N/A')    
+    gender = models.CharField(max_length=100, default='N/A')
+    status = models.CharField(max_length=10, blank=True, default='N/A')
     date_created = models.DateField(auto_now_add=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
@@ -174,6 +173,7 @@ class firstdose (models.Model):
     tunnelVision = models.CharField(max_length=100, default='No')
     seizure = models.CharField(max_length=100, default='No')
     others = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=10, blank=True, null=True)
     date = models.DateField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
@@ -201,6 +201,7 @@ class firstdoserestore (models.Model):
     tunnelVision = models.CharField(max_length=100, default='No')
     seizure = models.CharField(max_length=100, default='No')
     others = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=10, blank=True, null=True)
     date = models.DateField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
@@ -228,6 +229,7 @@ class seconddose (models.Model):
     tunnelVision = models.CharField(max_length=100, default='No')
     seizure = models.CharField(max_length=100, default='No')
     others = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=10, blank=True, null=True)
     date = models.DateField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -256,6 +258,7 @@ class seconddoserestore (models.Model):
     tunnelVision = models.CharField(max_length=100, default='No')
     seizure = models.CharField(max_length=100, default='No')
     others = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=10, blank=True, null=True)
     date = models.DateField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
@@ -283,6 +286,7 @@ class firstbooster (models.Model):
     tunnelVision = models.CharField(max_length=100, default='No')
     seizure = models.CharField(max_length=100, default='No')
     others = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=10, blank=True, null=True)
     date = models.DateField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -311,6 +315,7 @@ class firstboosterrestore (models.Model):
     tunnelVision = models.CharField(max_length=100, default='No')
     seizure = models.CharField(max_length=100, default='No')
     others = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=10, blank=True, null=True)
     date = models.DateField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -339,6 +344,7 @@ class secondbooster (models.Model):
     tunnelVision = models.CharField(max_length=100, default='No')
     seizure = models.CharField(max_length=100, default='No')
     others = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=10, blank=True, null=True)
     date = models.DateField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -366,6 +372,7 @@ class secondboosterrestored (models.Model):
     tunnelVision = models.CharField(max_length=100, default='No')
     seizure = models.CharField(max_length=100, default='No')
     others = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=10, blank=True, null=True)
     date = models.DateField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 

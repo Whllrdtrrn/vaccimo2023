@@ -1,0 +1,11 @@
+{% extends "passwordReset/index.html" %}
+{% block content %}
+        <div class="card text-center align-items-center position-absolute top-50 start-50 translate-middle">
+            <div class="card-body" style="text-align: center">
+                <div class="icon" style="font-size: 57px;color: #1da1f2;"><i class="fa-sharp fa-solid fa-circle-check"></i></div>
+                <div class="title style="font-size: 23px;"">New password <br> confirmed successful</div>
+                <p>you have successfully confirm your new password. Please, use your new password when logging in.</p>
+                <a href="{% url 'loginpage' %}" ><button class="btn btn-primary" style="border-radius: 50px;">Okay</button></a>
+            </div>
+        </div>
+{% endblock %}  

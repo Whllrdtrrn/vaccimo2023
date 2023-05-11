@@ -1,0 +1,18 @@
+{% extends "passwordReset/index.html" %}
+{% block content %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="card text-center align-items-center position-absolute top-50 start-50 translate-middle">
+            <div class="card-body" style="text-align: start">
+                <div class="title style="font-size: 23px;"">Please, enter a new password below</div>
+                <div class="group d-flex flex-column m-3">
+                    <label for="new_password1">New password*</label>
+                    <input class="m-1" type="password" name="new_password1" id="new_password1" style="border-radius: 10px;">
+                    <label for="new_password2">Confirm a new password*</label>
+                    <input class="m-1" type="password" name="new_password2" id="new_password2" style="border-radius: 10px;">
+                </div>
+                <button class="btn btn-primary" type="submit" style="border-radius: 50px;">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}   
