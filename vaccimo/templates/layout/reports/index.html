@@ -1,0 +1,65 @@
+{% extends "layout/LayoutHome.html" %}
+{% load static %}
+{% block content %}
+<div class="col-xl-6 col-md-12">
+    <div class="card">
+        <div class="card-body">
+            <h6>Vaccination Brand</h6>
+            <!--<span>It takes continuous effort to maintain high customer satisfaction levels Internal and
+                external.</span>-->
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div id="satisfaction-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div> 
+<script src="{% static 'js/plugins/apexcharts.min.js' %}"></script>
+<script>
+    // [ satisfaction-chart ] start
+    (function () {
+        var options = {
+            chart: {
+                height: 260,
+                type: 'pie',
+            },
+            series: [{{totalModerna}},{{totalPfizer}},{{totalAstraZeneca}},{{totalSinovac}},{{totalJnj}}],
+            labels: [`Moderna - {{totalModerna}}`, `Pfizer - {{totalPfizer}}`,`AstraZeneca - {{totalAstraZeneca}}`,`Sinovac - {{totalSinovac}}`,`Johnson and Johnson's - {{totalJnj}}`],
+            legend: {
+            show: true,
+            horizontalAlign: 'center', 
+            },
+            dataLabels: {
+                enabled: true,
+                dropShadow: {
+                    enabled: false,
+                }
+            },
+            theme: {
+                monochrome: {
+                    enabled: true,
+                    color: '#7267EF',
+                }
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 320,
+
+                    },
+                    legend: {
+                        position: 'bottom',
+                        offsetY: 0,
+                        
+                    }
+                }
+            }]
+        }
+        var chart = new ApexCharts(document.querySelector("#satisfaction-chart"), options);
+        chart.render();
+    })();
+    // [ satisfaction-chart ] end
+</script>
+{% endblock content %}

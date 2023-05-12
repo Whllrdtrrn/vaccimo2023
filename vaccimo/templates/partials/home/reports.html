@@ -1,0 +1,271 @@
+{% load static %}
+<section id="reports">
+    <div class="container">
+        <div class="row" style="place-content: center;">
+            <div class="col-4" >
+                <div class="card">
+                    <div class="card-header">
+                        <h3>First Dose</h3>
+                    </div>
+                    <div id="chart1">
+                    </div>
+                </div>
+            </div>
+            <div class="col-4" >
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Second Dose</h3>
+                    </div>
+                    <div id="chart2">
+                    </div>
+                </div>
+            </div>
+            <div class="col-4" >
+                <div class="card">
+                    <div class="card-header">
+                        <h3>First Booster</h3>
+                    </div>
+                    <div id="chart3">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 mt-3" >
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Second Booster</h3>
+                    </div>
+                    <div id="chart4">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Vaccine Type</h3>
+                    </div>
+                     <div id="satisfaction-chart"></div>
+                </div>
+            </div>
+        </div>   
+        </div>
+    </div>
+</section>
+<script src="{% static 'js/plugins/apexcharts.min.js' %}"></script>
+<script>
+    var options1 = {
+       chart: {
+                   height: 230,
+                   type: 'pie',
+               },
+               series: [{{mildd}},{{severr}}],
+               labels: [`Mild`, `Severe`],
+               legend: {
+            show: true,
+            horizontalAlign: 'center', 
+            },
+            dataLabels: {
+                enabled: true,
+                dropShadow: {
+                    enabled: false,
+                }
+            },
+            theme: {
+                monochrome: {
+                    enabled: true,
+                    color: '#7267EF',
+                }
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 320,
+
+                    },
+                    legend: {
+                        position: 'bottom',
+                        offsetY: 0,
+                        
+                    }
+                }
+            }]
+   };
+   
+   new ApexCharts(document.querySelector("#chart1"), options1).render();
+   
+</script>
+<script>
+    var options1 = {
+       chart: {
+                   height: 230,
+                   type: 'pie',
+               },
+               series: [{{mildd1}},{{severr1}}],
+               labels: [`Mild`, `Severe`],
+               legend: {
+            show: true,
+            horizontalAlign: 'center', 
+            },
+            dataLabels: {
+                enabled: true,
+                dropShadow: {
+                    enabled: false,
+                }
+            },
+            theme: {
+                monochrome: {
+                    enabled: true,
+                    color: '#7267EF',
+                }
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 320,
+
+                    },
+                    legend: {
+                        position: 'bottom',
+                        offsetY: 0,
+                        
+                    }
+                }
+            }]
+   };
+   
+   new ApexCharts(document.querySelector("#chart2"), options1).render();
+   
+</script>
+<script>
+    var options1 = {
+       chart: {
+                   height: 230,
+                   type: 'pie',
+               },
+               series: [{{mildd2}},{{severr2}}],
+               labels: [`Mild`, `Severe`],
+               legend: {
+            show: true,
+            horizontalAlign: 'center', 
+            },
+            dataLabels: {
+                enabled: true,
+                dropShadow: {
+                    enabled: false,
+                }
+            },
+            theme: {
+                monochrome: {
+                    enabled: true,
+                    color: '#7267EF',
+                }
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 320,
+
+                    },
+                    legend: {
+                        position: 'bottom',
+                        offsetY: 0,
+                        
+                    }
+                }
+            }]
+   };
+   
+   new ApexCharts(document.querySelector("#chart3"), options1).render();
+   
+</script>
+<script>
+    var options1 = {
+       chart: {
+                   height: 230,
+                   type: 'pie',
+               },
+               series: [{{mildd3}},{{severr3}}],
+               labels: [`Mild`, `Severe`],
+               legend: {
+            show: true,
+            horizontalAlign: 'center', 
+            },
+            dataLabels: {
+                enabled: true,
+                dropShadow: {
+                    enabled: false,
+                }
+            },
+            theme: {
+                monochrome: {
+                    enabled: true,
+                    color: '#7267EF',
+                }
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 320,
+
+                    },
+                    legend: {
+                        position: 'bottom',
+                        offsetY: 0,
+                        
+                    }
+                }
+            }]
+   };
+   
+   new ApexCharts(document.querySelector("#chart4"), options1).render();
+   
+</script>
+<script>
+    // [ satisfaction-chart ] start
+    (function () {
+        var options = {
+            chart: {
+                height: 230,
+                type: 'pie',
+            },
+            series: [{{totalModerna}},{{totalPfizer}},{{totalAstraZeneca}},{{totalSinovac}},{{totalJnj}}],
+            labels: [`Moderna - {{totalModerna}}`, `Pfizer - {{totalPfizer}}`,`AstraZeneca - {{totalAstraZeneca}}`,`Sinovac - {{totalSinovac}}`,`Johnson and Johnson's - {{totalJnj}}`],
+            legend: {
+            show: true,
+            horizontalAlign: 'center', 
+            },
+            dataLabels: {
+                enabled: true,
+                dropShadow: {
+                    enabled: false,
+                }
+            },
+            theme: {
+                monochrome: {
+                    enabled: true,
+                    color: '#7267EF',
+                }
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 320,
+
+                    },
+                    legend: {
+                        position: 'bottom',
+                        offsetY: 0,
+                        
+                    }
+                }
+            }]
+        }
+        var chart = new ApexCharts(document.querySelector("#satisfaction-chart"), options);
+        chart.render();
+    })();
+    // [ satisfaction-chart ] end
+</script>

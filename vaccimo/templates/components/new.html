@@ -1,0 +1,45 @@
+<?php
+
+// Assuming you have a database connection established
+// Replace 'your_database_host', 'your_username', 'your_password', and 'your_database_name' with your actual database credentials
+$conn = mysqli_connect('your_database_host', 'your_username', 'your_password', 'your_database_name');
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the email from the form
+    $email = $_POST['email'];
+
+    // Generate a unique activation code for the user
+    $activationCode = md5(uniqid(rand(), true));
+
+    // Insert the user details into the database
+    $sql = "INSERT INTO users (email, activation_code) VALUES ('$email', '$activationCode')";
+    mysqli_query($conn, $sql);
+
+    // Close the database connection
+    mysqli_close($conn);
+
+    // Set the time for the push notification after 1 minute
+    $pushNotificationTime = time() + 60;
+
+    // Create a new job in the cron tab to send the push notification
+    exec('crontab -l | { cat; echo "' . $pushNotificationTime . ' php /path/to/send_push_notification.php ' . $email . '"; } | crontab -');
+    
+    // Display a success message to the user
+    echo "Sign up successful. A push notification will be sent to your email after 1 minute.";
+}
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Sign Up</title>
+</head>
+<body>
+    <h2>User Sign Up</h2>
+    <form method="POST" action="">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>

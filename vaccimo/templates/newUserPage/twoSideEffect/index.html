@@ -30,9 +30,13 @@
     .radio{
         padding: 0;
     }
-
     input:focus-visible {
         outline: none;
+        border-style: none;
+    }
+    .inputStyle{
+        border-style: none;
+        text-transform: capitalize;
     }
 </style>
 <div class="container mt-5">
@@ -66,10 +70,10 @@
                         </div>
                         <div class="col-auto d-flex">
                             <div class="col-auto col-sm-auto mb-3 radio">
-                                <input class="form-check-input" type="checkbox" name="InjectionSitePain" id="muscle_ache_radio" value="Mild" onclick="test1(this)">
+                                <input class="form-check-input" type="checkbox" name="InjectionSitePain" id="InjectionSitePain_radio" value="Mild" onclick="test1(this)">
                             </div> 
                             <div class="col-auto col-sm-auto mb-3 ">
-                                <button class="form-control gap-3 d-flex custom-button" type="button" name="psw-muscle_ache" id="psw-muscle_ache"  data-toggle="modal" data-target="#exampleModal"> <span>Injection Site Pain</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                                <button class="form-control gap-3 d-flex custom-button" type="button" name="psw-InjectionSitePain" id="psw-InjectionSitePain"  data-toggle="modal" data-target="#exampleModal"> <span>Injection Site Pain</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
                             </div>
                         </div>
                         <div class="col-auto d-flex">
@@ -90,11 +94,11 @@
                         </div>
                         <div class="col-auto d-flex">
                             <div class="col-auto col-sm-auto mb-3 radio">
-                             <input class="form-check-input" type="checkbox" name="rashes" id="rashes_radio" value="Mild">
+                                <input class="form-check-input" type="checkbox" name="rashes" id="rashes_radio" value="Mild">
                             </div> 
                             <div class="col-auto col-sm-auto mb-3">
                                 <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-rashes" id="psw-rashes"  data-toggle="modal" data-target="#exampleModal"> <span> Rashes</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
-                               </div>
+                            </div>
                         </div>
                         <div class="col-auto d-flex">
                             <div class="col-auto col-sm-auto mb-3 radio">
@@ -163,7 +167,7 @@
                                 <input class="form-check-input" type="checkbox" name="disorentation" id="disorentation_radio" value="Severe" onclick="test2(this)">
                             </div> 
                             <div class="col-auto col-sm-auto mb-3">
-                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-disorentation" id="psw-disorentation"  data-toggle="modal" data-target="#exampleModal"> <span> Disorentation</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
+                                <button class="form-control gap-3 d-flex custom-button" type="button"  name="psw-disorentation" id="psw-disorentation"  data-toggle="modal" data-target="#exampleModal"> <span> Comatose</span> <span class="material-symbols-outlined custom-icon">expand_more</span></button>
                             </div>
                         </div>
                         <div class="col-auto d-flex">
@@ -188,7 +192,7 @@
                     <div class="form-group">
                         <p>Did you feel other side effect? Specify.</p>
                         <p>
-                            <input class="no-outline" style="padding:3px; border-radius: 0;" placeholder="Example: Tiredness" id="others" name="others" value="{{prod.others}}">
+                            <input class="inputStyle" style="padding:3px; border-radius: 0; border-bottom: 1px solid black;" placeholder="Example: Tiredness" id="others" name="others" value="{{prod.others}}">
                         </p>
                     </div>
                 </div> 
@@ -211,27 +215,101 @@
 {% endblock content %}
 
 {% block javascripts %}
-
 <script>
-    const muscle_ache = document.getElementById('psw-muscle_ache');
     const headache = document.getElementById('psw-headache');
     const fever = document.getElementById('psw-fever');
+    const InjectionSitePain = document.getElementById('psw-InjectionSitePain');
     const chills = document.getElementById('psw-chills');
-    const join_pain = document.getElementById('psw-join_pain');
     const vomiting = document.getElementById('psw-vomiting');
-
+    const rashes = document.getElementById('psw-rashes');
+    const itchiness = document.getElementById('psw-itchiness');
+    const cough = document.getElementById('psw-cough');
+    const bodyPain = document.getElementById('psw-bodyPain');
+    const soarThroat = document.getElementById('psw-soarThroat');
+    const stomachAche = document.getElementById('psw-stomachAche');
+    const difficultyOfBreathing = document.getElementById('psw-difficultyOfBreathing');
+    const chestPain = document.getElementById('psw-chestPain');
+    const disorentation = document.getElementById('psw-disorentation');
+    const tunnelVision = document.getElementById('psw-tunnelVision');
+    const seizure = document.getElementById('psw-seizure');
+    
     const modal = document.querySelector('#exampleModal');
     const modalTitle = modal.querySelector('.modal-title');
     const modalDescription = modal.querySelector('#description');
     const firstAiddescription = modal.querySelector('#firstAiddescription');
     const firstAid = modal.querySelector('#firstAid');
     
-    muscle_ache.addEventListener('click', function() {
-        modalTitle.innerHTML = "Injection Site Pain";
-        modalDescription.innerHTML = "Muscle ache, also known as myalgia, is a common condition that affects many people at some point in their lives. It is characterized by pain, tenderness, and stiffness in one or more muscles, which can range from mild to severe.";
-        firstAid.innerHTML = "Muscle ache";
-        firstAiddescription.innerHTML = "1. Rest: Give your body the rest it needs. Avoid any strenuous physical activity that may further strain your muscles. <br> 2. Ice: Applying ice to the affected area can help reduce inflammation and relieve pain. Wrap a cold pack or a bag of ice in a towel and apply it to the affected area for 15 to 20 minutes at a time, several times a day. <br> 3. Compression: Wrap the affected area with an elastic bandage to help reduce swelling and provide support. <br>4. Elevation: If possible, elevate the affected area to help reduce swelling. <br> 5. Over-the-counter pain relievers: Medications like acetaminophen (Tylenol) or ibuprofen (Advil, Motrin) can help relieve pain and reduce inflammation. Follow the recommended dosage on the label. <br> 6. Stretching: Gentle stretching exercises can help relieve muscle tension and improve flexibility. However, avoid stretching too vigorously or forcefully, as this can make your muscle ache worse.";
-
+    InjectionSitePain.addEventListener('click', function() {
+        modalTitle.innerHTML = "Seizure";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    seizure.addEventListener('click', function() {
+        modalTitle.innerHTML = "Seizure";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    tunnelVision.addEventListener('click', function() {
+        modalTitle.innerHTML = "Tunnel Vision";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    disorentation.addEventListener('click', function() {
+        modalTitle.innerHTML = "Comatose";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    chestPain.addEventListener('click', function() {
+        modalTitle.innerHTML = "Chest Pain";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    difficultyOfBreathing.addEventListener('click', function() {
+        modalTitle.innerHTML = "Difficulty Of Breathing";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    stomachAche.addEventListener('click', function() {
+        modalTitle.innerHTML = "Stomach Ache";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    soarThroat.addEventListener('click', function() {
+        modalTitle.innerHTML = "Soar Throat";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    bodyPain.addEventListener('click', function() {
+        modalTitle.innerHTML = "Body Pain";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    cough.addEventListener('click', function() {
+        modalTitle.innerHTML = "Cough";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    itchiness.addEventListener('click', function() {
+        modalTitle.innerHTML = "Itchiness";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
+    });
+    rashes.addEventListener('click', function() {
+        modalTitle.innerHTML = "Rashes";
+        modalDescription.innerHTML = "Headache is a common condition that causes pain or discomfort in the head, scalp, or neck. There are several different types of headaches, including tension headaches, migraines, cluster headaches, and sinus headaches.";
+        firstAid.innerHTML = "Headache";
+        firstAiddescription.innerHTML = "1. Rest in a quiet and dark room: Try to find a quiet, dark room to rest in, which may help reduce the intensity of the headache. <br> 2.Apply a cold compress: Place a cold compress, such as a cold pack or a towel wrapped in ice, on your forehead or the back of your neck. This may help to reduce the pain and inflammation. <br> 3.Drink fluids: Dehydration can sometimes cause headaches, so it's important to drink plenty of fluids, especially water. <br>4.Take pain relief medication: Over-the-counter pain relief medication, such as ibuprofen or acetaminophen, may help to relieve the headache pain. <br> 5. Avoid triggers: If you know what triggers your headaches, try to avoid them. Common triggers include stress, lack of sleep, certain foods, and bright lights.";
     });
     headache.addEventListener('click', function() {
         modalTitle.innerHTML = "Headache";
@@ -251,13 +329,6 @@
         modalDescription.innerHTML = "Chills, also known as rigor, refer to the sudden feeling of coldness accompanied by shivering and trembling. Chills often occur as a response to a fever, which is the body's way of raising its temperature to fight an infection. The sensation of chills may be accompanied by other symptoms, such as headache, muscle aches, and fatigue. Chills may also be a side effect of certain medications or a symptom of certain medical conditions, such as malaria or pneumonia.";
         firstAid.innerHTML = "Chills";
         firstAiddescription.innerHTML = "1. Rest and stay hydrated: Getting plenty of rest and fluids will help your body fight off the infection causing the chills.<br>2. Dress warmly: Covering up with blankets and warm clothing can help you feel more comfortable.<br>3. Take over-the-counter medication: Medications like acetaminophen or ibuprofen can help reduce fever and alleviate chills.<br>4. Treat the underlying cause: If the chills are caused by an infection, it is important to address the underlying illness with the appropriate treatment. This may involve antibiotics or antiviral medications.<br>5. Seek medical attention: If your chills are severe, last longer than a few days, or are accompanied by other symptoms such as chest pain, difficulty breathing, or confusion, seek medical attention right away.";
-
-    });
-    join_pain.addEventListener('click', function() {
-        modalTitle.innerHTML = "Join Pain";
-        modalDescription.innerHTML = "Joint pain, also known as arthralgia, refers to any discomfort, aches, or soreness in any of the body's joints. The pain can range from mild to severe and can be acute or chronic. It can occur in any joint, including the knees, hips, shoulders, elbows, and wrists. Joint pain can be caused by a variety of factors, including injury, inflammation, infection, or certain medical conditions such as osteoarthritis, rheumatoid arthritis, gout, lupus, and fibromyalgia. In some cases, joint pain may also be caused by overuse or strain due to physical activity or repetitive motions.";
-        firstAid.innerHTML = "Join Pain";
-        firstAiddescription.innerHTML = "1. Rest the affected joint: Avoid any activities that may cause more pain or stress on the affected joint. If the joint pain is severe, immobilize the joint by using a brace or splint.<br>2. Apply ice: Apply a cold compress to the affected joint for 20-30 minutes at a time, several times a day. This can help reduce inflammation and relieve pain.<br>3. Elevate the affected joint: If possible, elevate the affected joint above heart level to help reduce swelling.<br>4. Take over-the-counter pain relievers: Nonsteroidal anti-inflammatory drugs (NSAIDs), such as ibuprofen or aspirin, can help relieve pain and reduce inflammation.<br>5. Seek medical attention: If the joint pain is severe or lasts for more than a few days, it is important to seek medical attention. A healthcare professional can provide a proper diagnosis and recommend appropriate treatment.";
 
     });
     vomiting.addEventListener('click', function() {

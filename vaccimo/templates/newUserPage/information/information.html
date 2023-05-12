@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
-                                <h6>First Name</h6>
+                                <h6>First Name <span style="color: red;">*</span> </h6>
                                 <p>
                                     <input oninput="this.className = ''" id="nameFirst" name="nameFirst" value="{{prod.nameFirst}}" required>
                                 </p>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <h6>Last Name</h6>
+                                <h6>Last Name <span style="color: red;">*</span></h6>
                                 <p>
                                     <input oninput="this.className = ''" id="nameLast" name="nameLast" value="{{prod.nameLast}}" required>
                                 </p>
@@ -102,24 +102,24 @@
                         </div>
                     </div>
                             <div class="form-group">
-                                <h6>Contact Number</h6>
-                                <input oninput="this.className = ''" name="contact_number" type="number" value="{{prod.contact_number}}" required>
+                                <h6>Contact Number <span style="color: red;">*</span></h6>
+                                <input oninput="this.className = ''" name="contact_number" value="+63 " type="tel" maxlength="14" value="{{prod.contact_number}}" required>
                             </div>
                     <div class="form-group">
-                        <h6>Age</h6>
+                        <h6>Age <span style="color: red;">*</span></h6>
                         <input oninput="this.className = ''" id="age" name="age" type="number" value="{{prod.age}}" required>
                     </div>
                     <div class="form-group">
-                        <h6>Gender</h6>
+                        <h6>Gender <span style="color: red;">*</span></h6>
                             <select oninput="this.className = ''" style="font-size: 16px;"  id="gender" name="gender"
-                            class="form-control"  value="{{prod.gender}}">
+                            class="form-control"  value="{{prod.gender}}" required>
                             <option value="{{prod.gender}}" selected hidden>{{prod.gender}}</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             </select>   
                     </div>
                         <div class="form-group">
-                                <h6>Street</h6>
+                                <h6>Street <span style="color: red;">*</span></h6>
                                 <select oninput="this.className = ''" style="font-size: 16px;" id="address"
                                 name="address" type="text" placeholder="Vaccination Brand"
                                 autocomplete="off" class="form-control" 
@@ -127,6 +127,46 @@
                                 <option value="{{prod.address}}" selected hidden>{{prod.address}}</option>
                                 <option value="J.P Rizal">J.P Rizal</option>
                                 <option value="Manggahan">Manggahan</option>
+                                <option value="10th Avenue">10th Avenue</option>
+                                <option value="11th Avenue">11th Avenue</option>
+                                <option value="38th Street">38th Street</option>
+                                <option value="39th Street">39th Street</option>
+                                <option value="40th Street">40th Street</option>
+                                <option value="8th Avenue">8th Avenue</option>
+                                <option value="9th Avenue">9th Avenue</option>
+                                <option value="Acacia Street">Acacia Street</option>
+                                <option value="Banaba Street">Banaba Street</option>
+                                <option value="Bayabas Street">Bayabas Street</option>
+                                <option value="Caimito Street">Caimito Street</option>
+                                <option value="Colonel Santos Street">Colonel Santos Street</option>
+                                <option value="Corpuz Street">Corpuz Street</option>
+                                <option value="Dalandan Street">Dalandan Street</option>
+                                <option value="E. Aguinaldo Street">E. Aguinaldo Street</option>
+                                <option value="F. Balagtas Street">F. Balagtas Street</option>
+                                <option value="Garcia Street">Garcia Street</option>
+                                <option value="General A. Luna Street">General A. Luna Street</option>
+                                <option value="General Ricarte Street">General Ricarte Street</option>
+                                <option value="H. Dagohoy Street">H. Dagohoy Street</option>
+                                <option value="Ipil-ipil Street">Ipil-ipil Street</option>
+                                <option value="J. Burgos Street">J. Burgos Street</option>
+                                <option value="Jose P. Rizal Avenue">Jose P. Rizal Avenue</option>
+                                <option value="Kalayaan Avenue">Kalayaan Avenue</option>
+                                <option value="Lawton Avenue">Lawton Avenue</option>
+                                <option value="Magsaysay Street">Magsaysay Street</option>
+                                <option value="Manga Street">Manga Street</option>
+                                <option value="Narra Street">Narra Street</option>
+                                <option value="P. Gomez Street">P. Gomez Street</option>
+                                <option value="Pili Avenue">Pili Avenue</option>
+                                <option value="Pio Del Pilar Street">Pio Del Pilar Street</option>
+                                <option value="Quezon Street">Quezon Street</option>
+                                <option value="Quirino Street">Quirino Street</option>
+                                <option value="R. Hidalgo Street">R. Hidalgo Street</option>
+                                <option value="Santa Monica–Lawton Bridge">Santa Monica–Lawton Bridge</option>
+                                <option value="Santol Street">Santol Street</option>
+                                <option value="Tanguile Street">Tanguile Street</option>
+                                <option value="Teachers Compound">Teachers Compound</option>
+                                <option value="Triangle Drive">Triangle Drive</option>
+                                <option value="Zamora Street">Zamora Street</option>
                             </select>
                         </div>
                 </div>

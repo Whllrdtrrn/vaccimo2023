@@ -30,6 +30,8 @@ urlpatterns = [
 
     path('dashboard/side-effect-reports/', views.sideEffectReports, name='sideEffectReports'),
     
+    path('reports/', views.reports, name='reports'),
+
     #path('vaccimo/follow-up/', views.followUp, name='followUp'),
     path('vaccimo/', views.informationNew, name='informationNew'),
     path('vaccimo/firstDose/', views.firstDose, name='firstDose'),

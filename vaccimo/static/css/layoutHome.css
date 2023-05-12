@@ -19,6 +19,7 @@ body {
 
 .nav-link:hover {
     border-bottom: 1px solid white;
+    color: white !important;
 }
 
 .navbar {
@@ -30,6 +31,7 @@ body {
 
 a .actives {
     border-bottom: rgb(255, 255, 255) 1px solid;
+    color: white;
 }
 
 .hero {

@@ -168,7 +168,40 @@ def pdfAllReport(request):
     return response
 
 def LayoutHome(request):
-    return render(request, 'Layout/LayoutHome.html')
+    severr = firstdose.objects.filter(status='Severe').count()
+    mildd = firstdose.objects.filter(status='Mild').count()
+    severr1 = seconddose.objects.filter(status='Severe').count()
+    mildd1 = seconddose.objects.filter(status='Mild').count()
+    severr2 = firstbooster.objects.filter(status='Severe').count()
+    mildd2 = firstbooster.objects.filter(status='Mild').count()
+    severr3 = secondbooster.objects.filter(status='Severe').count()
+    mildd3 = secondbooster.objects.filter(status='Mild').count()
+    
+    tMild = mildd + mildd1 + mildd2 + mildd3
+    tSevere = severr + severr1 + severr2 + severr3
+    totalModerna = user.objects.filter(Q(vaccination_brand='moderna') | Q(vaccination_brand1='moderna') | Q(vaccination_brand2='moderna') | Q(vaccination_brand3='moderna')).values().count()
+    totalPfizer = user.objects.filter(Q(vaccination_brand='pfizer') | Q(vaccination_brand1='pfizer') | Q(vaccination_brand2='pfizer') | Q(vaccination_brand3='pfizer')).values().count()
+    totalAstraZeneca = user.objects.filter(Q(vaccination_brand='astraZeneca') | Q(vaccination_brand1='astraZeneca') | Q(vaccination_brand2='astraZeneca') | Q(vaccination_brand3='astraZeneca')).values().count()
+    totalSinovac = user.objects.filter(Q(vaccination_brand='sinovac') | Q(vaccination_brand1='sinovac') | Q(vaccination_brand2='sinovac') | Q(vaccination_brand3='sinovac')).values().count()
+    totalJnj = user.objects.filter(Q(vaccination_brand='johnson_and_Johnsons') | Q(vaccination_brand1='johnson_and_Johnsons') | Q(vaccination_brand2='johnson_and_Johnsons') | Q(vaccination_brand3='johnson_and_Johnsons')).values().count()
+    context = {
+        'severr': severr,
+        'tMild': tMild,
+        'mildd': mildd,
+        'severr1': severr1,
+        'mildd1': mildd1,
+        'severr2': severr2,
+        'mildd2': mildd2,
+        'severr3': severr3,
+        'mildd3': mildd3,
+        'tSevere': tSevere,
+        'totalModerna': totalModerna,
+        'totalPfizer': totalPfizer,
+        'totalAstraZeneca': totalAstraZeneca,
+        'totalSinovac': totalSinovac,
+        'totalJnj': totalJnj,
+    }
+    return render(request, 'Layout/LayoutHome.html', context)
 
 
 def LayoutIndex(request):
@@ -446,6 +479,8 @@ def verification(request):
 def home_page(request):
     return render(request, 'homepage.html')
 
+def reports(request):
+    return render(request, 'layout/reports/index.html')
 
 def logout_view(request):
     logout(request)
@@ -506,22 +541,22 @@ def register_page(request):
                 return redirect('/register/')
             else:
                 user = User.objects.create_user(username=username, password=password, email=email)
-                user.last_login = timezone.now() # Set last_login to current time
                 user.save()
                 auth.login(request, user)
-                current_site = get_current_site(request)
-                mail_subject = 'Activation link has been sent to your email id'
-                message = render_to_string('acc_active_email.html', {
-                    'user': user,
-                    'domain': current_site.domain,
-                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                    'token': account_activation_token.make_token(user),
-                })
-                email = EmailMessage(
-                    mail_subject, message, to=[email]
-                )
-                email.send()
-                return redirect('/email-verification/')
+                #current_site = get_current_site(request)
+                #mail_subject = 'Activation link has been sent to your email id'
+                #message = render_to_string('acc_active_email.html', {
+                #    'user': user,
+                #    'domain': current_site.domain,
+                #    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                #    'token': account_activation_token.make_token(user),
+                #})
+                #email = EmailMessage(
+                #    mail_subject, message, to=[email]
+                #)
+                #email.send()
+                return redirect('/vaccimo/')
+                #return redirect('/email-verification/')
         else:
             return render(request, 'register.html', {'error': 'Both passwords are not matching'})
 
@@ -755,7 +790,7 @@ def surveyNew(request):
         else:
             prod = user()
             return render(request, 'newUserPage/survey/index.html', {'prod': prod})
-#question side effect
+        
 def whatDoYouFeel(request):
     try:
         prod = firstdose.objects.get(author=request.user)
@@ -2487,7 +2522,7 @@ def dashboard(request):
 
 def userAccount(request):
     userAccount = User.objects.all().values().filter(
-        is_superuser=False).order_by('-date_joined')
+        is_superuser=False).order_by('-date_joined').order_by('-last_login')
     context = {
         'userAccount': userAccount,
     }
