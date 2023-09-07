@@ -3,6 +3,7 @@
     {% load static %}
 {% endblock static %}
 {% block title %} <title>Information Collection</title> {% endblock %}
+{% load tz %}
 
 
 {% block stylesheets %}
@@ -11,6 +12,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'newUserPage/information/index.css' %}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 {% endblock stylesheets %}
 
 
@@ -52,7 +55,7 @@
                 </div>
                 <div class="form-group">
                     <h6>Date Vaccinated</h6>
-                    <input placeholder="Date vaccinated" type="date" name="dateVaccinated" value="{{prod.dateVaccinated}}" required>
+                    <input placeholder="Date vaccinated" type="text" class="datepicker" name="dateVaccinated" value="{{prod.dateVaccinated}}" required>
                 </div>
                 <div style="overflow:auto;" id="nextprevious">
                     <div id="prevSubmit" style="float:right;">
@@ -64,9 +67,14 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById(".datepicker").setAttribute("min", today);
+  </script>
 {% endblock content %}
 
 
@@ -74,7 +82,23 @@
 
 {% block javascripts %}
 <script>
-    const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
-    const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
+    $(document).ready(function () {
+        var today = new Date();
+        $('.datepicker').datepicker({
+            format: 'mm-dd-yyyy',
+            autoclose:true,
+            endDate: "today",
+            maxDate: today
+        }).on('changeDate', function (ev) {
+                $(this).datepicker('hide');
+            });
+
+
+        $('.datepicker').keyup(function () {
+            if (this.value.match(/[^0-9]/g)) {
+                this.value = this.value.replace(/[^0-9^-]/g, '');
+            }
+        });
+    });
 </script>
 {% endblock javascripts %}

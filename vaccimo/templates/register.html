@@ -72,8 +72,8 @@
                                         style="border-radius: 0px;" id="basic-addon1"><i
                                         class="fa fa-fw fa-user "><b></b></i></span>
                                         <input style="font-size: 16px; border-radius: 0px;width: 100%!important;" id="username"
-                                        name="username" type="text" placeholder="Username" autocomplete="off"
-                                        class="form-control" minlength="8" required /> <span class="help-block"></span>
+                                        name="username" type="text" placeholder="Username" minlength="5" maxlength = "30" autocomplete="off"
+                                        class="form-control" pattern="^(?=.*[a-zA-Z])(?=.*\d).+$" title="Please enter a username with at least one letter and one number" required /> <span class="help-block"></span>
                                     </div>
                                     <div class="form-group" style="display:flex ;"> <span class="input-group-text"
                                             style="border-radius: 0px;" id="basic-addon1"><i

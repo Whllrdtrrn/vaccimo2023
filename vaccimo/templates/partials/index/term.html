@@ -29,9 +29,9 @@
         when you sign up for an account with us; we will collect your name, email address, alternate
         email, birthdate, gender, address, occupation, and mobile number.
     </p>
-    <div class="form-check mb-3 pl-5" style="    display: flex;
-    align-items: center;">
-        <input class="form-check-input" onclick="EnableDisable()" id="myCheck" type="checkbox" value="" />
+    <div class="form-check mb-3 pl-5" style="display: flex;align-items: center;">
+        <div id="text-message" style="display: none;">error</div>
+        <input class="form-check-input" onclick="EnableDisable()" id="myCheck" type="checkbox" value="" required/>
         <label class="form-check-label " style="font-size: x-large !important;" for="flexCheckChecked"> I agree to terms
             and
             condition </label>
@@ -43,6 +43,7 @@
 </div>
 <script>
     function EnableDisable() {
+        var errors = document.getElementById("error");
         var btnSubmit = document.getElementById("myCheck");
         var element = document.getElementById("nextBtn");
         if (btnSubmit.checked == true) {

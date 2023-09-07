@@ -16,7 +16,12 @@
 
 
 {% block content %}
-
+    <style>
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        display: none;
+      }
+    </style>
 {% for msg in messages %}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% if msg.tags == 'success' %}
@@ -88,7 +93,6 @@
                                     <select style="height: 45px;border-radius: 10px;" oninput="this.className = ''"   id="suffix" name="suffix"
                                     class="form-control"  value="{{prod.suffix}}">
                                     <option value="{{prod.suffix}}" selected hidden>{{prod.suffix}}</option>
-                                    <option value="N/A">N/A</option>
                                     <option value="Junior (Jr.)">Junior (Jr.)</option>
                                     <option value="Senior (Sr.)">Senior (Sr.)</option>
                                     <option value="I">I</option>
@@ -103,7 +107,7 @@
                     </div>
                             <div class="form-group">
                                 <h6>Contact Number <span style="color: red;">*</span></h6>
-                                <input oninput="this.className = ''" name="contact_number" value="+63 " type="tel" maxlength="14" value="{{prod.contact_number}}" required>
+                                <input oninput="this.className = ''" name="contact_number" value="+63 " type="tel" maxlength="14" required>
                             </div>
                     <div class="form-group">
                         <h6>Age <span style="color: red;">*</span></h6>
@@ -203,8 +207,6 @@
 
     var currentTab = 0;
               document.addEventListener("DOMContentLoaded", function(event) {
-
-
               showTab(currentTab);
 
               });

@@ -11,321 +11,206 @@
 	<link rel="stylesheet" href="{% static 'css/details.css' %}" />
 	<title>ViewDetailsPage</title>
 	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">  
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.3/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.1.2/css/searchPanes.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.6.2/css/select.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.4.1/css/dataTables.dateTime.min.css">
 </head>
 
-<body> <img id="bg-main" src="{% static 'images/login.jpg' %}" alt="Cover Image" style="position: absolute; height: 100%; width: 100%;" />
-	<div class="text-details">
-		<h1 style=" text-transform: uppercase; ">{{userId.name}}</h1><span style="font-size:30px ;">(Details)</span></div>
-	<div class="container Details " style="position: relative;background: white;padding:0px;top: 10%;    border: 1px solid black;">
-		<div class="wrapper">
-			<div class="wrapper-scroll example">
-				<br>
-				<div class="form-group">
-					<label class="form-label-title"> Vaccination Card:</label>
-					<br> {% if userId.file %} <img id="blah_primary_back" src="{{userId.file.url}}" style="width: auto; height: 200px;" alt="" /> {% endif %} </div>
-				<div class="form-group">
-					<label class="form-label-title">Full Name:</label>
-					<br>
-					<label class="form-label">{{userId.name}}</label>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label class="form-label-title">Vaccination Brand:</label>
-							<br>
-							<label class="form-label">{{userId.vaccination_brand}}</label>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label class="form-label-title">Vaccination Site:</label>
-							<br>
-							<label class="form-label">{{userId.vaccination_site}}</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="form-label-title">Full Address:</label>
-					<br>
-					<label class="form-label">{{userId.address}}</label>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label class="form-label-title">Contact Number:</label>
-							<br>
-							<label class="form-label">{{userId.contact_number}}</label>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label class="form-label-title">Birthdate:</label>
-							<br>
-							<label class="form-label">{{userId.bday}}</label>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label class="form-label-title">Age:</label>
-							<br>
-							<label class="form-label">{{userId.age}}</label>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label class="form-label-title">Gender:</label>
-							<br>
-							<label class="form-label">{{userId.gender}}</label>
-						</div>
-					</div>
-				</div>
-				<!-- Questionaire survey -->
-				<br>
-				<div class="container" style="text-align: center;">
-					<div class="text">
-						<center>
-							<h1>Screening Questionaire for Vaccination</h1></center>
-					</div>
-					<table width="auto" cellpadding="2">
-						<tr>
-							<td colspan="4" height="40"><span style="color:red"><b>QUESTION :</b></span></td>
-						</tr>
-						<tr>
-							<td width="400" height="60"><b><i>Have you (or any family member/s) been diagnosed with or tested positive for COVID-19 in the past three (3) months?&nbsp;</i></b></td>
-							<td width="auto">
-								<div class="form-control-b">
-									<h5>{{queId.Q0}}</h5> </div>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="4" height="40"><b><i>Do you or have you the following symptoms in the past 14 days?</i></b></td>
-						</tr>
-						<tr>
-							<td><i>- Fever of greater than 37.5°C</i></td>
-							<td width="auto">
-								<div class="form-control-b">
-									<h5>{{queId.Q1}}</h5> </div>
-							</td>
-						</tr>
-						<tr>
-							<td><i>- Do you or have you had any 'flu-like' symptoms, such as cough or chills, in the past 14 days?</i></td>
-							<td width="auto">
-								<div class="form-control-b">
-									<h5>{{queId.Q2}}</h5> </div>
-							</td>
-						</tr>
-						<tr>
-							<td><i>- Do you experience shortness of breath or breathing difficulty?</i></td>
-							<td width="auto">
-								<div class="form-control-b">
-									<h5>{{queId.Q3}}</h5> </div>
-							</td>
-						</tr>
-						<tr>
-							<td><i>- Do you have any difficulties with your sense of taste or smell at present?</i></td>
-							<td width="auto">
-								<div class="form-control-b">
-									<h5>{{queId.Q4}}</h5> </div>
-							</td>
-						</tr>
-						<tr>
-							<td><i>- Headache, muscle or body ache</i></td>
-							<td width="auto">
-								<div class="form-control-b">
-									<h5>{{queId.Q5}}</h5> </div>
-							</td>
-						</tr>
-						<tr>
-							<td><i>- Weakness or fatigue</i></td>
-							<td width="auto">
-								<div class="form-control-b">
-									<h5>{{queId.Q6}}</h5> </div>
-							</td>
-							<tr>
-								<td><i>- Are you experiencing diarrhea?</i></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q7}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td width="400" height="40"><b><i>Do you have any allergy to food, antibiotics, or any medicine?&nbsp;</i></b></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q8}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td width="400" height="40"><b><i>Have you ever had a severe reaction to vaccines in the past?&nbsp;</i></b></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q9}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td width="400" height="40"><b><i>Have you received any vaccine in the last 14 days?&nbsp;</i></b></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q10}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="4" height="40"><b><i>For women :</i></b></td>
-							</tr>
-							<tr>
-								<td><i>- Are you pregnant</i></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q11}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td><i>- For women who are pregnant, are you in your 1st trimester (1 to 3 months) of pregnancy?</i></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q12}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td><i>- Plans to get pregnant in the next 6 months?</i></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q13}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td width="400" height="40"><b><i>Do you have a bleeding disorder or are you taking a blood thinner? (Example of Bleeding disorder: Hemophilia, Thalassemia) (Example of blood thinning medications: Aspirin, Clopidogrel, Warfarin, Cilostazol)&nbsp;</i></b></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q14}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="4" height="40"><b><i>Do you have any of the following illness/disease?</i></b></td>
-							</tr>
-							<tr>
-								<td><i>- Autoimmune disease</i></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q15}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td><i>- HIV Diagnosis</i></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q16}}</h5> </div>
-								</td>
-							</tr>
-							<tr>
-								<td><i>- Cancer/Malignancy</i></td>
-								<td width="auto">
-									<div class="form-control-b">
-										<h5>{{queId.Q17}}</h5> </div>
-								</td>
-								<tr>
-									<td><i>- Transplant Patient</i></td>
-									<td width="auto">
-										<div class="form-control-b">
-											<h5>{{queId.Q18}}</h5> </div>
-									</td>
-								</tr>
-								<tr>
-									<td><i>- Under steroid treatment</i></td>
-									<td width="auto">
-										<div class="form-control-b">
-											<h5>{{queId.Q19}}</h5> </div>
-									</td>
-								</tr>
-								<tr>
-									<td><i>- Bed ridden, terminal illness, less than 6mos prognosis</i></td>
-									<td width="auto">
-										<div class="form-control-b">
-											<h5>{{queId.Q20}}</h5> </div>
-									</td>
-								</tr>
-								<tr>
-									<td width="400" height="40"><b><i>Are you bedridden?&nbsp;</i></b></td>
-									<td width="auto">
-										<div class="form-control-b">
-											<h5>{{queId.Q21}}</h5> </div>
-									</td>
-								</tr>
-								<tr>
-									<td width="400" height="40"><b><i>Are you wheelchair bound?&nbsp;</i></b></td>
-									<td width="auto">
-										<div class="form-control-b">
-											<h5>{{queId.Q22}}</h5> </div>
-									</td>
-								</tr>
-					</table>
-					<p style="color:red;text-align:left ;  margin: 15px; ">Note: If you answered yes to any of the above-mentioned diseases/condition, please provide a medical clearance from your physician on the day of your vaccination.</p>
-					<table width="auto">
-						<tr>
-							<td style="padding: 10px;"> <b><i>Allergies <small>(Please check all that apply):</small></i></b>
-								<br>{% if prod %}
-								<h5>{{queId.allergy}} {{queId.allergy1}} {{queId.allergy2}} {{queId.allergy3}} {{queId.allergy4}} {{queId.allergy5}}</h5> <b><i>With Co-morbidities? <span style="color:red;" >*</span></i></b>
-								<br>
-								<h5>{{queId.Q23}}</h5> <b><i>Was diagnosed with COVID-19? <span style="color:red;" >*</span></i></b>
-								<br>
-								<h5>{{queId.Q24}}</h5> </td>{% endif %}
-						</tr>
-					</table>
-					<!-- sideeffect data -->
-					<br>
-					<center>
-						<h1>Screening Questionaire for Vaccination</h1></center>
-				</div>
-				<div class="overFlow">
-					<table class="table table-hover table-wrapper  text-center" style="margin-bottom: 50px;text-transform: capitalize;padding-left:12px ">
-						<thead>
-							<tr>
-								<th>Muscle ache</th>
-								<th>Headache</th>
-								<th>fever</th>
-								<th>redness</th>
-								<th>swelling</th>
-								<th>tenderness</th>
-								<th>warmth</th>
-								<th>itch</th>
-								<th>induration</th>
-								<th>feverish</th>
-								<th>chills</th>
-								<th>join pain</th>
-								<th>fatigue</th>
-								<th>nausea</th>
-								<th>vomiting</th>
-							</tr>
-						</thead>
-						<tbody style="text-transform: capitalize;">
-							<tr>
-								<td class="cell-detail"> <span>{{sfId.muscle_ache}}</span> </td>
-								<td class="cell-detail"> <span>{{sfId.headache}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.fever}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.redness}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.swelling}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.tenderness}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.warmth}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.itch}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.induration}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.feverish}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.chills}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.join_pain}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.fatigue}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.nausea}}</span> </td>
-								<td class="cell-detail text-center"> <span>{{sfId.vomiting}}</span> </td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="w3-container text-center"> <a type="button" onclick="history.back()" class="btn btn-primary mb-5 w-50 ">Done</a> </div>
+<body style="background: #eee;">
+	<div class="container Details " style="text-transform: capitalize">
+		<div class="row">
+			<div class="col-3">
+				<h4>First Name:</h4>
+				<h6>{{userId.nameFirst}}</h6>
 			</div>
-			
+			<div class="col-3">
+				<h4>Last Name:</h4>
+				<h6>{{userId.nameLast}}</h6>
+			</div>
+			<div class="col-3">
+				<h4>Middle Initial:</h4>
+				<h6>{{userId.name}}</h6>
+			</div>
+			<div class="col-3">
+				<h4>Suffix:</h4>
+				<h6>{{userId.suffix}}</h6>
+			</div>
+			<div class="col-3">
+				<h4>Age:</h4>
+				<h6>{{userId.age}}</h6>
+			</div>
+			<div class="col-3">
+				<h4>Gender:</h4>
+				<h6>{{userId.gender}}</h6>
+			</div>
+			<div class="col-3">
+				<h4>Contact Number:</h4>
+				<h6>{{userId.contact_number}}</h6>
+			</div>
+			<div class="col-3">
+				<h4>Street:</h4>
+				<h6>{{userId.address}}</h6>
+			</div>
+			<div class="col-12 mt-3">
+				<div class="card-header bg-white"><h3>Vaccine Information</h3></div>
+				<table style="width: 100%;text-align: center; margin-top: 1rem;border: 1px solid black;">
+					<thead>
+						<th>Vaccine Dosage</th>
+						<th>Vaccine Brand</th>
+						<th>Date Vaccinated</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>First Dose</td>
+							<td>{{userId.vaccination_brand}}</td>
+							<td>{{userId.dateVaccinated}}</td>
+						</tr>
+						<tr>
+							<td>Second Dose</td>
+							<td>{{userId.vaccination_brand1}}</td>
+							<td>{{userId.dateVaccinated1}}</td>
+						</tr>
+						<tr>
+							<td>First Booster</td>
+							<td>{{userId.vaccination_brand2}}</td>
+							<td>{{userId.dateVaccinated2}}</td>
+						</tr>
+						<tr>
+							<td>Second Booster</td>
+							<td>{{userId.vaccination_brand3}}</td>
+							<td>{{userId.dateVaccinated3}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-12 mt-3">
+				<div class="card-header bg-white"><h3>Adverse Events</h3></div>
+				<table style="width: 100%;text-align: center; margin-top: 1rem;border: 1px solid black;">
+					<thead style="font-size: 12px;">
+						<th>#</th>
+						<th>Headache</th>
+						<th>Fever</th>
+						<th>Injection Site Pain</th>
+						<th>Rashes</th>
+						<th>Itchiness</th>
+						<th>Cough</th>
+						<th>Body Pain</th>
+						<th>Soar Throat</th>
+						<th>Stomach Ache</th>
+						<th>Vomiting</th>
+						<th>Difficult of breathing</th>
+						<th>Chest Pain</th>
+						<th>Comatose</th>
+						<th>Tunnel Vision</th>
+						<th>Seizure</th>
+						<th>Others</th>
+						<th>Status</th>
+
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>{% if sfId.headache == 'Mild'%}Yes{% elif sfId.headache == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.fever == 'Mild'%}Yes{% elif sfId.fever == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.InjectionSitePain == 'Mild'%}Yes{% elif sfId.InjectionSitePain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.rashes == 'Mild'%}Yes{% elif sfId.rashes == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.itchiness == 'Mild'%}Yes{% elif sfId.itchiness == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.cough == 'Mild'%}Yes{% elif sfId.cough == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.bodyPain == 'Mild'%}Yes{% elif sfId.bodyPain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.soarThroat == 'Mild'%}Yes{% elif sfId.soarThroat == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.stomachAche == 'Mild'%}Yes{% elif sfId.stomachAche == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.vomiting == 'Mild'%}Yes{% elif sfId.vomiting == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.difficultyOfBreathing == 'Mild'%}Yes{% elif sfId.difficultyOfBreathing == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.chestPain == 'Mild'%}Yes{% elif sfId.chestPain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.disorentation == 'Mild'%}Yes{% elif sfId.disorentation == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.tunnelVision == 'Mild'%}Yes{% elif sfId.tunnelVision == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sfId.seizure == 'Mild'%}Yes{% elif sfId.seizure == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{{sfId.others}}</td>
+							<td>{{sfId.status}}</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>{% if queId.headache == 'Mild'%}Yes{% elif queId.headache == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.fever == 'Mild'%}Yes{% elif queId.fever == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.InjectionSitePain == 'Mild'%}Yes{% elif queId.InjectionSitePain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.rashes == 'Mild'%}Yes{% elif queId.rashes == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.itchiness == 'Mild'%}Yes{% elif queId.itchiness == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.cough == 'Mild'%}Yes{% elif queId.cough == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.bodyPain == 'Mild'%}Yes{% elif queId.bodyPain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.soarThroat == 'Mild'%}Yes{% elif queId.soarThroat == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.stomachAche == 'Mild'%}Yes{% elif queId.stomachAche == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.vomiting == 'Mild'%}Yes{% elif queId.vomiting == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.difficultyOfBreathing == 'Mild'%}Yes{% elif queId.difficultyOfBreathing == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.chestPain == 'Mild'%}Yes{% elif queId.chestPain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.disorentation == 'Mild'%}Yes{% elif queId.disorentation == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.tunnelVision == 'Mild'%}Yes{% elif queId.tunnelVision == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if queId.seizure == 'Mild'%}Yes{% elif queId.seizure == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{{queId.others}}</td>
+							<td>{{queId.status}}</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>{% if sBooster.headache == 'Mild'%}Yes{% elif sBooster.headache == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.fever == 'Mild'%}Yes{% elif sBooster.fever == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.InjectionSitePain == 'Mild'%}Yes{% elif sBooster.InjectionSitePain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.rashes == 'Mild'%}Yes{% elif sBooster.rashes == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.itchiness == 'Mild'%}Yes{% elif sBooster.itchiness == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.cough == 'Mild'%}Yes{% elif sBooster.cough == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.bodyPain == 'Mild'%}Yes{% elif sBooster.bodyPain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.soarThroat == 'Mild'%}Yes{% elif sBooster.soarThroat == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.stomachAche == 'Mild'%}Yes{% elif sBooster.stomachAche == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.vomiting == 'Mild'%}Yes{% elif sBooster.vomiting == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.difficultyOfBreathing == 'Mild'%}Yes{% elif sBooster.difficultyOfBreathing == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.chestPain == 'Mild'%}Yes{% elif sBooster.chestPain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.disorentation == 'Mild'%}Yes{% elif sBooster.disorentation == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.tunnelVision == 'Mild'%}Yes{% elif sBooster.tunnelVision == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sBooster.seizure == 'Mild'%}Yes{% elif sBooster.seizure == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{{sBooster.others}}</td>
+							<td>{{sBooster.status}}</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>{% if sDose.headache == 'Mild'%}Yes{% elif sDose.headache == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.fever == 'Mild'%}Yes{% elif sDose.fever == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.InjectionSitePain == 'Mild'%}Yes{% elif sDose.InjectionSitePain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.rashes == 'Mild'%}Yes{% elif sDose.rashes == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.itchiness == 'Mild'%}Yes{% elif sDose.itchiness == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.cough == 'Mild'%}Yes{% elif sDose.cough == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.bodyPain == 'Mild'%}Yes{% elif sDose.bodyPain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.soarThroat == 'Mild'%}Yes{% elif sDose.soarThroat == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.stomachAche == 'Mild'%}Yes{% elif sDose.stomachAche == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.vomiting == 'Mild'%}Yes{% elif sDose.vomiting == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.difficultyOfBreathing == 'Mild'%}Yes{% elif sDose.difficultyOfBreathing == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.chestPain == 'Mild'%}Yes{% elif sDose.chestPain == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.disorentation == 'Mild'%}Yes{% elif sDose.disorentation == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.tunnelVision == 'Mild'%}Yes{% elif sDose.tunnelVision == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{% if sDose.seizure == 'Mild'%}Yes{% elif sDose.seizure == 'Severe' %}Yes{% else %}No{% endif %}</td>
+							<td>{{sDose.others}}</td>
+							<td>{{sDose.status}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-12"><a style="text-decoration: none;" href="{% url 'logout1' %}" ><button class="btn btn-danger w-auto m-2"> Logout</button></a></div>
 		</div>
 	</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="https://cdn.datatables.net/searchpanes/2.1.2/js/dataTables.searchPanes.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 </body>
 
 </html>

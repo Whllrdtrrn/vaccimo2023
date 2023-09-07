@@ -12,6 +12,16 @@ body{
     width:100% ;
     
 }
+.Details{
+    height: 85%;
+    padding: 23px;
+    position: relative;
+    background: white;
+    top: 10%;
+    border-radius: 45px;
+    text-align: center;
+    overflow: hidden;
+}
 .text-details{
     position: relative;
     top: 60px;
@@ -20,7 +30,10 @@ text-align: center;}
 .example::-webkit-scrollbar {
     display: none;
 }
-
+table, th, td {
+    border:1px solid black;
+    padding: 3px;
+  }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .example {

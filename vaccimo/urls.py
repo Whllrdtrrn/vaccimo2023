@@ -68,6 +68,8 @@ urlpatterns = [
     path('toggle_status_active/<str:id>',
          views.toggle_status_active, name='toggle_status_active'),
     path('logout/', views.logout_view, name='logout'),
+    path('logout1/', views.logout_view1, name='logout1'),
+    path('logout2/', views.logout_view2, name='logout2'),
     path('preprocessing/', views.preprocessing, name='preprocessing'),
     path('checker_page/', views.checker_page, name='checker_page'),
     path('chooseMethod/', views.chooseMethod, name='chooseMethod'),

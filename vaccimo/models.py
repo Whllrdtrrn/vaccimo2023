@@ -57,7 +57,7 @@ class userRestorData(models.Model):
     file = models.ImageField(upload_to=filepath, null=True, blank=True)
     email = models.CharField(max_length=100, null=True)
     name = models.CharField(max_length=100, null=True)
-    suffix = models.CharField(max_length=100, default='N/A')
+    suffix = models.CharField(max_length=100, default='')
     nameFirst = models.CharField(max_length=100, null=True)
     nameLast = models.CharField(max_length=100, null=True)
     contact_number = models.CharField(max_length=100, null=True)

@@ -11,6 +11,16 @@ body {
     font-family: Montserrat;
 }
 
+ .reports{
+    height: 48rem;
+    position: relative;
+}
+.vaccineCustom{
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    right: 0;
+}
 
 .nav-link {
     color: white;
@@ -79,6 +89,8 @@ a .actives {
     justify-content: center;
     overflow: auto;
     padding: 20px;
+    top: -89px;
+    position: relative;
 }
 
 

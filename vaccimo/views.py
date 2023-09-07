@@ -484,15 +484,27 @@ def reports(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, "Successfully Logout!!")
     return redirect('/')
 
+def logout_view1(request):
+    logout(request)
+    messages.success(request, 'Your record has been successfully submitted')
+    return redirect('/')
+
+def logout_view2(request):
+    logout(request)
+    messages.success(request, 'Successfully Logout')
+    return redirect('/')
 
 def viewDetails(request):
     userId = user.objects.get(author=request.user)
-    sfId = sideeffect.objects.get(author=request.user)
-    queId = questioner.objects.get(author=request.user)
+    sfId = firstdose.objects.get(author=request.user)
+    queId = seconddose.objects.get(author=request.user)
+    sBooster = firstbooster.objects.get(author=request.user)
+    sDose = secondbooster.objects.get(author=request.user)
     context = {
+        'sBooster': sBooster,
+        'sDose': sDose,
         'userId': userId,
         'sfId': sfId,
         'queId': queId
@@ -543,20 +555,20 @@ def register_page(request):
                 user = User.objects.create_user(username=username, password=password, email=email)
                 user.save()
                 auth.login(request, user)
-                #current_site = get_current_site(request)
-                #mail_subject = 'Activation link has been sent to your email id'
-                #message = render_to_string('acc_active_email.html', {
-                #    'user': user,
-                #    'domain': current_site.domain,
-                #    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                #    'token': account_activation_token.make_token(user),
-                #})
-                #email = EmailMessage(
-                #    mail_subject, message, to=[email]
-                #)
-                #email.send()
-                return redirect('/vaccimo/')
-                #return redirect('/email-verification/')
+                current_site = get_current_site(request)
+                mail_subject = 'Activation link has been sent to your email id'
+                message = render_to_string('acc_active_email.html', {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': account_activation_token.make_token(user),
+                })
+                email = EmailMessage(
+                    mail_subject, message, to=[email]
+                )
+                email.send()
+                #return redirect('/vaccimo/')
+                return redirect('/email-verification/')
         else:
             return render(request, 'register.html', {'error': 'Both passwords are not matching'})
 
@@ -798,7 +810,8 @@ def whatDoYouFeel(request):
             prod.user = request.POST.get('user')
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            messages.success(request, 'Your record has been successfully submitted')
+            return redirect('/vaccimo/secondDoseQ/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.user = request.POST.get('user')
             prod.author = request.user
@@ -812,7 +825,7 @@ def whatDoYouFeel(request):
             prod.user = request.POST.get('user')
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/vaccimo/secondDoseQ/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.user = request.POST.get('user')
             prod.author = request.user
@@ -1117,7 +1130,7 @@ def secondDoseQ(request):
             #prod.user = request.POST.get('user')
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/logout1/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             #prod.user = request.POST.get('user')
             prod.author = request.user
@@ -1130,7 +1143,7 @@ def secondDoseQ(request):
         if request.method == 'POST'  and 'btnform1' in request.POST:
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/logout/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.author = request.user
             prod.save()
@@ -1215,7 +1228,8 @@ def whatDoYouFeel2(request):
             prod.user = request.POST.get('user')
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            messages.success(request, 'Your record has been successfully submitted')
+            return redirect('/vaccimo/firstBoosterQuestion/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.user = request.POST.get('user')
             prod.author = request.user
@@ -1229,7 +1243,7 @@ def whatDoYouFeel2(request):
             prod.user = request.POST.get('user')
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/vaccimo/firstBoosterQuestion/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.user = request.POST.get('user')
             prod.author = request.user
@@ -1350,7 +1364,7 @@ def firstBoosterQuestion(request):
         if request.method == 'POST'  and 'btnform1' in request.POST:
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/logout1/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.author = request.user
             prod.save()
@@ -1362,7 +1376,7 @@ def firstBoosterQuestion(request):
         if request.method == 'POST'  and 'btnform1' in request.POST:
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/logout/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.author = request.user
             prod.save()
@@ -1447,7 +1461,8 @@ def whatDoYouFeel3(request):
             prod.user = request.POST.get('user')
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            messages.success(request, 'Your record has been successfully submitted')
+            return redirect('/vaccimo/secondBoosterQuestion/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.user = request.POST.get('user')
             prod.author = request.user
@@ -1461,7 +1476,7 @@ def whatDoYouFeel3(request):
             prod.user = request.POST.get('user')
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/vaccimo/secondBoosterQuestion/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.user = request.POST.get('user')
             prod.author = request.user
@@ -1581,7 +1596,7 @@ def secondBoosterQuestion(request):
         if request.method == 'POST'  and 'btnform1' in request.POST:
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/logout1/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.author = request.user
             prod.save()
@@ -1593,7 +1608,7 @@ def secondBoosterQuestion(request):
         if request.method == 'POST'  and 'btnform1' in request.POST:
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/logout/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.author = request.user
             prod.save()
@@ -1678,7 +1693,7 @@ def whatDoYouFeel4(request):
             prod.user = request.POST.get('user')
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/view-details/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.user = request.POST.get('user')
             prod.author = request.user
@@ -1692,7 +1707,7 @@ def whatDoYouFeel4(request):
             prod.user = request.POST.get('user')
             prod.author = request.user
             prod.save()
-            return redirect('/')
+            return redirect('/view-details/')
         if request.method == 'POST'  and 'btnform2' in request.POST:
             prod.user = request.POST.get('user')
             prod.author = request.user
@@ -1752,7 +1767,7 @@ def sideEffectNew4(request):
             prods.author = request.user
             prods.save()
             messages.success(request, 'Successfully Submited!!!')
-            return redirect('/')
+            return redirect('/view-details/')
         else:
             return render(request, 'newUserPage/twoSideEffect/index.html', {'prod': prod})
     except secondbooster.DoesNotExist:
@@ -1802,7 +1817,7 @@ def sideEffectNew4(request):
             if 'Severe' in [prod.difficultyOfBreathing, prod.chestPain, prod.disorentation, prod.tunnelVision, prod.seizure]:
                 prod.status = 'Severe'
             prod.save()
-            return redirect('/')
+            return redirect('/view-details/')
         else:
             return render(request, 'newUserPage/twoSideEffect/index.html')                     
 def activate(request, uidb64, token):
@@ -2424,6 +2439,7 @@ def dashboard(request):
     totalMild = countHeadacheMild + countInjectionSitePainMild + countfeverMild + countrashesMild + countitchinessMild + countcoughMild + countbodyPainMild + countsoarThroatMild + countstomachAcheMild + countvomitingMild + countdifficultyOfBreathingMild + countchestPainMild + countdisorentationMild + counttunnelVisionMild + countseizureMild + countHeadacheMild2 + countInjectionSitePainMild2 + countfeverMild2 + countrashesMild2 + countitchinessMild2 + countcoughMild2 + countbodyPainMild2 + countsoarThroatMild2 + countstomachAcheMild2 + countvomitingMild2 + countdifficultyOfBreathingMild2 + countchestPainMild2 + countdisorentationMild2 + counttunnelVisionMild2 + countseizureMild2 + countHeadacheMild3 + countInjectionSitePainMild3 + countfeverMild3 + countrashesMild3 + countitchinessMild3 + countcoughMild3 + countbodyPainMild3 + countsoarThroatMild3 + countstomachAcheMild3 + countvomitingMild3 + countdifficultyOfBreathingMild3 + countchestPainMild3 + countdisorentationMild3 + counttunnelVisionMild3 + countseizureMild3 + countHeadacheMild4 + countInjectionSitePainMild4 + countfeverMild4 + countrashesMild4 + countitchinessMild4 + countcoughMild4 + countbodyPainMild4 + countsoarThroatMild4 + countstomachAcheMild4 + countvomitingMild4 + countdifficultyOfBreathingMild4 + countchestPainMild4 + countdisorentationMild4 + counttunnelVisionMild4 + countseizureMild4    
     totalSevere = countHeadacheSevere + countInjectionSitePainSevere + countfeverSevere + countrashesSevere + countitchinessSevere + countcoughSevere + countbodyPainSevere + countsoarThroatSevere + countstomachAcheSevere + countvomitingSevere + countdifficultyOfBreathingSevere + countchestPainSevere + countdisorentationSevere + counttunnelVisionSevere + countseizureSevere + countHeadacheSevere2 + countInjectionSitePainSevere2 + countfeverSevere2 + countrashesSevere2 + countitchinessSevere2 + countcoughSevere2 + countbodyPainSevere2 + countsoarThroatSevere2 + countstomachAcheSevere2 + countvomitingSevere2 + countdifficultyOfBreathingSevere2 + countchestPainSevere2 + countdisorentationSevere2 + counttunnelVisionSevere2 + countseizureSevere2 + countHeadacheSevere3 + countInjectionSitePainSevere3 + countfeverSevere3 + countrashesSevere3 + countitchinessSevere3 + countcoughSevere3 + countbodyPainSevere3 + countsoarThroatSevere3 + countstomachAcheSevere3 + countvomitingSevere3 + countdifficultyOfBreathingSevere3 + countchestPainSevere3 + countdisorentationSevere3 + counttunnelVisionSevere3 + countseizureSevere3 + countHeadacheSevere4 + countInjectionSitePainSevere4 + countfeverSevere4 + countrashesSevere4 + countitchinessSevere4 + countcoughSevere4 + countbodyPainSevere4 + countsoarThroatSevere4 + countstomachAcheSevere4 + countvomitingSevere4 + countdifficultyOfBreathingSevere4 + countchestPainSevere4 + countdisorentationSevere4 + counttunnelVisionSevere4 + countseizureSevere4    
     
+    totalReg = User.objects.all().count()
     childTotal = user.objects.filter(age__lte=17).values().count()
     seniorTotal = user.objects.filter(age__gte=60).values().count()
     adultTotal = user.objects.filter(age__gte=18 , age__lte=59).values().count()
@@ -2473,10 +2489,11 @@ def dashboard(request):
     date_filter = Q()
     for date in dates:
         date_filter |= Q(date_created=date)
-    dateTotal = user.objects.filter(date_filter).annotate(date=TruncDate('date_created')).values('date').annotate(total=Count('id')).order_by('-date')
+    dateTotal = user.objects.filter(date_filter).annotate(date=TruncDate('date_created')).values('date').annotate(total=Count('id')).order_by('-date_created')
     dateTotalss = list(firstdose.objects.values_list('date', flat=True))
     dateTotals = dateTotal.count()
     context = {
+        'totalReg': totalReg,
         'tMild': tMild,
         'tSevere': tSevere,
         'dateTotalss': dateTotalss,
